@@ -60,11 +60,12 @@ pause={
 
 [layer_names]
 
-2d_physics/layer_1="jugador"
-2d_physics/layer_2="cajas"
-2d_physics/layer_3="peligros"
-2d_physics/layer_4="interactuables"
-2d_physics/layer_5="checkpoints"
+2d_physics/layer_1="mundo"
+2d_physics/layer_2="jugador"
+2d_physics/layer_3="cajas"
+2d_physics/layer_4="peligros"
+2d_physics/layer_5="interactuables"
+2d_physics/layer_6="checkpoints"
 
 [physics]
 
