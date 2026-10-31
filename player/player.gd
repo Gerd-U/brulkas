@@ -21,8 +21,8 @@ extends CharacterBody2D
 @export var detector_reach: float = 56.0
 
 # ---------- Resbalar (zona resbalosa) ----------
-@export var resbalar_aceleracion: float = 2400.0
-@export var resbalar_velocidad_max: float = 1100.0
+@export var resbalar_aceleracion: float = 1200.0
+@export var resbalar_velocidad_max: float = 750.0
 @export var resbalar_control: float = 400.0  # cuánto influyen A/D (poco)
 
 var coyote_timer: float = 0.0
@@ -41,6 +41,9 @@ var caja_agarrada = null  # sin tipo a propósito: la caja es de Gerald
 
 func _ready() -> void:
 	add_to_group("jugador")
+	floor_snap_length = 48.0
+	col_stand.disabled = false
+	col_slide.disabled = true
 	box_detector.target_position = Vector2(detector_reach, 0.0)
 	# Posición inicial = primer checkpoint, por si muere antes de tocar uno
 	GameManager.guardar_checkpoint(global_position)
@@ -176,7 +179,7 @@ func _soltar_caja() -> void:
 
 # ---------------- Zona resbalosa (la llama la zona de Gerald) ----------------
 func empezar_resbalar() -> void:
-	if resbalando:
+	if resbalando or is_dead:
 		return
 	resbalando = true
 	facing = 1
@@ -199,17 +202,17 @@ func dejar_resbalar() -> void:
 func _update_animation() -> void:
 	var anim := "idle" if facing == 1 else "idle_left"
 
-	if not is_on_floor():
+	if resbalando and coyote_timer > 0.0:
+		anim = "slide"      # acostada resbalando (aunque rebote un instante)
+	elif not is_on_floor():
 		if velocity.y < -480.0:
-			anim = "jump"   # subiendo
+			anim = "jump"
 		elif velocity.y < 480.0:
-			anim = "peak"   # punto más alto
+			anim = "peak"
 		else:
-			anim = "fall"   # cayendo
-	elif resbalando:
-		anim = "slide"      # sentada resbalando
+			anim = "fall"
 	elif caja_agarrada != null:
-		anim = "push"       # agarrando una caja (empujar o jalar)
+		anim = "push"
 	elif absf(velocity.x) > 40.0:
 		anim = "walk"
 
@@ -228,6 +231,12 @@ func _update_animation() -> void:
 		sprite.speed_scale = clampf(absf(velocity.x) / max_speed, 0.4, 1.0)
 	else:
 		sprite.speed_scale = 1.0
+
+	# Inclinar el sprite para que siga la pendiente mientras resbala
+	var angulo_objetivo := 0.0
+	if resbalando and is_on_floor():
+		angulo_objetivo = get_floor_normal().angle() + PI / 2.0
+	visuals.rotation = lerp_angle(visuals.rotation, angulo_objetivo, 0.25)
 
 
 # ---------------- Morir y reaparecer (la llaman los pinchos y el hueco) ----------------
