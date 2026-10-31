@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://1o81m8p0gigg" path="res://puzzles/plataforma_aparece.tscn" id="8_gbk21"]
 [ext_resource type="PackedScene" uid="uid://d1edqr6v6nsub" path="res://puzzles/palanca.tscn" id="9_85kh4"]
 [ext_resource type="PackedScene" uid="uid://cyppgcdon3pf2" path="res://hazards/cepo.tscn" id="10_ldt66"]
+[ext_resource type="PackedScene" uid="uid://b17rg7sjytjfw" path="res://hazards/aplastador.tscn" id="11_aplst"]
 
 [node name="Nivel03" type="Node2D" unique_id=729105509]
 
@@ -178,3 +179,38 @@ position = Vector2(7380, 175)
 tamano = Vector2(160, 30)
 recorrido = Vector2(0, 440)
 empieza_activa = true
+
+[node name="Izq_Aplastador1" parent="." unique_id=1468203517 instance=ExtResource("11_aplst")]
+position = Vector2(1150, 640)
+caida = 300.0
+desfase = 0.0
+
+[node name="Izq_Aplastador2" parent="." unique_id=527814936 instance=ExtResource("11_aplst")]
+position = Vector2(900, 640)
+caida = 300.0
+desfase = 0.4
+
+[node name="Izq_Aplastador3" parent="." unique_id=1936520748 instance=ExtResource("11_aplst")]
+position = Vector2(650, 640)
+caida = 300.0
+desfase = 0.8
+
+[node name="Der_AplastadorAlto" parent="." unique_id=704391265 instance=ExtResource("11_aplst")]
+position = Vector2(6400, 160)
+caida = 250.0
+desfase = 0.0
+
+[node name="Der_Aplastador1" parent="." unique_id=1185730429 instance=ExtResource("11_aplst")]
+position = Vector2(8200, 640)
+caida = 300.0
+desfase = 0.0
+
+[node name="Der_Aplastador2" parent="." unique_id=2063918574 instance=ExtResource("11_aplst")]
+position = Vector2(8500, 640)
+caida = 300.0
+desfase = 0.4
+
+[node name="Der_Aplastador3" parent="." unique_id=391657082 instance=ExtResource("11_aplst")]
+position = Vector2(8800, 640)
+caida = 300.0
+desfase = 0.8
