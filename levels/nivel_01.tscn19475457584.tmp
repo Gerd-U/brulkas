@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dps3wa68l0762"]
+
+[ext_resource type="PackedScene" uid="uid://c7g0ri880gjhl" path="res://levels/bloque.tscn" id="1_4a5e8"]
+[ext_resource type="PackedScene" uid="uid://bo82ypjbq2v7c" path="res://hazards/pinchos.tscn" id="2_puons"]
+[ext_resource type="PackedScene" uid="uid://c0dp6gsndcwfe" path="res://player.tscn" id="3_rb35q"]
+
+[node name="Nivel01" type="Node2D" unique_id=729105509]
+
+[node name="Piso" parent="." unique_id=1774911687 instance=ExtResource("1_4a5e8")]
+position = Vector2(1800, 680)
+tamano = Vector2(3600, 80)
+
+[node name="Escalon" parent="." unique_id=1653235891 instance=ExtResource("1_4a5e8")]
+position = Vector2(720, 602)
+tamano = Vector2(150, 75)
+
+[node name="TroncoIzc" parent="." unique_id=536108121 instance=ExtResource("1_4a5e8")]
+position = Vector2(1512, 550)
+tamano = Vector2(150, 180)
+
+[node name="TroncoDer" parent="." unique_id=2031943483 instance=ExtResource("1_4a5e8")]
+position = Vector2(1801, 550)
+tamano = Vector2(150, 180)
+
+[node name="Pendiente" parent="." unique_id=1647294288 instance=ExtResource("1_4a5e8")]
+position = Vector2(2048, 565)
+rotation = 0.4712389
+tamano = Vector2(400, 30)
+
+[node name="Arbol" parent="." unique_id=1455520727 instance=ExtResource("1_4a5e8")]
+position = Vector2(3488, 250)
+tamano = Vector2(225, 780)
+
+[node name="Pinchos" parent="." unique_id=928934747 instance=ExtResource("2_puons")]
+position = Vector2(1656, 639)
+cantidad = 14
+ancho = 10.0
+alto = 60.0
+
+[node name="Pinchos2" parent="." unique_id=1159481454 instance=ExtResource("2_puons")]
+position = Vector2(2256, 640)
+cantidad = 10
+ancho = 5.0
+
+[node name="Player" parent="." unique_id=816248140 instance=ExtResource("3_rb35q")]
+position = Vector2(175, 546)
