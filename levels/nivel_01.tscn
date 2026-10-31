@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://c7g0ri880gjhl" path="res://levels/bloque.tscn" id="1_4a5e8"]
 [ext_resource type="PackedScene" uid="uid://bo82ypjbq2v7c" path="res://hazards/pinchos.tscn" id="2_puons"]
-[ext_resource type="PackedScene" uid="uid://c0dp6gsndcwfe" path="res://player.tscn" id="3_rb35q"]
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
 
@@ -41,6 +40,3 @@ alto = 60.0
 position = Vector2(2256, 640)
 cantidad = 10
 ancho = 5.0
-
-[node name="Player" parent="." unique_id=816248140 instance=ExtResource("3_rb35q")]
-position = Vector2(175, 546)
