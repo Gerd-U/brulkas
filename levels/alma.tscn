@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dnhwa67nyufwl"]
+
+[ext_resource type="Script" uid="uid://ceot7jnbj1qxl" path="res://levels/alma.gd" id="1_4m483"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j1xdp"]
+
+[node name="Alma" type="Area2D" unique_id=256826030]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_4m483")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=882206283]
+shape = SubResource("CircleShape2D_j1xdp")

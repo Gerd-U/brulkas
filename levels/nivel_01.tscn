@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://c7g0ri880gjhl" path="res://levels/bloque.tscn" id="1_4a5e8"]
 [ext_resource type="PackedScene" uid="uid://bo82ypjbq2v7c" path="res://hazards/pinchos.tscn" id="2_puons"]
+[ext_resource type="PackedScene" uid="uid://ct0niiuipgp38" path="res://puzzles/caja.tscn" id="3_rb35q"]
+[ext_resource type="PackedScene" uid="uid://c28x08bj5jkgk" path="res://levels/checkpoint.tscn" id="4_xpe4t"]
+[ext_resource type="PackedScene" uid="uid://dnhwa67nyufwl" path="res://levels/alma.tscn" id="5_l2snr"]
+[ext_resource type="PackedScene" uid="uid://dpaum5px1ggg4" path="res://puzzles/elevador.tscn" id="6_orvam"]
+[ext_resource type="PackedScene" uid="uid://2m02b7m5a2m5" path="res://hazards/zona_de_muerte.tscn" id="7_wcl4r"]
+[ext_resource type="PackedScene" uid="uid://buut2lteg10sm" path="res://levels/zona_resbalosa.tscn" id="8_ps1er"]
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
 
@@ -10,8 +16,8 @@ position = Vector2(1800, 680)
 tamano = Vector2(3600, 80)
 
 [node name="Escalon" parent="." unique_id=1653235891 instance=ExtResource("1_4a5e8")]
-position = Vector2(720, 602)
-tamano = Vector2(150, 75)
+position = Vector2(720, 595)
+tamano = Vector2(150, 90)
 
 [node name="TroncoIzc" parent="." unique_id=536108121 instance=ExtResource("1_4a5e8")]
 position = Vector2(1512, 550)
@@ -40,3 +46,53 @@ alto = 60.0
 position = Vector2(2256, 640)
 cantidad = 10
 ancho = 5.0
+
+[node name="Caja" parent="." unique_id=1955560842 instance=ExtResource("3_rb35q")]
+position = Vector2(840, 640)
+tamano = Vector2(90, 90)
+gravedad = 1400.0
+max_caida = null
+
+[node name="Caja2" parent="." unique_id=2003281586 instance=ExtResource("3_rb35q")]
+position = Vector2(1224, 640)
+tamano = Vector2(90, 120)
+gravedad = 1400.0
+max_caida = null
+
+[node name="Checkpoint1" parent="." unique_id=1527722269 instance=ExtResource("4_xpe4t")]
+position = Vector2(736, 550)
+
+[node name="Checkpoint2" parent="." unique_id=30351176 instance=ExtResource("4_xpe4t")]
+position = Vector2(1784, 460)
+
+[node name="Alma" parent="." unique_id=256826030 instance=ExtResource("5_l2snr")]
+position = Vector2(3488, -192)
+
+[node name="Elevador" parent="." unique_id=709500784 instance=ExtResource("6_orvam")]
+position = Vector2(3275, 640)
+tamano = Vector2(200, 40)
+
+[node name="Pinchos3" parent="." unique_id=917944 instance=ExtResource("2_puons")]
+position = Vector2(2552, 640)
+cantidad = 8
+ancho = 5.0
+
+[node name="Pinchos4" parent="." unique_id=1018653271 instance=ExtResource("2_puons")]
+position = Vector2(2848, 640)
+cantidad = 8
+ancho = 5.0
+
+[node name="Bloque" parent="." unique_id=1416041308 instance=ExtResource("1_4a5e8")]
+position = Vector2(-20, 320)
+rotation = 1.5707964
+tamano = Vector2(800, 40)
+color = Color(0.14901961, 0.14901961, 0.16862746, 0)
+
+[node name="ZonaDeMuerte" parent="." unique_id=197444578 instance=ExtResource("7_wcl4r")]
+position = Vector2(1760, 820)
+ancho = 6000.0
+
+[node name="ZonaResbalosa" parent="." unique_id=2076334591 instance=ExtResource("8_ps1er")]
+position = Vector2(2050, 565)
+rotation = 0.4712389
+largo = 450.0
