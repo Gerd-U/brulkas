@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://csysgbartral1" path="res://levels/bloque.gd" id="1_e5ak0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1xdp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5ak0"]
 size = Vector2(200, 40)
 
 [node name="Bloque" type="StaticBody2D" unique_id=1774911687]
 script = ExtResource("1_e5ak0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1103558296]
-shape = SubResource("RectangleShape2D_j1xdp")
+light_mask = 0
+shape = SubResource("RectangleShape2D_e5ak0")

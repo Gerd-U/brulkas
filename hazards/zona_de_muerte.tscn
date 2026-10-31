@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://2m02b7m5a2m5"]
+
+[ext_resource type="Script" uid="uid://bcyypn2d1iuq1" path="res://hazards/zona_de_muerte.gd" id="1_ghc10"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1xdp"]
+
+[node name="ZonaDeMuerte" type="Area2D" unique_id=197444578]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_ghc10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1814411866]
+shape = SubResource("RectangleShape2D_j1xdp")
