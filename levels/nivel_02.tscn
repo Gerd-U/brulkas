@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dpaum5px1ggg4" path="res://puzzles/elevador.tscn" id="6_lu5bq"]
 [ext_resource type="PackedScene" uid="uid://2m02b7m5a2m5" path="res://hazards/zona_de_muerte.tscn" id="7_grqfy"]
 [ext_resource type="PackedScene" uid="uid://djex6s3mbik7o" path="res://puzzles/plataforma_movil.tscn" id="7_wnnru"]
+[ext_resource type="PackedScene" uid="uid://1o81m8p0gigg" path="res://puzzles/plataforma_aparece.tscn" id="8_gbk21"]
+[ext_resource type="PackedScene" uid="uid://d1edqr6v6nsub" path="res://puzzles/palanca.tscn" id="9_85kh4"]
 
 [node name="Nivel02" type="Node2D" unique_id=729105509]
 
@@ -49,12 +51,8 @@ tamano = Vector2(400, 40)
 position = Vector2(3500, 550)
 tamano = Vector2(200, 180)
 
-[node name="Inicio_PlataformaAlma" parent="." unique_id=903286239 instance=ExtResource("1_gbk21")]
-position = Vector2(96, 136)
-tamano = Vector2(200, 80)
-
 [node name="Foso_Pinchos" parent="." unique_id=928934747 instance=ExtResource("2_85kh4")]
-position = Vector2(4770, 380)
+position = Vector2(4620, 380)
 cantidad = 8
 ancho = 5.0
 
@@ -97,18 +95,30 @@ position = Vector2(96, 56)
 position = Vector2(2400, 640)
 tamano = Vector2(90, 90)
 
-[node name="Inicio_EscaleraA" parent="." unique_id=2125986209 instance=ExtResource("1_gbk21")]
-position = Vector2(456, 228)
-
-[node name="Inicio_EscaleraB" parent="." unique_id=919042013 instance=ExtResource("1_gbk21")]
-position = Vector2(816, 336)
-
-[node name="Inicio_EscaleraC" parent="." unique_id=425112236 instance=ExtResource("1_gbk21")]
-position = Vector2(1176, 444)
-
-[node name="Inicio_EscaleraD" parent="." unique_id=1137033943 instance=ExtResource("1_gbk21")]
-position = Vector2(1536, 552)
-
 [node name="PlataformaMovil" parent="." unique_id=150593287 instance=ExtResource("7_wnnru")]
 position = Vector2(6638, 475)
 recorrido = Vector2(438, 0)
+
+[node name="Inicio_EscaleraA" parent="." unique_id=1070361003 instance=ExtResource("8_gbk21")]
+position = Vector2(1536, 552)
+
+[node name="Inicio_EscaleraB" parent="." unique_id=1407624310 instance=ExtResource("8_gbk21")]
+position = Vector2(1176, 444)
+retraso = 0.3
+
+[node name="Inicio_EscaleraC" parent="." unique_id=1198365373 instance=ExtResource("8_gbk21")]
+position = Vector2(456, 228)
+retraso = 0.9
+
+[node name="Inicio_EscaleraD" parent="." unique_id=457214431 instance=ExtResource("8_gbk21")]
+position = Vector2(816, 336)
+retraso = 0.6
+
+[node name="Inicio_PlataformaAlma" parent="." unique_id=1962650523 instance=ExtResource("8_gbk21")]
+position = Vector2(100, 136)
+tamano = Vector2(200, 80)
+retraso = 1.2
+
+[node name="Palanca" parent="." unique_id=912527605 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
+position = Vector2(8312, 40)
+objetivos = [NodePath("../Inicio_EscaleraA"), NodePath("../Inicio_EscaleraB"), NodePath("../Inicio_EscaleraC"), NodePath("../Inicio_EscaleraD"), NodePath("../Inicio_PlataformaAlma")]
