@@ -20,9 +20,6 @@ extends Area2D
 		punto_reaparicion = valor
 		queue_redraw()
 
-# Para que solo se active una vez
-var _activado := false
-
 
 func _ready() -> void:
 	_actualizar()
@@ -44,8 +41,6 @@ func _actualizar() -> void:
 
 
 func _al_entrar(cuerpo: Node2D) -> void:
-	if _activado:
-		return
 	# Solo el jugador tiene die(), así sabemos que es él
 	if not cuerpo.has_method("die"):
 		return
@@ -55,7 +50,8 @@ func _al_entrar(cuerpo: Node2D) -> void:
 	if gm == null:
 		return
 
-	_activado = true
+	# Se guarda cada vez que el jugador pasa por aquí,
+	# así también funciona cuando se devuelve
 	gm.set_checkpoint(global_position + punto_reaparicion)
 
 
@@ -64,6 +60,6 @@ func _draw() -> void:
 	if not Engine.is_editor_hint():
 		return
 	var zona := Rect2(-ancho / 2, -alto, ancho, alto)
-	draw_rect(zona, Color(0.2, 1.0, 0.4, 0.15))          # relleno verde clarito
+	draw_rect(zona, Color(0.2, 1.0, 0.4, 0.15))             # relleno verde clarito
 	draw_rect(zona, Color(0.2, 1.0, 0.4, 0.8), false, 2.0)  # borde verde
 	draw_circle(punto_reaparicion, 6.0, Color(1, 1, 0.3))   # punto amarillo: donde reaparece
