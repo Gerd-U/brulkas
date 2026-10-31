@@ -79,3 +79,9 @@ ancho = 5.0
 position = Vector2(2848, 640)
 cantidad = 8
 ancho = 5.0
+
+[node name="Bloque" parent="." unique_id=1416041308 instance=ExtResource("1_4a5e8")]
+position = Vector2(-20, 320)
+rotation = 1.5707964
+tamano = Vector2(800, 40)
+color = Color(0.14901961, 0.14901961, 0.16862746, 0)
