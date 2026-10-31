@@ -8,8 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://dpaum5px1ggg4" path="res://puzzles/elevador.tscn" id="6_orvam"]
 [ext_resource type="PackedScene" uid="uid://2m02b7m5a2m5" path="res://hazards/zona_de_muerte.tscn" id="7_wcl4r"]
 [ext_resource type="PackedScene" uid="uid://buut2lteg10sm" path="res://levels/zona_resbalosa.tscn" id="8_ps1er"]
+[ext_resource type="Script" uid="uid://dq7nv3kw5lbx2" path="res://levels/nivel.gd" id="20_nivel"]
+[ext_resource type="PackedScene" uid="uid://c0dp6gsndcwfe" path="res://player/player.tscn" id="21_player"]
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
+script = ExtResource("20_nivel")
+limite_izquierdo = 0
+limite_derecho = 3600
+limite_arriba = -358
+limite_abajo = 720
 
 [node name="Piso" parent="." unique_id=1774911687 instance=ExtResource("1_4a5e8")]
 position = Vector2(1800, 680)
@@ -94,3 +101,6 @@ ancho = 6000.0
 position = Vector2(2050, 565)
 rotation = 0.4712389
 largo = 450.0
+
+[node name="Player" parent="." unique_id=1302847561 instance=ExtResource("21_player")]
+position = Vector2(150, 613.77)

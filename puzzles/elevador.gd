@@ -25,8 +25,8 @@ extends AnimatableBody2D
 		color = valor
 		queue_redraw()
 
-# Para que solo suba una vez
-var _usado := false
+var _arriba := false    # true cuando está en la parte de arriba
+var _moviendo := false  # para no empezar otro viaje a la mitad
 
 
 func _ready() -> void:
@@ -57,19 +57,23 @@ func _actualizar() -> void:
 
 
 func _al_subir(cuerpo: Node2D) -> void:
-	if _usado:
+	if _moviendo:
 		return
 	# Solo el jugador tiene die(), así sabemos que es él
 	if not cuerpo.is_in_group("jugador"):
 		return
-	_usado = true
+	_moviendo = true
 
-	# Animación de subida
+	# Si está abajo sube, si está arriba baja
+	var destino := position.y + altura if _arriba else position.y - altura
 	var tween := create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_interval(espera)
-	tween.tween_property(self, "position:y", position.y - altura, duracion) \
+	tween.tween_property(self, "position:y", destino, duracion) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
+	_arriba = not _arriba
+	_moviendo = false
 
 
 func _draw() -> void:

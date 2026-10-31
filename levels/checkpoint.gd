@@ -21,11 +21,16 @@ extends Area2D
 		queue_redraw()
 
 
+var _jugador: Node2D = null  # el jugador mientras está dentro de la zona
+var _lado := 0.0            # de qué lado del centro entró (-1 izquierda, 1 derecha)
+
+
 func _ready() -> void:
 	_actualizar()
 	# Solo en el juego (no en el editor) escuchamos cuando algo entra
 	if not Engine.is_editor_hint():
 		body_entered.connect(_al_entrar)
+		body_exited.connect(_al_salir)
 
 
 func _actualizar() -> void:
@@ -44,6 +49,24 @@ func _al_entrar(cuerpo: Node2D) -> void:
 	# Solo el jugador tiene die(), así sabemos que es él
 	if not cuerpo.is_in_group("jugador"):
 		return
+	_jugador = cuerpo
+	_lado = signf(cuerpo.global_position.x - global_position.x)
+
+
+func _al_salir(cuerpo: Node2D) -> void:
+	if cuerpo == _jugador:
+		_jugador = null
+
+
+func _physics_process(_delta: float) -> void:
+	if _jugador == null:
+		return
+	# Solo cuenta cuando el centro del jugador cruza la línea del checkpoint,
+	# no con rozar el borde de la zona
+	var lado_actual := signf(_jugador.global_position.x - global_position.x)
+	if lado_actual == _lado and lado_actual != 0.0:
+		return
+	_lado = lado_actual
 
 	# Buscamos el GameManager de Key (si existe)
 	var gm := get_node_or_null("/root/GameManager")

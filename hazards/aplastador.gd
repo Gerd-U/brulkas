@@ -31,9 +31,11 @@ extends AnimatableBody2D
 		queue_redraw()
 
 const PICOS := 16.0  # alto de los pinchos de abajo
+const EMPUJE := 320.0  # velocidad con que tira al jugador si se sube encima
 
 var _abajo: Vector2
 var _arriba: Vector2
+var _techo: Area2D  # franja encima del bloque para que nadie se pare arriba
 
 
 func _ready() -> void:
@@ -46,7 +48,35 @@ func _ready() -> void:
 	_arriba = position - Vector2(0, caida)
 	position = _arriba
 	$ZonaPinchos.body_entered.connect(_al_tocar)
+	_crear_techo()
 	_empezar()
+
+
+func _crear_techo() -> void:
+	# Franja delgadita justo encima del bloque que detecta al jugador
+	_techo = Area2D.new()
+	_techo.collision_layer = 0
+	_techo.collision_mask = 2  # capa del jugador
+	var forma := CollisionShape2D.new()
+	var rect := RectangleShape2D.new()
+	rect.size = Vector2(tamano.x, 10)
+	forma.shape = rect
+	# Se mete 2 px dentro del bloque para detectar bien los pies del jugador
+	forma.position = Vector2(0, -tamano.y - 3)
+	_techo.add_child(forma)
+	add_child(_techo)
+
+
+func _physics_process(delta: float) -> void:
+	if _techo == null:
+		return
+	# Si el jugador está parado arriba, lo empujamos hacia el lado más cercano
+	for cuerpo in _techo.get_overlapping_bodies():
+		if cuerpo.is_in_group("jugador"):
+			var lado := signf(cuerpo.global_position.x - global_position.x)
+			if lado == 0.0:
+				lado = 1.0
+			cuerpo.global_position.x += lado * EMPUJE * delta
 
 
 func _actualizar() -> void:

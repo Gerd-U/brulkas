@@ -47,7 +47,8 @@ func _al_tocar(cuerpo: Node2D) -> void:
 	# Le avisamos al GameManager de Key que el nivel terminó
 	var gm := get_node_or_null("/root/GameManager")
 	if gm:
-		gm.nivel_completado()
+		# Diferido: no se puede cambiar de escena dentro de una señal de física
+		gm.call_deferred("nivel_completado")
 
 
 func _draw() -> void:
