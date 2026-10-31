@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c7g0ri880gjhl" path="res://levels/bloque.tscn" id="1_gbk21"]
 [ext_resource type="PackedScene" uid="uid://bo82ypjbq2v7c" path="res://hazards/pinchos.tscn" id="2_85kh4"]
 [ext_resource type="PackedScene" uid="uid://ct0niiuipgp38" path="res://puzzles/caja.tscn" id="3_ldt66"]
+[ext_resource type="PackedScene" uid="uid://c28x08bj5jkgk" path="res://levels/checkpoint.tscn" id="4_5ktbu"]
 [ext_resource type="PackedScene" uid="uid://dnhwa67nyufwl" path="res://levels/alma.tscn" id="5_1j0of"]
 [ext_resource type="PackedScene" uid="uid://dpaum5px1ggg4" path="res://puzzles/elevador.tscn" id="6_lu5bq"]
 [ext_resource type="PackedScene" uid="uid://2m02b7m5a2m5" path="res://hazards/zona_de_muerte.tscn" id="7_grqfy"]
@@ -134,4 +135,10 @@ position = Vector2(1272, 640)
 position = Vector2(5720, 640)
 
 [node name="Inicio_Cepo3" parent="." unique_id=1744703439 instance=ExtResource("10_ldt66")]
-position = Vector2(1800, 640)
+position = Vector2(1864, 640)
+
+[node name="Checkpoint" parent="." unique_id=1527722269 instance=ExtResource("4_5ktbu")]
+position = Vector2(3504, 456)
+
+[node name="Checkpoint2" parent="." unique_id=192428576 instance=ExtResource("4_5ktbu")]
+position = Vector2(6448, 464)
