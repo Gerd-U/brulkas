@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c28x08bj5jkgk" path="res://levels/checkpoint.tscn" id="4_xpe4t"]
 [ext_resource type="PackedScene" uid="uid://dnhwa67nyufwl" path="res://levels/alma.tscn" id="5_l2snr"]
 [ext_resource type="PackedScene" uid="uid://dpaum5px1ggg4" path="res://puzzles/elevador.tscn" id="6_orvam"]
+[ext_resource type="PackedScene" uid="uid://2m02b7m5a2m5" path="res://hazards/zona_de_muerte.tscn" id="7_wcl4r"]
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
 
@@ -85,3 +86,7 @@ position = Vector2(-20, 320)
 rotation = 1.5707964
 tamano = Vector2(800, 40)
 color = Color(0.14901961, 0.14901961, 0.16862746, 0)
+
+[node name="ZonaDeMuerte" parent="." unique_id=197444578 instance=ExtResource("7_wcl4r")]
+position = Vector2(1760, 820)
+ancho = 6000.0
