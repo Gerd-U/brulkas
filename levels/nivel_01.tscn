@@ -45,7 +45,9 @@ ancho = 5.0
 [node name="Caja" parent="." unique_id=1955560842 instance=ExtResource("3_rb35q")]
 position = Vector2(840, 640)
 tamano = Vector2(90, 90)
+gravedad = 1400.0
 
 [node name="Caja2" parent="." unique_id=2003281586 instance=ExtResource("3_rb35q")]
 position = Vector2(1224, 640)
 tamano = Vector2(90, 120)
+gravedad = 1400.0

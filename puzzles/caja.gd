@@ -1,4 +1,5 @@
 @tool
+class_name PushableBox
 extends CharacterBody2D
 
 ## Tamaño de la caja en píxeles (ancho, alto)
@@ -14,10 +15,11 @@ extends CharacterBody2D
 		queue_redraw()
 
 ## Qué tan rápido cae
-@export var gravedad: float = 1400.0
+@export var gravedad: float = 1100.0
+@export var max_caida: float = 600.0
 
 # Si el jugador la tiene agarrada o no
-var _agarrada := false
+var is_grabbed: bool = false
 
 
 func _ready() -> void:
@@ -40,28 +42,26 @@ func _physics_process(delta: float) -> void:
 	# En el editor no queremos que la caja se caiga
 	if Engine.is_editor_hint():
 		return
-
-	# Gravedad: si no está en el suelo, cae
-	if not is_on_floor():
-		velocity.y += gravedad * delta
-
-	# Si nadie la agarra, no se mueve de lado
-	if not _agarrada:
-		velocity.x = 0.0
-
+	# La caja nunca se mueve de lado sola: solo cae
+	velocity.x = 0.0
+	velocity.y = min(velocity.y + gravedad * delta, max_caida)
 	move_and_slide()
 
 
 # ---------- Métodos que usa el jugador de Key ----------
 
-func mover(velocidad_x: float) -> void:
-	_agarrada = true
-	velocity.x = velocidad_x
+## El jugador avisa si la agarró o la soltó
+func set_grabbed(valor: bool) -> void:
+	is_grabbed = valor
 
 
-func soltar() -> void:
-	_agarrada = false
-	velocity.x = 0.0
+## El jugador la mueve dx píxeles de lado.
+## Devuelve cuánto se movió de verdad (menos si chocó con algo).
+func move_x(dx: float) -> float:
+	var choque := move_and_collide(Vector2(dx, 0.0))
+	if choque:
+		return choque.get_travel().x
+	return dx
 
 
 # ---------- Dibujo (hasta que haya arte) ----------
@@ -69,7 +69,7 @@ func soltar() -> void:
 func _draw() -> void:
 	var r := Rect2(-tamano.x / 2, -tamano.y, tamano.x, tamano.y)
 	var borde := color.darkened(0.4)
-	draw_rect(r, color)                    # relleno
-	draw_rect(r, borde, false, 3.0)        # borde
-	draw_line(r.position, r.end, borde, 3.0)   # diagonal \
-	draw_line(Vector2(r.position.x, r.end.y), Vector2(r.end.x, r.position.y), borde, 3.0)  # diagonal /
+	draw_rect(r, color)
+	draw_rect(r, borde, false, 3.0)
+	draw_line(r.position, r.end, borde, 3.0)
+	draw_line(Vector2(r.position.x, r.end.y), Vector2(r.end.x, r.position.y), borde, 3.0)
