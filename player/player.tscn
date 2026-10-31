@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://c0dp6gsndcwfe"]
+
+[ext_resource type="Script" uid="uid://e81bd1a6qjsi" path="res://player/player.gd" id="1_606se"]
+[ext_resource type="Texture2D" uid="uid://dviwjxlrjuinb" path="res://player/Sprites/personaje/personaje_salto/personaje_salto_4.png" id="1_bwjto"]
+[ext_resource type="Texture2D" uid="uid://d0n07s5binlm8" path="res://player/Sprites/personaje/personaje_quieto/personaje_quieto.png" id="2_606se"]
+[ext_resource type="Texture2D" uid="uid://bc88gl82ekrk8" path="res://player/Sprites/personaje/personaje_quieto/personaje_quieto_izquierda.png" id="3_u1c27"]
+[ext_resource type="Texture2D" uid="uid://dof5invlgpk3y" path="res://player/Sprites/personaje/personaje_salto/personaje_salto_1.png" id="4_op7ga"]
+[ext_resource type="Texture2D" uid="uid://1qo4lpsxybrx" path="res://player/Sprites/personaje/personaje_salto/personaje_salto_2.png" id="5_q13i1"]
+[ext_resource type="Texture2D" uid="uid://cn4jew8vjvwni" path="res://player/Sprites/personaje/personaje_salto/personaje_salto_3.png" id="6_pylmc"]
+[ext_resource type="Texture2D" uid="uid://rnrkxv07tt41" path="res://player/Sprites/personaje/personaje_empuja/personaje_empuja.png" id="7_pbfsw"]
+[ext_resource type="Texture2D" uid="uid://ttj24aw8xivb" path="res://player/Sprites/personaje/personaje_desliz/personaje_desliz.png" id="8_5tmop"]
+[ext_resource type="Texture2D" uid="uid://cjnew153n8q6n" path="res://player/Sprites/personaje/personaje_caminar/personaje_caminar_0.png" id="9_7ahtn"]
+[ext_resource type="Texture2D" uid="uid://dr8bs1wq558i7" path="res://player/Sprites/personaje/personaje_caminar/personaje_caminar_1.png" id="10_7lmhl"]
+[ext_resource type="Texture2D" uid="uid://d4m68itvpnv3v" path="res://player/Sprites/personaje/personaje_caminar/personaje_caminar_2.png" id="11_dx0e4"]
+[ext_resource type="Texture2D" uid="uid://ds3eww1cjtauh" path="res://player/Sprites/personaje/personaje_caminar/personaje_caminar_3.png" id="12_jm5j8"]
+[ext_resource type="Texture2D" uid="uid://b74da3easytm7" path="res://player/Sprites/personaje/personaje_caminar/personaje_caminar_4.png" id="13_7hik5"]
+[ext_resource type="Texture2D" uid="uid://c4tkd5uqkeqam" path="res://player/Sprites/personaje/personaje_caminar/personaje_caminar_5.png" id="14_qtqh7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+size = Vector2(64, 195)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sh265"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bwjto")
+}],
+"loop": 0,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_606se")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u1c27")
+}],
+"loop": 1,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_op7ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q13i1")
+}],
+"loop": 0,
+"name": &"jump",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_pylmc")
+}],
+"loop": 0,
+"name": &"peak",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pbfsw")
+}],
+"loop": 1,
+"name": &"push",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_5tmop")
+}],
+"loop": 0,
+"name": &"slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_7ahtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7lmhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dx0e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jm5j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7hik5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qtqh7")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcbcb"]
+size = Vector2(120, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnpgg"]
+size = Vector2(167, 134)
+
+[node name="Player" type="CharacterBody2D" unique_id=816248140]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_606se")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1197678238]
+light_mask = 5
+visibility_layer = 2
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_i3pqv")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=252953366]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Visuals" unique_id=1380499053]
+position = Vector2(0, -2)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_sh265")
+animation = &"walk"
+frame = 1
+frame_progress = 0.872684
+
+[node name="BoxDetector" type="RayCast2D" parent="." unique_id=2074462366]
+collision_mask = 4
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=1615827509]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1959598581]
+visibility_layer = 5
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_tcbcb")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1329630396]
+
+[node name="CollisionSlide" type="CollisionShape2D" parent="." unique_id=1698138174]
+light_mask = 5
+visibility_layer = 2
+position = Vector2(-1.5, 27)
+shape = SubResource("RectangleShape2D_tnpgg")
