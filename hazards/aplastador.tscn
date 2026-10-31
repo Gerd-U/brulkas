@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b17rg7sjytjfw"]
+
+[ext_resource type="Script" uid="uid://b287g08b6qrwe" path="res://hazards/aplastador.gd" id="1_1jbje"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1xdp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4j7i"]
+
+[node name="Aplastador" type="AnimatableBody2D" unique_id=645051977]
+collision_mask = 0
+script = ExtResource("1_1jbje")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1689955806]
+shape = SubResource("RectangleShape2D_j1xdp")
+
+[node name="ZonaPinchos" type="Area2D" parent="." unique_id=1022545679]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaPinchos" unique_id=1817385355]
+shape = SubResource("RectangleShape2D_l4j7i")
+debug_color = Color(0, 0.6, 0.69803923, 0)

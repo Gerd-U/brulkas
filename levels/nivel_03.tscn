@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://c4kq7wd2v8xmr"]
+
+[ext_resource type="PackedScene" uid="uid://c7g0ri880gjhl" path="res://levels/bloque.tscn" id="1_gbk21"]
+[ext_resource type="PackedScene" uid="uid://bo82ypjbq2v7c" path="res://hazards/pinchos.tscn" id="2_85kh4"]
+[ext_resource type="PackedScene" uid="uid://ct0niiuipgp38" path="res://puzzles/caja.tscn" id="3_ldt66"]
+[ext_resource type="PackedScene" uid="uid://c28x08bj5jkgk" path="res://levels/checkpoint.tscn" id="4_5ktbu"]
+[ext_resource type="PackedScene" uid="uid://dnhwa67nyufwl" path="res://levels/alma.tscn" id="5_1j0of"]
+[ext_resource type="PackedScene" uid="uid://dpaum5px1ggg4" path="res://puzzles/elevador.tscn" id="6_lu5bq"]
+[ext_resource type="PackedScene" uid="uid://2m02b7m5a2m5" path="res://hazards/zona_de_muerte.tscn" id="7_grqfy"]
+[ext_resource type="PackedScene" uid="uid://djex6s3mbik7o" path="res://puzzles/plataforma_movil.tscn" id="7_wnnru"]
+[ext_resource type="PackedScene" uid="uid://1o81m8p0gigg" path="res://puzzles/plataforma_aparece.tscn" id="8_gbk21"]
+[ext_resource type="PackedScene" uid="uid://d1edqr6v6nsub" path="res://puzzles/palanca.tscn" id="9_85kh4"]
+[ext_resource type="PackedScene" uid="uid://cyppgcdon3pf2" path="res://hazards/cepo.tscn" id="10_ldt66"]
+[ext_resource type="PackedScene" uid="uid://b17rg7sjytjfw" path="res://hazards/aplastador.tscn" id="11_aplst"]
+
+[node name="Nivel03" type="Node2D" unique_id=729105509]
+
+[node name="Centro_Suelo" parent="." unique_id=1774911687 instance=ExtResource("1_gbk21")]
+position = Vector2(5000, 680)
+tamano = Vector2(10000, 80)
+
+[node name="Izq_Pared" parent="." unique_id=1416041308 instance=ExtResource("1_gbk21")]
+position = Vector2(-20, 220)
+rotation = 1.5707964
+tamano = Vector2(1000, 40)
+color = Color(0.14901961, 0.14901961, 0.16862746, 0)
+
+[node name="Nivel_ZonaMuerte" parent="." unique_id=197444578 instance=ExtResource("7_grqfy")]
+position = Vector2(5000, 900)
+ancho = 11000.0
+
+[node name="Der_Pinchos" parent="." unique_id=928934747 instance=ExtResource("2_85kh4")]
+position = Vector2(6700, 640)
+cantidad = 240
+ancho = 5.0
+
+[node name="Der_CaminoAlto" parent="." unique_id=10964885 instance=ExtResource("1_gbk21")]
+position = Vector2(7000, 180)
+tamano = Vector2(600, 40)
+
+[node name="Izq_Pinchos" parent="." unique_id=39430143 instance=ExtResource("2_85kh4")]
+position = Vector2(3200, 640)
+cantidad = 28
+ancho = 5.0
+
+[node name="Der_Pared" parent="." unique_id=1933717972 instance=ExtResource("1_gbk21")]
+position = Vector2(10020, 220)
+rotation = 1.5707964
+tamano = Vector2(1000, 40)
+color = Color(0.14901961, 0.14901961, 0.16862746, 0)
+
+[node name="Izq_Torre" parent="." unique_id=1045927792 instance=ExtResource("1_gbk21")]
+position = Vector2(200, 490)
+tamano = Vector2(200, 300)
+
+[node name="Izq_Elevador" parent="." unique_id=709500784 instance=ExtResource("6_lu5bq")]
+position = Vector2(380, 640)
+tamano = Vector2(160, 20)
+altura = 280.0
+
+[node name="Centro_Alma" parent="." unique_id=256826030 instance=ExtResource("5_1j0of")]
+position = Vector2(5050, -112)
+
+[node name="Der_PlataformaVertical1" parent="." unique_id=150593287 instance=ExtResource("7_wnnru")]
+position = Vector2(5820, 615)
+tamano = Vector2(160, 30)
+recorrido = Vector2(0, -440)
+empieza_activa = true
+
+[node name="Centro_EscaleraIzq1" parent="." unique_id=1070361003 instance=ExtResource("8_gbk21")]
+position = Vector2(3820, 600)
+tamano = Vector2(200, 40)
+retraso = 0.0
+
+[node name="Centro_EscaleraIzq2" parent="." unique_id=1407624310 instance=ExtResource("8_gbk21")]
+position = Vector2(4180, 540)
+tamano = Vector2(200, 40)
+retraso = 0.3
+
+[node name="Centro_EscaleraIzq3" parent="." unique_id=1198365373 instance=ExtResource("8_gbk21")]
+position = Vector2(4540, 480)
+tamano = Vector2(200, 40)
+retraso = 0.6
+
+[node name="Centro_EscaleraDer1" parent="." unique_id=457214431 instance=ExtResource("8_gbk21")]
+position = Vector2(5460, 312)
+tamano = Vector2(200, 40)
+retraso = 0.0
+
+[node name="Centro_PlataformaAlma" parent="." unique_id=1962650523 instance=ExtResource("8_gbk21")]
+position = Vector2(5050, -12)
+tamano = Vector2(300, 40)
+retraso = 0.9
+
+[node name="Izq_Palanca" parent="." unique_id=912527605 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
+position = Vector2(200, 340)
+objetivos = [NodePath("../Centro_EscaleraIzq1"), NodePath("../Centro_EscaleraIzq2"), NodePath("../Centro_EscaleraIzq3")]
+
+[node name="Izq_Cepo3" parent="." unique_id=1575129816 instance=ExtResource("10_ldt66")]
+position = Vector2(1750, 640)
+ancho = 100.0
+
+[node name="Der_Cepo" parent="." unique_id=1945105357 instance=ExtResource("10_ldt66")]
+position = Vector2(7700, 640)
+ancho = 100.0
+
+[node name="Centro_CP" parent="." unique_id=1527722269 instance=ExtResource("4_5ktbu")]
+position = Vector2(5000, 640)
+
+[node name="Izq_CP" parent="." unique_id=192428576 instance=ExtResource("4_5ktbu")]
+position = Vector2(3500, 640)
+
+[node name="Centro_Copa" parent="." unique_id=1386204917 instance=ExtResource("1_gbk21")]
+position = Vector2(5000, 460)
+tamano = Vector2(400, 120)
+
+[node name="Centro_EscaleraDer2" parent="." unique_id=873519046 instance=ExtResource("8_gbk21")]
+position = Vector2(5100, 204)
+tamano = Vector2(200, 40)
+retraso = 0.3
+
+[node name="Centro_EscaleraDer3" parent="." unique_id=1609482375 instance=ExtResource("8_gbk21")]
+position = Vector2(5460, 96)
+tamano = Vector2(200, 40)
+retraso = 0.6
+
+[node name="Izq_CP2" parent="." unique_id=1257390418 instance=ExtResource("4_5ktbu")]
+position = Vector2(1350, 640)
+
+[node name="Der_CP" parent="." unique_id=2018634759 instance=ExtResource("4_5ktbu")]
+position = Vector2(6900, 160)
+
+[node name="Der_Elevador" parent="." unique_id=615938204 instance=ExtResource("6_lu5bq")]
+position = Vector2(9620, 640)
+tamano = Vector2(160, 20)
+altura = 280.0
+
+[node name="Der_Torre" parent="." unique_id=1493067821 instance=ExtResource("1_gbk21")]
+position = Vector2(9800, 490)
+tamano = Vector2(200, 300)
+
+[node name="Der_Palanca" parent="." unique_id=780245163 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
+position = Vector2(9800, 340)
+objetivos = [NodePath("../Centro_EscaleraDer1"), NodePath("../Centro_EscaleraDer2"), NodePath("../Centro_EscaleraDer3"), NodePath("../Centro_PlataformaAlma")]
+
+[node name="Izq_Caja" parent="." unique_id=554329231 instance=ExtResource("3_ldt66")]
+position = Vector2(2150, 640)
+tamano = Vector2(90, 90)
+
+[node name="Izq_Techo" parent="." unique_id=342871690 instance=ExtResource("1_gbk21")]
+position = Vector2(1750, 510)
+tamano = Vector2(500, 60)
+
+[node name="Izq_Cepo1" parent="." unique_id=1093748562 instance=ExtResource("10_ldt66")]
+position = Vector2(2980, 640)
+ancho = 100.0
+
+[node name="Izq_Pinchos2" parent="." unique_id=1724360981 instance=ExtResource("2_85kh4")]
+position = Vector2(2600, 640)
+cantidad = 28
+ancho = 5.0
+
+[node name="Izq_Cepo2" parent="." unique_id=438917256 instance=ExtResource("10_ldt66")]
+position = Vector2(2380, 640)
+ancho = 100.0
+
+[node name="Der_Muro" parent="." unique_id=1851402637 instance=ExtResource("1_gbk21")]
+position = Vector2(6000, 400)
+tamano = Vector2(200, 480)
+
+[node name="Der_PlataformaLado" parent="." unique_id=962738145 instance=ExtResource("7_wnnru")]
+position = Vector2(6180, 175)
+tamano = Vector2(160, 30)
+recorrido = Vector2(440, 0)
+empieza_activa = true
+
+[node name="Der_PlataformaVertical2" parent="." unique_id=1317095482 instance=ExtResource("7_wnnru")]
+position = Vector2(7380, 175)
+tamano = Vector2(160, 30)
+recorrido = Vector2(0, 440)
+empieza_activa = true
+
+[node name="Izq_Aplastador1" parent="." unique_id=1468203517 instance=ExtResource("11_aplst")]
+position = Vector2(1150, 640)
+caida = 300.0
+desfase = 0.0
+
+[node name="Izq_Aplastador2" parent="." unique_id=527814936 instance=ExtResource("11_aplst")]
+position = Vector2(900, 640)
+caida = 300.0
+desfase = 0.4
+
+[node name="Izq_Aplastador3" parent="." unique_id=1936520748 instance=ExtResource("11_aplst")]
+position = Vector2(650, 640)
+caida = 300.0
+desfase = 0.8
+
+[node name="Der_AplastadorAlto" parent="." unique_id=704391265 instance=ExtResource("11_aplst")]
+position = Vector2(6400, 160)
+caida = 250.0
+desfase = 0.0
+
+[node name="Der_Aplastador1" parent="." unique_id=1185730429 instance=ExtResource("11_aplst")]
+position = Vector2(8200, 640)
+caida = 300.0
+desfase = 0.0
+
+[node name="Der_Aplastador2" parent="." unique_id=2063918574 instance=ExtResource("11_aplst")]
+position = Vector2(8500, 640)
+caida = 300.0
+desfase = 0.4
+
+[node name="Der_Aplastador3" parent="." unique_id=391657082 instance=ExtResource("11_aplst")]
+position = Vector2(8800, 640)
+caida = 300.0
+desfase = 0.8
