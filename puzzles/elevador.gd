@@ -60,7 +60,7 @@ func _al_subir(cuerpo: Node2D) -> void:
 	if _usado:
 		return
 	# Solo el jugador tiene die(), así sabemos que es él
-	if not cuerpo.has_method("die"):
+	if not cuerpo.is_in_group("jugador"):
 		return
 	_usado = true
 

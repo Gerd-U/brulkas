@@ -32,8 +32,8 @@ func _actualizar() -> void:
 
 
 func _al_caer(cuerpo: Node2D) -> void:
-	if cuerpo.has_method("die"):
-		cuerpo.die()
+	if cuerpo.has_method("morir"):
+		cuerpo.morir()
 
 
 func _draw() -> void:

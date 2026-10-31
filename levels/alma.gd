@@ -38,7 +38,7 @@ func _al_tocar(cuerpo: Node2D) -> void:
 	if _recogida:
 		return
 	# Solo el jugador tiene die(), así sabemos que es él
-	if not cuerpo.has_method("die"):
+	if not cuerpo.is_in_group("jugador"):
 		return
 
 	_recogida = true
@@ -47,7 +47,7 @@ func _al_tocar(cuerpo: Node2D) -> void:
 	# Le avisamos al GameManager de Key que el nivel terminó
 	var gm := get_node_or_null("/root/GameManager")
 	if gm:
-		gm.next_level()
+		gm.nivel_completado()
 
 
 func _draw() -> void:

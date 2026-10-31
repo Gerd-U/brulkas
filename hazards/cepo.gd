@@ -57,10 +57,10 @@ func _al_pisar(cuerpo: Node2D) -> void:
 		return
 
 	# ¿Es el jugador? → se cierra y lo mata
-	if cuerpo.has_method("die"):
+	if cuerpo.has_method("morir"):
 		_cerrado = true
 		queue_redraw()
-		cuerpo.die()
+		cuerpo.morir()
 		# Esperamos un rato y la volvemos a abrir
 		await get_tree().create_timer(tiempo_reabrir).timeout
 		if not _desarmado:
