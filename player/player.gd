@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	_handle_grab(velocidad_x_deseada)
+	_handle_grab(velocidad_x_deseada, delta)
 	_update_facing(input_dir)
 	_update_animation()
 
@@ -129,7 +129,8 @@ func _update_facing(input_dir: float) -> void:
 
 
 # ---------------- Cajas (de Gerald: grupo "cajas", mover() y soltar()) ----------------
-func _handle_grab(velocidad_x: float) -> void:
+
+func _handle_grab(velocidad_x: float, delta: float) -> void:
 	# Si la caja desapareció del juego, se olvida
 	if caja_agarrada != null and not is_instance_valid(caja_agarrada):
 		caja_agarrada = null
@@ -139,6 +140,7 @@ func _handle_grab(velocidad_x: float) -> void:
 	if caja_agarrada == null:
 		if quiere_agarrar:
 			caja_agarrada = _buscar_caja()
+
 		if caja_agarrada == null:
 			return
 
@@ -146,8 +148,10 @@ func _handle_grab(velocidad_x: float) -> void:
 		_soltar_caja()
 		return
 
-	# Mientras siga agarrada: caminar hacia la caja la empuja, al otro lado la jala
-	caja_agarrada.mover(velocidad_x)
+	# Mientras siga agarrada: caminar hacia la caja la empuja,
+	# al otro lado la jala
+	caja_agarrada.mover(velocidad_x * delta)
+
 
 
 func _buscar_caja() -> Node:

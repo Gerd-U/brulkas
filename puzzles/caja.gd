@@ -1,3 +1,4 @@
+
 @tool
 class_name PushableBox
 extends CharacterBody2D
@@ -14,62 +15,88 @@ extends CharacterBody2D
 		color = valor
 		queue_redraw()
 
-## Qué tan rápido cae
+## Gravedad
 @export var gravedad: float = 1100.0
 @export var max_caida: float = 600.0
 
-# Si el jugador la tiene agarrada o no
 var is_grabbed: bool = false
 
 
 func _ready() -> void:
 	_actualizar()
 
+	# Todas las cajas se agregan automáticamente al grupo
+	if not Engine.is_editor_hint():
+		add_to_group("cajas")
+
+
+# ---------- Actualizar tamaño y colisión ----------
 
 func _actualizar() -> void:
 	var forma := get_node_or_null("CollisionShape2D") as CollisionShape2D
+
 	if forma == null:
 		return
+
 	var rect := RectangleShape2D.new()
 	rect.size = tamano
 	forma.shape = rect
-	# Subimos la forma media altura para que la base quede en y = 0
+
+	# La base de la caja queda en y = 0
 	forma.position = Vector2(0, -tamano.y / 2)
+
 	queue_redraw()
 
 
-func _physics_process(delta: float) -> void:
-	# En el editor no queremos que la caja se caiga
+# ---------- Métodos utilizados por Player.gd ----------
+
+# El jugador mueve la caja horizontalmente
+func mover(dx: float) -> void:
+	is_grabbed = true
+
 	if Engine.is_editor_hint():
 		return
-	# La caja nunca se mueve de lado sola: solo cae
-	velocity.x = 0.0
-	velocity.y = min(velocity.y + gravedad * delta, max_caida)
-	move_and_slide()
+
+	move_and_collide(Vector2(dx, 0.0))
 
 
-# ---------- Métodos que usa el jugador de Key ----------
+# El jugador suelta la caja
+func soltar() -> void:
+	is_grabbed = false
 
-## El jugador avisa si la agarró o la soltó
+
+# Compatibilidad con otros scripts que utilicen este método
 func set_grabbed(valor: bool) -> void:
 	is_grabbed = valor
 
 
-## El jugador la mueve dx píxeles de lado.
-## Devuelve cuánto se movió de verdad (menos si chocó con algo).
-func move_x(dx: float) -> float:
-	var choque := move_and_collide(Vector2(dx, 0.0))
-	if choque:
-		return choque.get_travel().x
-	return dx
+# ---------- Gravedad ----------
+
+func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+
+	velocity.x = 0.0
+	velocity.y = min(velocity.y + gravedad * delta, max_caida)
+
+	move_and_slide()
 
 
-# ---------- Dibujo (hasta que haya arte) ----------
+# ---------- Dibujo de la caja ----------
 
 func _draw() -> void:
 	var r := Rect2(-tamano.x / 2, -tamano.y, tamano.x, tamano.y)
+
 	var borde := color.darkened(0.4)
+
 	draw_rect(r, color)
 	draw_rect(r, borde, false, 3.0)
+
 	draw_line(r.position, r.end, borde, 3.0)
-	draw_line(Vector2(r.position.x, r.end.y), Vector2(r.end.x, r.position.y), borde, 3.0)
+
+	draw_line(
+		Vector2(r.position.x, r.end.y),
+		Vector2(r.end.x, r.position.y),
+		borde,
+		3.0
+	)

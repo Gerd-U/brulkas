@@ -1,4 +1,4 @@
-# core/game_manager.gd
+# core/Game_Manager.gd
 extends Node
 
 var ultimo_checkpoint: Vector2 = Vector2.ZERO
