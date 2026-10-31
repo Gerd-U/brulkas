@@ -108,7 +108,7 @@ animations = [{
 size = Vector2(120, 196)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnpgg"]
-size = Vector2(167, 134)
+size = Vector2(164, 132)
 
 [node name="Player" type="CharacterBody2D" unique_id=816248140]
 collision_layer = 2
@@ -124,12 +124,10 @@ shape = SubResource("RectangleShape2D_i3pqv")
 [node name="Visuals" type="Node2D" parent="." unique_id=252953366]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Visuals" unique_id=1380499053]
-position = Vector2(0, -2)
-scale = Vector2(0.8, 0.8)
+position = Vector2(-1, -1)
+scale = Vector2(0.8, 0.79062504)
 sprite_frames = SubResource("SpriteFrames_sh265")
-animation = &"walk"
-frame = 1
-frame_progress = 0.872684
+animation = &"slide"
 
 [node name="BoxDetector" type="RayCast2D" parent="." unique_id=2074462366]
 collision_mask = 4
@@ -141,7 +139,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1959598581]
 visibility_layer = 5
-position = Vector2(0, -4)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_tcbcb")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1329630396]
@@ -149,5 +147,5 @@ shape = SubResource("RectangleShape2D_tcbcb")
 [node name="CollisionSlide" type="CollisionShape2D" parent="." unique_id=1698138174]
 light_mask = 5
 visibility_layer = 2
-position = Vector2(-1.5, 27)
+position = Vector2(-4, 27)
 shape = SubResource("RectangleShape2D_tnpgg")
