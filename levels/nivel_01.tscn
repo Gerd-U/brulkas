@@ -51,13 +51,11 @@ ancho = 5.0
 position = Vector2(840, 640)
 tamano = Vector2(90, 90)
 gravedad = 1400.0
-max_caida = null
 
 [node name="Caja2" parent="." unique_id=2003281586 instance=ExtResource("3_rb35q")]
 position = Vector2(1224, 640)
 tamano = Vector2(90, 120)
 gravedad = 1400.0
-max_caida = null
 
 [node name="Checkpoint1" parent="." unique_id=1527722269 instance=ExtResource("4_xpe4t")]
 position = Vector2(736, 550)
@@ -82,7 +80,7 @@ position = Vector2(2848, 640)
 cantidad = 8
 ancho = 5.0
 
-[node name="Bloque" parent="." unique_id=1416041308 instance=ExtResource("1_4a5e8")]
+[node name="ParedInvisible" parent="." unique_id=1416041308 instance=ExtResource("1_4a5e8")]
 position = Vector2(-20, 320)
 rotation = 1.5707964
 tamano = Vector2(800, 40)

@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bqn212nxinkpk"]
+
+[ext_resource type="PackedScene" uid="uid://c7g0ri880gjhl" path="res://levels/bloque.tscn" id="1_gbk21"]
+[ext_resource type="PackedScene" uid="uid://bo82ypjbq2v7c" path="res://hazards/pinchos.tscn" id="2_85kh4"]
+[ext_resource type="PackedScene" uid="uid://ct0niiuipgp38" path="res://puzzles/caja.tscn" id="3_ldt66"]
+[ext_resource type="PackedScene" uid="uid://dnhwa67nyufwl" path="res://levels/alma.tscn" id="5_1j0of"]
+[ext_resource type="PackedScene" uid="uid://dpaum5px1ggg4" path="res://puzzles/elevador.tscn" id="6_lu5bq"]
+[ext_resource type="PackedScene" uid="uid://2m02b7m5a2m5" path="res://hazards/zona_de_muerte.tscn" id="7_grqfy"]
+
+[node name="Nivel01" type="Node2D" unique_id=729105509]
+
+[node name="Piso" parent="." unique_id=1774911687 instance=ExtResource("1_gbk21")]
+position = Vector2(1800, 680)
+tamano = Vector2(3600, 80)
+
+[node name="ParedInvisibleDer" parent="." unique_id=1416041308 instance=ExtResource("1_gbk21")]
+position = Vector2(-20, 220)
+rotation = 1.5707964
+tamano = Vector2(1000, 40)
+color = Color(0.14901961, 0.14901961, 0.16862746, 0)
+
+[node name="ZonaDeMuerte" parent="." unique_id=197444578 instance=ExtResource("7_grqfy")]
+position = Vector2(4288, 820)
+ancho = 12000.0
+
+[node name="Piso2" parent="." unique_id=1582149544 instance=ExtResource("1_gbk21")]
+position = Vector2(6912, 680)
+tamano = Vector2(3000, 80)
+
+[node name="PisoFlotante" parent="." unique_id=451312194 instance=ExtResource("1_gbk21")]
+position = Vector2(3816, 472)
+
+[node name="PisoFlotante2" parent="." unique_id=827848294 instance=ExtResource("1_gbk21")]
+position = Vector2(4176, 448)
+
+[node name="PisoFlotante3" parent="." unique_id=1125135226 instance=ExtResource("1_gbk21")]
+position = Vector2(4792, 408)
+tamano = Vector2(700, 40)
+
+[node name="Grada" parent="." unique_id=1805968503 instance=ExtResource("1_gbk21")]
+position = Vector2(5040, 368)
+
+[node name="PisoFlotante4" parent="." unique_id=564141184 instance=ExtResource("1_gbk21")]
+position = Vector2(5448, 352)
+tamano = Vector2(400, 40)
+
+[node name="Plataforma" parent="." unique_id=441500738 instance=ExtResource("1_gbk21")]
+position = Vector2(3500, 550)
+tamano = Vector2(200, 180)
+
+[node name="Plataforma final" parent="." unique_id=903286239 instance=ExtResource("1_gbk21")]
+position = Vector2(96, 136)
+tamano = Vector2(200, 80)
+
+[node name="Pinchos" parent="." unique_id=928934747 instance=ExtResource("2_85kh4")]
+position = Vector2(4600, 388)
+cantidad = 8
+ancho = 5.0
+
+[node name="Caja" parent="." unique_id=1955560842 instance=ExtResource("3_ldt66")]
+position = Vector2(5416, 331)
+tamano = Vector2(90, 90)
+
+[node name="Plataforma1" parent="." unique_id=10964885 instance=ExtResource("1_gbk21")]
+position = Vector2(6456, 550)
+tamano = Vector2(200, 180)
+
+[node name="Pinchos2" parent="." unique_id=39430143 instance=ExtResource("2_85kh4")]
+position = Vector2(6928, 640)
+cantidad = 150
+ancho = 5.0
+
+[node name="Plataforma2" parent="." unique_id=1134702781 instance=ExtResource("1_gbk21")]
+position = Vector2(7400, 550)
+tamano = Vector2(200, 180)
+
+[node name="ParedInvisibleIzq" parent="." unique_id=1933717972 instance=ExtResource("1_gbk21")]
+position = Vector2(8430, 220)
+rotation = 1.5707964
+tamano = Vector2(1000, 40)
+color = Color(0.14901961, 0.14901961, 0.16862746, 0)
+
+[node name="PlataformaPalanca" parent="." unique_id=1045927792 instance=ExtResource("1_gbk21")]
+position = Vector2(8310, 340)
+tamano = Vector2(200, 600)
+
+[node name="Elevador" parent="." unique_id=709500784 instance=ExtResource("6_lu5bq")]
+position = Vector2(8130, 640)
+tamano = Vector2(160, 20)
+altura = 580.0
+
+[node name="Alma" parent="." unique_id=256826030 instance=ExtResource("5_1j0of")]
+position = Vector2(96, 56)
+
+[node name="Caja2" parent="." unique_id=554329231 instance=ExtResource("3_ldt66")]
+position = Vector2(2432, 640)
+tamano = Vector2(90, 90)
