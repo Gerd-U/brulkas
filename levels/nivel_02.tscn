@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://djex6s3mbik7o" path="res://puzzles/plataforma_movil.tscn" id="7_wnnru"]
 [ext_resource type="PackedScene" uid="uid://1o81m8p0gigg" path="res://puzzles/plataforma_aparece.tscn" id="8_gbk21"]
 [ext_resource type="PackedScene" uid="uid://d1edqr6v6nsub" path="res://puzzles/palanca.tscn" id="9_85kh4"]
+[ext_resource type="PackedScene" uid="uid://cyppgcdon3pf2" path="res://hazards/cepo.tscn" id="10_ldt66"]
 
 [node name="Nivel02" type="Node2D" unique_id=729105509]
 
@@ -122,3 +123,15 @@ retraso = 1.2
 [node name="Palanca" parent="." unique_id=912527605 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
 position = Vector2(8312, 40)
 objetivos = [NodePath("../Inicio_EscaleraA"), NodePath("../Inicio_EscaleraB"), NodePath("../Inicio_EscaleraC"), NodePath("../Inicio_EscaleraD"), NodePath("../Inicio_PlataformaAlma")]
+
+[node name="Cepo" parent="." unique_id=1575129816 instance=ExtResource("10_ldt66")]
+position = Vector2(608, 640)
+
+[node name="Cepo2" parent="." unique_id=1981684417 instance=ExtResource("10_ldt66")]
+position = Vector2(1272, 640)
+
+[node name="Cepo3" parent="." unique_id=1945105357 instance=ExtResource("10_ldt66")]
+position = Vector2(5720, 640)
+
+[node name="Cepo4" parent="." unique_id=1744703439 instance=ExtResource("10_ldt66")]
+position = Vector2(1800, 640)
