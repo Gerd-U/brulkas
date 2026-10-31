@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://1o81m8p0gigg"]
+
+[ext_resource type="Script" uid="uid://cx58d7oiyv5q0" path="res://puzzles/plataforma_aparece.gd" id="1_kohkl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kohkl"]
+size = Vector2(200, 40)
+
+[node name="PlataformaAparecer" type="StaticBody2D" unique_id=1070361003]
+script = ExtResource("1_kohkl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877891665]
+shape = SubResource("RectangleShape2D_kohkl")

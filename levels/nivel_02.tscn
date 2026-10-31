@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dnhwa67nyufwl" path="res://levels/alma.tscn" id="5_1j0of"]
 [ext_resource type="PackedScene" uid="uid://dpaum5px1ggg4" path="res://puzzles/elevador.tscn" id="6_lu5bq"]
 [ext_resource type="PackedScene" uid="uid://2m02b7m5a2m5" path="res://hazards/zona_de_muerte.tscn" id="7_grqfy"]
+[ext_resource type="PackedScene" uid="uid://djex6s3mbik7o" path="res://puzzles/plataforma_movil.tscn" id="7_wnnru"]
 
 [node name="Nivel02" type="Node2D" unique_id=729105509]
 
@@ -107,3 +108,7 @@ position = Vector2(1176, 444)
 
 [node name="Inicio_EscaleraD" parent="." unique_id=1137033943 instance=ExtResource("1_gbk21")]
 position = Vector2(1536, 552)
+
+[node name="PlataformaMovil" parent="." unique_id=150593287 instance=ExtResource("7_wnnru")]
+position = Vector2(6638, 475)
+recorrido = Vector2(438, 0)
