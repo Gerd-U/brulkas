@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dnhwa67nyufwl" path="res://levels/alma.tscn" id="5_l2snr"]
 [ext_resource type="PackedScene" uid="uid://dpaum5px1ggg4" path="res://puzzles/elevador.tscn" id="6_orvam"]
 [ext_resource type="PackedScene" uid="uid://2m02b7m5a2m5" path="res://hazards/zona_de_muerte.tscn" id="7_wcl4r"]
+[ext_resource type="PackedScene" uid="uid://buut2lteg10sm" path="res://levels/zona_resbalosa.tscn" id="8_ps1er"]
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
 
@@ -90,3 +91,8 @@ color = Color(0.14901961, 0.14901961, 0.16862746, 0)
 [node name="ZonaDeMuerte" parent="." unique_id=197444578 instance=ExtResource("7_wcl4r")]
 position = Vector2(1760, 820)
 ancho = 6000.0
+
+[node name="ZonaResbalosa" parent="." unique_id=2076334591 instance=ExtResource("8_ps1er")]
+position = Vector2(2050, 565)
+rotation = 0.4712389
+largo = 450.0
