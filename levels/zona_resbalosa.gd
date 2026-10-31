@@ -42,13 +42,13 @@ func _actualizar() -> void:
 
 
 func _al_entrar(cuerpo: Node2D) -> void:
-	if cuerpo.has_method("set_sliding"):
-		cuerpo.set_sliding(true)
+	if cuerpo.has_method("empezar_resbalar"):
+		cuerpo.empezar_resbalar()
 
 
 func _al_salir(cuerpo: Node2D) -> void:
-	if cuerpo.has_method("set_sliding"):
-		cuerpo.set_sliding(false)
+	if cuerpo.has_method("dejar_resbalar"):
+		cuerpo.dejar_resbalar()
 
 
 func _draw() -> void:

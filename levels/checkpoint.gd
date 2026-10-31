@@ -42,7 +42,7 @@ func _actualizar() -> void:
 
 func _al_entrar(cuerpo: Node2D) -> void:
 	# Solo el jugador tiene die(), así sabemos que es él
-	if not cuerpo.has_method("die"):
+	if not cuerpo.is_in_group("jugador"):
 		return
 
 	# Buscamos el GameManager de Key (si existe)
@@ -52,7 +52,7 @@ func _al_entrar(cuerpo: Node2D) -> void:
 
 	# Se guarda cada vez que el jugador pasa por aquí,
 	# así también funciona cuando se devuelve
-	gm.set_checkpoint(global_position + punto_reaparicion)
+	gm.guardar_checkpoint(global_position + punto_reaparicion)
 
 
 func _draw() -> void:
