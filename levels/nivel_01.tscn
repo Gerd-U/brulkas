@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c7g0ri880gjhl" path="res://levels/bloque.tscn" id="1_4a5e8"]
 [ext_resource type="PackedScene" uid="uid://bo82ypjbq2v7c" path="res://hazards/pinchos.tscn" id="2_puons"]
+[ext_resource type="PackedScene" uid="uid://ct0niiuipgp38" path="res://puzzles/caja.tscn" id="3_rb35q"]
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
 
@@ -10,8 +11,8 @@ position = Vector2(1800, 680)
 tamano = Vector2(3600, 80)
 
 [node name="Escalon" parent="." unique_id=1653235891 instance=ExtResource("1_4a5e8")]
-position = Vector2(720, 602)
-tamano = Vector2(150, 75)
+position = Vector2(720, 595)
+tamano = Vector2(150, 90)
 
 [node name="TroncoIzc" parent="." unique_id=536108121 instance=ExtResource("1_4a5e8")]
 position = Vector2(1512, 550)
@@ -40,3 +41,11 @@ alto = 60.0
 position = Vector2(2256, 640)
 cantidad = 10
 ancho = 5.0
+
+[node name="Caja" parent="." unique_id=1955560842 instance=ExtResource("3_rb35q")]
+position = Vector2(840, 640)
+tamano = Vector2(90, 90)
+
+[node name="Caja2" parent="." unique_id=2003281586 instance=ExtResource("3_rb35q")]
+position = Vector2(1224, 640)
+tamano = Vector2(90, 120)

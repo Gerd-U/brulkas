@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ct0niiuipgp38"]
+
+[ext_resource type="Script" uid="uid://boa6aeeqcje3w" path="res://puzzles/caja.gd" id="1_t3i4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1xdp"]
+
+[node name="Caja" type="CharacterBody2D" unique_id=1955560842 groups=["cajas"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_t3i4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1342717493]
+shape = SubResource("RectangleShape2D_j1xdp")
