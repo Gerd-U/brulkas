@@ -45,8 +45,11 @@ func _ready() -> void:
 	col_stand.disabled = false
 	col_slide.disabled = true
 	box_detector.target_position = Vector2(detector_reach, 0.0)
-	# Posición inicial = primer checkpoint, por si muere antes de tocar uno
-	GameManager.guardar_checkpoint(global_position)
+	
+	# Si no hay un checkpoint previo guardado por GameManager, 
+	# establecemos la posición actual como punto de partida inicial.
+	if GameManager.obtener_checkpoint() == Vector2.ZERO:
+		GameManager.guardar_checkpoint(global_position)
 
 
 func _physics_process(delta: float) -> void:
@@ -156,7 +159,6 @@ func _handle_grab(velocidad_x: float, delta: float) -> void:
 	caja_agarrada.mover(velocidad_x * delta)
 
 
-
 func _buscar_caja() -> Node:
 	# 1) El rayo que mira al frente
 	if box_detector.is_colliding():
@@ -253,7 +255,21 @@ func morir() -> void:
 	tween.tween_property(visuals, "modulate:a", 0.0, 0.4)
 	await tween.finished
 
-	global_position = GameManager.obtener_checkpoint()
+	# Obtiene dinámicamente la posición del último checkpoint guardado o el inicio
+	var posicion_reaparicion = GameManager.obtener_checkpoint()
+	
+	# Si por alguna razón el GameManager devuelve un vector vacío, usa la posición actual o inicial
+	if posicion_reaparicion == Vector2.ZERO:
+		posicion_reaparicion = global_position 
+
+	global_position = posicion_reaparicion
 	velocity = Vector2.ZERO
-	visuals.modulate.a = 1.0
+	
+	# Restablecer estados físicos y visuales al reaparecer
+	dejar_resbalar()
+	
+	var tween_aparecer := create_tween()
+	tween_aparecer.tween_property(visuals, "modulate:a", 1.0, 0.3)
+	await tween_aparecer.finished
+	
 	is_dead = false

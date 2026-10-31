@@ -108,7 +108,7 @@ animations = [{
 size = Vector2(120, 196)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnpgg"]
-size = Vector2(167, 134)
+size = Vector2(167, 133)
 
 [node name="Player" type="CharacterBody2D" unique_id=816248140]
 collision_layer = 2
@@ -127,9 +127,7 @@ shape = SubResource("RectangleShape2D_i3pqv")
 position = Vector2(0, -2)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_sh265")
-animation = &"walk"
-frame = 1
-frame_progress = 0.872684
+animation = &"slide"
 
 [node name="BoxDetector" type="RayCast2D" parent="." unique_id=2074462366]
 collision_mask = 4
@@ -149,5 +147,5 @@ shape = SubResource("RectangleShape2D_tcbcb")
 [node name="CollisionSlide" type="CollisionShape2D" parent="." unique_id=1698138174]
 light_mask = 5
 visibility_layer = 2
-position = Vector2(-1.5, 27)
+position = Vector2(-1.5, 26.5)
 shape = SubResource("RectangleShape2D_tnpgg")
