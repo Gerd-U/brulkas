@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d1edqr6v6nsub"]
+
+[ext_resource type="Script" uid="uid://c42uehhu8bwlr" path="res://puzzles/palanca.gd" id="1_bpgq3"]
+
+[node name="Palanca" type="Area2D" unique_id=912527605]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_bpgq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1899415337]
