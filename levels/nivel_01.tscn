@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bo82ypjbq2v7c" path="res://hazards/pinchos.tscn" id="2_puons"]
 [ext_resource type="PackedScene" uid="uid://ct0niiuipgp38" path="res://puzzles/caja.tscn" id="3_rb35q"]
 [ext_resource type="PackedScene" uid="uid://c28x08bj5jkgk" path="res://levels/checkpoint.tscn" id="4_xpe4t"]
+[ext_resource type="PackedScene" uid="uid://dnhwa67nyufwl" path="res://levels/alma.tscn" id="5_l2snr"]
+[ext_resource type="PackedScene" uid="uid://dpaum5px1ggg4" path="res://puzzles/elevador.tscn" id="6_orvam"]
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
 
@@ -60,3 +62,20 @@ position = Vector2(736, 550)
 
 [node name="Checkpoint2" parent="." unique_id=30351176 instance=ExtResource("4_xpe4t")]
 position = Vector2(1784, 460)
+
+[node name="Alma" parent="." unique_id=256826030 instance=ExtResource("5_l2snr")]
+position = Vector2(3488, -192)
+
+[node name="Elevador" parent="." unique_id=709500784 instance=ExtResource("6_orvam")]
+position = Vector2(3275, 640)
+tamano = Vector2(200, 40)
+
+[node name="Pinchos3" parent="." unique_id=917944 instance=ExtResource("2_puons")]
+position = Vector2(2552, 640)
+cantidad = 8
+ancho = 5.0
+
+[node name="Pinchos4" parent="." unique_id=1018653271 instance=ExtResource("2_puons")]
+position = Vector2(2848, 640)
+cantidad = 8
+ancho = 5.0
