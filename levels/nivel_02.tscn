@@ -124,14 +124,14 @@ retraso = 1.2
 position = Vector2(8312, 40)
 objetivos = [NodePath("../Inicio_EscaleraA"), NodePath("../Inicio_EscaleraB"), NodePath("../Inicio_EscaleraC"), NodePath("../Inicio_EscaleraD"), NodePath("../Inicio_PlataformaAlma")]
 
-[node name="Cepo" parent="." unique_id=1575129816 instance=ExtResource("10_ldt66")]
+[node name="Inicio_Cepo1" parent="." unique_id=1575129816 instance=ExtResource("10_ldt66")]
 position = Vector2(608, 640)
 
-[node name="Cepo2" parent="." unique_id=1981684417 instance=ExtResource("10_ldt66")]
+[node name="Inicio_Cepo2" parent="." unique_id=1981684417 instance=ExtResource("10_ldt66")]
 position = Vector2(1272, 640)
 
-[node name="Cepo3" parent="." unique_id=1945105357 instance=ExtResource("10_ldt66")]
+[node name="Campo_Cepo1" parent="." unique_id=1945105357 instance=ExtResource("10_ldt66")]
 position = Vector2(5720, 640)
 
-[node name="Cepo4" parent="." unique_id=1744703439 instance=ExtResource("10_ldt66")]
+[node name="Inicio_Cepo3" parent="." unique_id=1744703439 instance=ExtResource("10_ldt66")]
 position = Vector2(1800, 640)
