@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c4tkd5uqkeqam" path="res://player/Sprites/personaje/personaje_caminar/personaje_caminar_5.png" id="14_qtqh7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
-size = Vector2(64, 195)
+size = Vector2(18.0513, 55)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sh265"]
 animations = [{
@@ -105,10 +105,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcbcb"]
-size = Vector2(120, 196)
+size = Vector2(33.8462, 55.2821)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnpgg"]
-size = Vector2(164, 132)
+size = Vector2(46.2564, 37.2308)
 
 [node name="Player" type="CharacterBody2D" unique_id=816248140]
 collision_layer = 2
@@ -118,14 +118,14 @@ script = ExtResource("1_606se")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1197678238]
 light_mask = 5
 visibility_layer = 2
-position = Vector2(0, -4.5)
+position = Vector2(0, -1.2692)
 shape = SubResource("RectangleShape2D_i3pqv")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=252953366]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Visuals" unique_id=1380499053]
 position = Vector2(-1, -1)
-scale = Vector2(0.8, 0.79062504)
+scale = Vector2(0.2256, 0.223)
 sprite_frames = SubResource("SpriteFrames_sh265")
 animation = &"slide"
 
@@ -139,7 +139,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1959598581]
 visibility_layer = 5
-position = Vector2(0, -5)
+position = Vector2(0, -1.4103)
 shape = SubResource("RectangleShape2D_tcbcb")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1329630396]
@@ -147,5 +147,5 @@ shape = SubResource("RectangleShape2D_tcbcb")
 [node name="CollisionSlide" type="CollisionShape2D" parent="." unique_id=1698138174]
 light_mask = 5
 visibility_layer = 2
-position = Vector2(-4, 27)
+position = Vector2(-1.1282, 7.6154)
 shape = SubResource("RectangleShape2D_tnpgg")

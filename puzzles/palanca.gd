@@ -20,7 +20,15 @@ extends Area2D
 		color = valor
 		queue_redraw()
 
+## Dónde reaparece el jugador después de activarla (igual que un checkpoint)
+@export var punto_reaparicion: Vector2 = Vector2(0, -50)
+
 var _activada := false
+# -1 = manija a la izquierda, 1 = a la derecha (se anima entre los dos)
+var _inclinacion := -1.0:
+	set(valor):
+		_inclinacion = valor
+		queue_redraw()
 
 
 func _ready() -> void:
@@ -44,18 +52,26 @@ func interact(_jugador: Node) -> void:
 	if _activada:
 		return
 	_activada = true
-	queue_redraw()  # para dibujar la manija del otro lado
+	# La manija gira hacia el otro lado
+	var tween := create_tween()
+	tween.tween_property(self, "_inclinacion", 1.0, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 	for objetivo in objetivos:
 		if objetivo and objetivo.has_method("activar"):
 			objetivo.activar()
+
+	# La palanca también funciona como checkpoint
+	var gm := get_node_or_null("/root/GameManager")
+	if gm:
+		gm.guardar_checkpoint(global_position + punto_reaparicion)
 
 
 func _draw() -> void:
 	# Base
 	draw_rect(Rect2(-14, -10, 28, 10), color.darkened(0.4))
 	# Manija: inclinada a la izquierda si está apagada, a la derecha si se activó
-	var punta := Vector2(18, -34) if _activada else Vector2(-18, -34)
+	var angulo := 0.6 * _inclinacion
+	var punta := Vector2(0, -8) + Vector2(sin(angulo), -cos(angulo)) * 32.0
 	draw_line(Vector2(0, -8), punta, color, 5.0)
 	draw_circle(punta, 6.0, color.lightened(0.2))
 

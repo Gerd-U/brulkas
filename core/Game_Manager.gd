@@ -6,7 +6,8 @@ var ultimo_checkpoint: Vector2 = Vector2.ZERO
 # Agreguen aquí los niveles conforme los vayan creando
 var niveles: Array[String] = [
 	"res://levels/nivel_01.tscn",
-	# "res://levels/nivel_02.tscn",
+	"res://levels/nivel_02.tscn",
+	"res://levels/nivel_03.tscn",
 ]
 var nivel_actual: int = 0
 

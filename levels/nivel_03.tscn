@@ -12,8 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://d1edqr6v6nsub" path="res://puzzles/palanca.tscn" id="9_85kh4"]
 [ext_resource type="PackedScene" uid="uid://cyppgcdon3pf2" path="res://hazards/cepo.tscn" id="10_ldt66"]
 [ext_resource type="PackedScene" uid="uid://b17rg7sjytjfw" path="res://hazards/aplastador.tscn" id="11_aplst"]
+[ext_resource type="Script" uid="uid://dq7nv3kw5lbx2" path="res://levels/nivel.gd" id="20_nivel"]
+[ext_resource type="PackedScene" uid="uid://c0dp6gsndcwfe" path="res://player/player.tscn" id="21_player"]
 
 [node name="Nivel03" type="Node2D" unique_id=729105509]
+script = ExtResource("20_nivel")
+limite_izquierdo = 0
+limite_derecho = 10000
+limite_arriba = -320
+limite_abajo = 720
 
 [node name="Centro_Suelo" parent="." unique_id=1774911687 instance=ExtResource("1_gbk21")]
 position = Vector2(5000, 680)
@@ -90,11 +97,11 @@ retraso = 0.0
 [node name="Centro_PlataformaAlma" parent="." unique_id=1962650523 instance=ExtResource("8_gbk21")]
 position = Vector2(5050, -12)
 tamano = Vector2(300, 40)
-retraso = 0.9
+retraso = 1.2
 
 [node name="Izq_Palanca" parent="." unique_id=912527605 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
 position = Vector2(200, 340)
-objetivos = [NodePath("../Centro_EscaleraIzq1"), NodePath("../Centro_EscaleraIzq2"), NodePath("../Centro_EscaleraIzq3")]
+objetivos = [NodePath("../Centro_EscaleraIzq1"), NodePath("../Centro_EscaleraIzq2"), NodePath("../Centro_EscaleraIzq3"), NodePath("../Centro_EscaleraDer2"), NodePath("../Centro_PlataformaAlma")]
 
 [node name="Izq_Cepo3" parent="." unique_id=1575129816 instance=ExtResource("10_ldt66")]
 position = Vector2(1750, 640)
@@ -117,12 +124,12 @@ tamano = Vector2(400, 120)
 [node name="Centro_EscaleraDer2" parent="." unique_id=873519046 instance=ExtResource("8_gbk21")]
 position = Vector2(5100, 204)
 tamano = Vector2(200, 40)
-retraso = 0.3
+retraso = 0.9
 
 [node name="Centro_EscaleraDer3" parent="." unique_id=1609482375 instance=ExtResource("8_gbk21")]
 position = Vector2(5460, 96)
 tamano = Vector2(200, 40)
-retraso = 0.6
+retraso = 0.3
 
 [node name="Izq_CP2" parent="." unique_id=1257390418 instance=ExtResource("4_5ktbu")]
 position = Vector2(1350, 640)
@@ -141,7 +148,7 @@ tamano = Vector2(200, 300)
 
 [node name="Der_Palanca" parent="." unique_id=780245163 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
 position = Vector2(9800, 340)
-objetivos = [NodePath("../Centro_EscaleraDer1"), NodePath("../Centro_EscaleraDer2"), NodePath("../Centro_EscaleraDer3"), NodePath("../Centro_PlataformaAlma")]
+objetivos = [NodePath("../Centro_EscaleraDer1"), NodePath("../Centro_EscaleraDer3")]
 
 [node name="Izq_Caja" parent="." unique_id=554329231 instance=ExtResource("3_ldt66")]
 position = Vector2(2150, 640)
@@ -150,6 +157,7 @@ tamano = Vector2(90, 90)
 [node name="Izq_Techo" parent="." unique_id=342871690 instance=ExtResource("1_gbk21")]
 position = Vector2(1750, 510)
 tamano = Vector2(500, 60)
+se_puede_pisar = false
 
 [node name="Izq_Cepo1" parent="." unique_id=1093748562 instance=ExtResource("10_ldt66")]
 position = Vector2(2980, 640)
@@ -214,3 +222,6 @@ desfase = 0.4
 position = Vector2(8800, 640)
 caida = 300.0
 desfase = 0.8
+
+[node name="Player" parent="." unique_id=1569023874 instance=ExtResource("21_player")]
+position = Vector2(5000, 613.77)

@@ -2,28 +2,28 @@ class_name Player
 extends CharacterBody2D
 
 # ---------- Movimiento (Adaptado a escala 0.5 / ~128px) ----------
-@export var max_speed: float = 360.0
-@export var acceleration: float = 2800.0
-@export var friction: float = 3600.0
+@export var max_speed: float = 280.0
+@export var acceleration: float = 2178.0
+@export var friction: float = 2800.0
 @export var air_control: float = 0.7
 
 # ---------- Salto y gravedad ----------
-@export var jump_velocity: float = -800.0
-@export var gravity: float = 2200.0
+@export var jump_velocity: float = -385.90
+@export var gravity: float = 620.51
 @export var fall_gravity_multiplier: float = 1.6
 @export var jump_cut_multiplier: float = 0.45
-@export var max_fall_speed: float = 1200.0
+@export var max_fall_speed: float = 338.46
 @export var coyote_time: float = 0.1
 @export var jump_buffer_time: float = 0.1
 
 # ---------- Cajas ----------
 @export var grab_speed_multiplier: float = 0.5
-@export var detector_reach: float = 32.0
+@export var detector_reach: float = 9.03
 
 # ---------- Resbalar (zona resbalosa) ----------
-@export var resbalar_aceleracion: float = 600.0
-@export var resbalar_velocidad_max: float = 400.0
-@export var resbalar_control: float = 200.0
+@export var resbalar_aceleracion: float = 169.23
+@export var resbalar_velocidad_max: float = 112.82
+@export var resbalar_control: float = 56.41
 
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
@@ -41,7 +41,7 @@ var caja_agarrada = null
 
 func _ready() -> void:
 	add_to_group("jugador")
-	floor_snap_length = 24.0
+	floor_snap_length = 6.77
 	col_stand.disabled = false
 	col_slide.disabled = true
 	box_detector.target_position = Vector2(detector_reach, 0.0)
@@ -64,6 +64,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	_handle_grab(velocidad_x_deseada, delta)
+	_handle_interact()
 	_update_facing(input_dir)
 	_update_animation()
 
@@ -162,6 +163,16 @@ func _soltar_caja() -> void:
 	if caja_agarrada != null and is_instance_valid(caja_agarrada):
 		caja_agarrada.soltar()
 	caja_agarrada = null
+
+
+# ---------------- Interactuar (palancas) ----------------
+func _handle_interact() -> void:
+	if not Input.is_action_just_pressed("interact"):
+		return
+	for area in $InteractArea.get_overlapping_areas():
+		if area.has_method("interact"):
+			area.interact(self)
+			return
 
 
 # ---------------- Zona resbalosa ----------------
