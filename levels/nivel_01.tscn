@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://buut2lteg10sm" path="res://levels/zona_resbalosa.tscn" id="8_ps1er"]
 [ext_resource type="Script" uid="uid://dq7nv3kw5lbx2" path="res://levels/nivel.gd" id="20_nivel"]
 [ext_resource type="PackedScene" uid="uid://c0dp6gsndcwfe" path="res://player/player.tscn" id="21_player"]
+[ext_resource type="PackedScene" uid="uid://ccddhrwxlchu5" path="res://levels/fondo_bosque.tscn" id="22_fondo"]
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
 script = ExtResource("20_nivel")
@@ -17,6 +18,8 @@ limite_izquierdo = 0
 limite_derecho = 3600
 limite_arriba = -358
 limite_abajo = 720
+
+[node name="FondoBosque" parent="." unique_id=1156834092 instance=ExtResource("22_fondo")]
 
 [node name="Piso" parent="." unique_id=1774911687 instance=ExtResource("1_4a5e8")]
 position = Vector2(1800, 680)
