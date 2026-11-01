@@ -28,7 +28,9 @@ extends StaticBody2D
 ## de arriba queda donde camina el jugador; el resto cuelga hacia abajo.
 ## Repetir: la imagen toma el alto del bloque (por escala_textura) sin aplastarse
 ## y se repite a lo largo (para suelos y plataformas largas).
-@export_enum("Rellenar", "Plataforma", "Repetir") var modo_textura: int = 0:
+## Apilar: la imagen toma el ancho del bloque sin aplastarse y se repite
+## hacia abajo, una copia encima de otra (para muros y escalones).
+@export_enum("Rellenar", "Plataforma", "Repetir", "Apilar") var modo_textura: int = 0:
 	set(valor):
 		modo_textura = valor
 		queue_redraw()
@@ -110,9 +112,6 @@ extends StaticBody2D
 
 const EMPUJE := 320.0  # velocidad con que tira al jugador si se sube encima
 
-# Parte visible (sin bordes transparentes) de cada imagen, se calcula una sola vez
-static var _partes_visibles := {}
-
 var _techo: Area2D  # franja encima del bloque (solo si no se puede pisar)
 var _poligonos: Array[CollisionPolygon2D] = []  # colisión con la forma del dibujo
 
@@ -165,17 +164,7 @@ func _actualizar() -> void:
 
 
 func _parte_visible() -> Rect2:
-	if not _partes_visibles.has(textura):
-		var parte := Rect2(Vector2.ZERO, textura.get_size())
-		var imagen := textura.get_image()
-		if imagen:
-			if imagen.is_compressed():
-				imagen.decompress()
-			var usada := imagen.get_used_rect()
-			if usada.has_area():
-				parte = Rect2(usada)
-		_partes_visibles[textura] = parte
-	return _partes_visibles[textura]
+	return TexturaUtil.parte_visible(textura)
 
 
 # Caja donde se dibuja la imagen (si se ignora el giro, la que ocupa el bloque girado)
@@ -215,6 +204,9 @@ func _dibujar_textura() -> void:
 	if modo_textura == 2:
 		for copia in _copias_repetidas(parte, _caja_dibujo()):
 			draw_texture_rect_region(textura, copia, parte)
+	elif modo_textura == 3:
+		for copia in _copias_apiladas(parte, _caja_dibujo()):
+			draw_texture_rect_region(textura, copia, parte)
 	else:
 		draw_texture_rect_region(textura, _rect_dibujo(parte), parte)
 	draw_set_transform(Vector2.ZERO)
@@ -226,8 +218,8 @@ func _crear_colision_por_forma() -> void:
 	_poligonos.clear()
 
 	var rectangulo := get_node_or_null("CollisionShape2D") as CollisionShape2D
-	# En modo Repetir solo se puede usar la forma lisa
-	var usar_forma := colision_por_forma and textura != null and (modo_textura != 2 or forma_lisa)
+	# En modo Repetir y Apilar solo se puede usar la forma lisa
+	var usar_forma := colision_por_forma and textura != null and (modo_textura < 2 or forma_lisa)
 	if rectangulo:
 		rectangulo.disabled = usar_forma
 	if not usar_forma:
@@ -257,6 +249,8 @@ func _crear_colision_por_forma() -> void:
 		var copias: Array[Rect2] = [destino]
 		if modo_textura == 2:
 			copias = _copias_repetidas(parte, _caja_dibujo())
+		elif modo_textura == 3:
+			copias = _copias_apiladas(parte, _caja_dibujo())
 		var todos := PackedVector2Array()
 		for copia in copias:
 			var escala_copia := copia.size / parte.size
@@ -310,6 +304,23 @@ func _copias_repetidas(parte: Rect2, caja: Rect2) -> Array[Rect2]:
 	for i in cantidad:
 		var x := caja.position.x + w * avance * i
 		copias.append(Rect2(Vector2(x, caja.position.y) + ajuste_textura, Vector2(w, alto)))
+	return copias
+
+
+# Dónde va cada copia en modo Apilar. Cada copia mide de ancho lo mismo que el
+# bloque (por la escala) y mantiene su proporción; se usan copias enteras,
+# apenas estiradas o achicadas, para que entren justas a lo alto del bloque
+func _copias_apiladas(parte: Rect2, caja: Rect2) -> Array[Rect2]:
+	var copias: Array[Rect2] = []
+	var ancho := caja.size.x * escala_textura
+	var alto := ancho * parte.size.y / parte.size.x
+	if alto <= 0.0:
+		return copias
+	var cantidad := maxi(1, roundi(caja.size.y / alto))
+	var h := caja.size.y / cantidad
+	for i in cantidad:
+		var y := caja.position.y + h * i
+		copias.append(Rect2(Vector2(caja.get_center().x - ancho / 2, y) + ajuste_textura, Vector2(ancho, h)))
 	return copias
 
 

@@ -86,9 +86,6 @@ extends AnimatableBody2D
 		forma_lisa = valor
 		_actualizar()
 
-# Parte visible (sin bordes transparentes) de cada imagen, se calcula una sola vez
-static var _partes_visibles := {}
-
 var _inicio: Vector2
 var _activa := false
 var _poligonos: Array[CollisionPolygon2D] = []  # colisión con la forma del dibujo
@@ -137,17 +134,7 @@ func _empezar() -> void:
 
 
 func _parte_visible() -> Rect2:
-	if not _partes_visibles.has(textura):
-		var parte := Rect2(Vector2.ZERO, textura.get_size())
-		var imagen := textura.get_image()
-		if imagen:
-			if imagen.is_compressed():
-				imagen.decompress()
-			var usada := imagen.get_used_rect()
-			if usada.has_area():
-				parte = Rect2(usada)
-		_partes_visibles[textura] = parte
-	return _partes_visibles[textura]
+	return TexturaUtil.parte_visible(textura)
 
 
 # Rectángulo exacto donde queda la imagen

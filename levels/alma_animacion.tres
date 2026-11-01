@@ -1,0 +1,70 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" uid="uid://funq8jbkojbv" path="res://assets/componentes/Alma/alma_0.png" id="1_cuadro"]
+[ext_resource type="Texture2D" uid="uid://cfgb5mkwaqoad" path="res://assets/componentes/Alma/alma_1.png" id="2_cuadro"]
+[ext_resource type="Texture2D" uid="uid://cby30x3gonx4f" path="res://assets/componentes/Alma/alma_2.png" id="3_cuadro"]
+[ext_resource type="Texture2D" uid="uid://csqr47c5o2wl0" path="res://assets/componentes/Alma/alma_3.png" id="4_cuadro"]
+[ext_resource type="Texture2D" uid="uid://ccmj4fe8qp4k0" path="res://assets/componentes/Alma/alma_4.png" id="5_cuadro"]
+[ext_resource type="Texture2D" uid="uid://m7gem1l3ryjo" path="res://assets/componentes/Alma/alma_5.png" id="6_cuadro"]
+[ext_resource type="Texture2D" uid="uid://dfyb4dnhmv4ht" path="res://assets/componentes/Alma/alma_6.png" id="7_cuadro"]
+[ext_resource type="Texture2D" uid="uid://b1iaq2gep06cb" path="res://assets/componentes/Alma/alma_7.png" id="8_cuadro"]
+[ext_resource type="Texture2D" uid="uid://bhnu3qsal0bgp" path="res://assets/componentes/Alma/alma_8.png" id="9_cuadro"]
+[ext_resource type="Texture2D" uid="uid://dnjtqxxt8r4i3" path="res://assets/componentes/Alma/alma_9.png" id="10_cuadro"]
+[ext_resource type="Texture2D" uid="uid://dtvnl2flix4x7" path="res://assets/componentes/Alma/alma_10.png" id="11_cuadro"]
+[ext_resource type="Texture2D" uid="uid://bte42mueeiyw7" path="res://assets/componentes/Alma/alma_11.png" id="12_cuadro"]
+[ext_resource type="Texture2D" uid="uid://s07qb677h158" path="res://assets/componentes/Alma/alma_12.png" id="13_cuadro"]
+[ext_resource type="Texture2D" uid="uid://q0mr50peghi0" path="res://assets/componentes/Alma/alma_13.png" id="14_cuadro"]
+[ext_resource type="Texture2D" uid="uid://cvf3b8acx44gm" path="res://assets/componentes/Alma/alma_14.png" id="15_cuadro"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cuadro")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]

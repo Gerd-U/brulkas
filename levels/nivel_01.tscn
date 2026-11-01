@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bebroh4b4ei5r" path="res://assets/ambiente/pendiente.png" id="tex_pendiente"]
 [ext_resource type="Texture2D" uid="uid://cfb3g5p21bdvl" path="res://assets/ambiente/plataforma_flotante.png" id="tex_plataforma_flotante"]
 [ext_resource type="Texture2D" uid="uid://dpyvjaslxkcmy" path="res://assets/ambiente/suelo.png" id="tex_suelo"]
+[ext_resource type="Texture2D" uid="uid://dgva6uu23b11u" path="res://assets/ambiente/tronco.png" id="tex_tronco"]
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
 script = ExtResource("20_nivel")
@@ -34,6 +35,7 @@ modo_textura = 2
 [node name="Escalon" parent="." unique_id=1653235891 instance=ExtResource("1_4a5e8")]
 position = Vector2(720, 595)
 tamano = Vector2(150, 90)
+textura = ExtResource("tex_tronco")
 
 [node name="TroncoIzc" parent="." unique_id=536108121 instance=ExtResource("1_4a5e8")]
 position = Vector2(1512, 550)
@@ -59,7 +61,7 @@ tamano = Vector2(225, 780)
 textura = ExtResource("tex_arbol_grande")
 
 [node name="Pinchos" parent="." unique_id=928934747 instance=ExtResource("2_puons")]
-position = Vector2(1656, 639)
+position = Vector2(1656, 640)
 cantidad = 14
 ancho = 10.0
 alto = 60.0

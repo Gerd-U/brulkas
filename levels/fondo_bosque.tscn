@@ -4,6 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://clu6mwhvvmt3d" path="res://assets/fondos/capas_traseras/Arboles_Traseros.png" id="2_traseros"]
 [ext_resource type="Texture2D" uid="uid://5qpf4a3p6af8" path="res://assets/fondos/capas_delanteras/Arboles_frontales.png" id="3_frontales"]
 [ext_resource type="Texture2D" uid="uid://dtcyeqm8wnd3o" path="res://assets/fondos/capas_delanteras/Niebla.png" id="4_niebla"]
+[ext_resource type="Shader" path="res://levels/arboles_frente.gdshader" id="5_frente"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frente"]
+shader = ExtResource("5_frente")
+shader_parameter/transparencia_troncos = 0.3
+shader_parameter/inicio_pasto = 0.92
+shader_parameter/suavidad = 0.06
 
 [node name="FondoBosque" type="Node2D" unique_id=2088283151]
 
@@ -35,6 +42,7 @@ repeat_size = Vector2(3993, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="ArbolesFrontales" unique_id=640218795]
+material = SubResource("ShaderMaterial_frente")
 position = Vector2(0, -438)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("3_frontales")

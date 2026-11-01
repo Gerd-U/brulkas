@@ -93,8 +93,8 @@ tamano = Vector2(200, 180)
 textura = ExtResource("tex_plataforma_flotante")
 
 [node name="Foso_Pinchos" parent="." unique_id=928934747 instance=ExtResource("2_85kh4")]
-position = Vector2(4620, 380)
-cantidad = 8
+position = Vector2(4620, 388)
+cantidad = 16
 ancho = 5.0
 
 [node name="Foso_Caja" parent="." unique_id=1955560842 instance=ExtResource("3_ldt66")]
@@ -176,6 +176,7 @@ modo_textura = 1
 
 [node name="Palanca" parent="." unique_id=912527605 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
 position = Vector2(8312, 40)
+ajuste_textura = Vector2(0, 3.0)
 objetivos = [NodePath("../Inicio_EscaleraA"), NodePath("../Inicio_EscaleraB"), NodePath("../Inicio_EscaleraC"), NodePath("../Inicio_EscaleraD"), NodePath("../Inicio_PlataformaAlma"), NodePath("../Campo_VueltaA"), NodePath("../Campo_VueltaB")]
 
 [node name="Inicio_Cepo1" parent="." unique_id=1575129816 instance=ExtResource("10_ldt66")]

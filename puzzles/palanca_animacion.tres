@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" uid="uid://cixbk115ww2d3" path="res://assets/componentes/Palanca/palanca.png" id="1_cuadro"]
+[ext_resource type="Texture2D" uid="uid://jsktsf5abiws" path="res://assets/componentes/Palanca/palanca_1.png" id="2_cuadro"]
+[ext_resource type="Texture2D" uid="uid://dhrp4qhchtv5c" path="res://assets/componentes/Palanca/palanca_2.png" id="3_cuadro"]
+[ext_resource type="Texture2D" uid="uid://dpo004p31g2mj" path="res://assets/componentes/Palanca/palanca_3.png" id="4_cuadro"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cuadro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cuadro")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]

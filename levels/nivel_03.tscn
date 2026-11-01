@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://b8c1agfd2ora2" path="res://assets/ambiente/techo_bajo.png" id="tex_techo_bajo"]
 [ext_resource type="Texture2D" uid="uid://bn4api2ljhlvv" path="res://assets/ambiente/torre_palanca.png" id="tex_torre_palanca"]
 [ext_resource type="Texture2D" uid="uid://dpyvjaslxkcmy" path="res://assets/ambiente/suelo.png" id="tex_suelo"]
+[ext_resource type="Texture2D" uid="uid://3haywerhag7x" path="res://assets/ambiente/grada.png" id="tex_grada"]
+[ext_resource type="Texture2D" uid="uid://dgva6uu23b11u" path="res://assets/ambiente/tronco.png" id="tex_tronco"]
 
 [node name="Nivel03" type="Node2D" unique_id=729105509]
 script = ExtResource("20_nivel")
@@ -56,6 +58,9 @@ ancho = 5.0
 [node name="Der_CaminoAlto" parent="." unique_id=10964885 instance=ExtResource("1_gbk21")]
 position = Vector2(7000, 180)
 tamano = Vector2(600, 40)
+textura = ExtResource("tex_grada")
+modo_textura = 2
+solape_copias = 0.1
 
 [node name="Izq_Pinchos" parent="." unique_id=39430143 instance=ExtResource("2_85kh4")]
 position = Vector2(3200, 640)
@@ -125,6 +130,7 @@ modo_textura = 1
 
 [node name="Izq_Palanca" parent="." unique_id=912527605 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
 position = Vector2(200, 340)
+ajuste_textura = Vector2(0, 1.5)
 objetivos = [NodePath("../Centro_EscaleraIzq1"), NodePath("../Centro_EscaleraIzq2"), NodePath("../Centro_EscaleraIzq3"), NodePath("../Centro_EscaleraDer2"), NodePath("../Centro_PlataformaAlma")]
 
 [node name="Izq_Cepo3" parent="." unique_id=1575129816 instance=ExtResource("10_ldt66")]
@@ -182,6 +188,7 @@ colision_por_forma = true
 
 [node name="Der_Palanca" parent="." unique_id=780245163 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
 position = Vector2(9800, 340)
+ajuste_textura = Vector2(0, 1.5)
 objetivos = [NodePath("../Centro_EscaleraDer1"), NodePath("../Centro_EscaleraDer3")]
 
 [node name="Izq_Caja" parent="." unique_id=554329231 instance=ExtResource("3_ldt66")]
@@ -215,6 +222,7 @@ ancho = 100.0
 [node name="Der_Muro" parent="." unique_id=1851402637 instance=ExtResource("1_gbk21")]
 position = Vector2(6000, 400)
 tamano = Vector2(200, 480)
+textura = ExtResource("tex_tronco")
 
 [node name="Der_PlataformaLado" parent="." unique_id=962738145 instance=ExtResource("7_wnnru")]
 position = Vector2(6180, 175)

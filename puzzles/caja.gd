@@ -9,7 +9,7 @@ extends CharacterBody2D
 		tamano = valor
 		_actualizar()
 
-## Color de la caja
+## Color de la caja (si no tiene imagen)
 @export var color: Color = Color(0.45, 0.33, 0.22):
 	set(valor):
 		color = valor
@@ -18,6 +18,39 @@ extends CharacterBody2D
 ## Gravedad
 @export var gravedad: float = 1100.0
 @export var max_caida: float = 600.0
+
+@export_group("Imagen")
+## Imagen de la caja: se estira para ocupar el tamaño de la caja.
+## Si está vacía se dibuja la caja de color.
+@export var textura: Texture2D:
+	set(valor):
+		textura = valor
+		queue_redraw()
+
+## Mueve la imagen (en píxeles) por si queda corrida
+@export var ajuste_textura: Vector2 = Vector2.ZERO:
+	set(valor):
+		ajuste_textura = valor
+		queue_redraw()
+
+## Agranda o achica la imagen desde la base (1 = tamaño normal)
+@export var escala_textura: float = 1.0:
+	set(valor):
+		escala_textura = valor
+		queue_redraw()
+
+@export_group("Colisión")
+## Baja el borde de arriba de la colisión (en píxeles). El dibujo no cambia.
+@export var recorte_arriba: float = 0.0:
+	set(valor):
+		recorte_arriba = valor
+		_actualizar()
+
+## Achica la colisión de cada costado (en píxeles). El dibujo no cambia.
+@export var recorte_lados: float = 0.0:
+	set(valor):
+		recorte_lados = valor
+		_actualizar()
 
 var is_grabbed: bool = false
 
@@ -39,11 +72,11 @@ func _actualizar() -> void:
 		return
 
 	var rect := RectangleShape2D.new()
-	rect.size = tamano
+	rect.size = tamano - Vector2(recorte_lados * 2, recorte_arriba)
 	forma.shape = rect
 
 	# La base de la caja queda en y = 0
-	forma.position = Vector2(0, -tamano.y / 2)
+	forma.position = Vector2(0, -rect.size.y / 2)
 
 	queue_redraw()
 
@@ -106,6 +139,13 @@ func _physics_process(delta: float) -> void:
 
 func _draw() -> void:
 	var r := Rect2(-tamano.x / 2, -tamano.y, tamano.x, tamano.y)
+
+	if textura:
+		# La escala se aplica desde la base, así la caja sigue apoyada en el piso
+		var tam := tamano * escala_textura
+		var destino := Rect2(Vector2(-tam.x / 2, -tam.y) + ajuste_textura, tam)
+		draw_texture_rect_region(textura, destino, TexturaUtil.parte_visible(textura))
+		return
 
 	var borde := color.darkened(0.4)
 
