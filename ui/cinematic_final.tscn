@@ -3,20 +3,96 @@
 [ext_resource type="Script" uid="uid://b05b6kebta4ap" path="res://ui/cinematic_final.gd" id="1_mjf2o"]
 [ext_resource type="Texture2D" uid="uid://2lj4ai45h4au" path="res://assets/cinematicas/escena_7.png" id="2_f032b"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuadro"]
+bg_color = Color(0.14509805, 0.0627451, 0.3019608, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.47843137, 0.09411765, 0.26666668, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Cinematic_final" type="Control" unique_id=752467092]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_mjf2o")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1917302159]
-layout_mode = 0
-offset_right = 1277.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_f032b")
-expand_mode = 3
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Timer" type="Timer" parent="." unique_id=1963247947]
-wait_time = 4.0
-autostart = true
+[node name="Narracion" type="CanvasLayer" parent="." unique_id=1580244915]
+
+[node name="Pantalla" type="Control" parent="Narracion" unique_id=902716460]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Cuadro" type="Panel" parent="Narracion/Pantalla" unique_id=1349920673]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 1.0
+anchor_right = 0.9
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cuadro")
+
+[node name="Texto" type="Label" parent="Narracion/Pantalla/Cuadro" unique_id=477310964]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 16.0
+offset_right = -26.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+visible_characters = 0
+visible_characters_behavior = 1
+
+[node name="Indicador" type="Label" parent="Narracion/Pantalla/Cuadro" unique_id=1765025832]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -34.0
+offset_right = -14.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
+theme_override_font_sizes/font_size = 18
+text = "Espacio o clic  ▼"
+horizontal_alignment = 2
