@@ -35,7 +35,7 @@ repeat_size = Vector2(3630, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="ArbolesFrontales" unique_id=640218795]
-position = Vector2(0, -250)
+position = Vector2(0, -330)
 texture = ExtResource("3_frontales")
 centered = false
 
@@ -47,6 +47,6 @@ autoscroll = Vector2(-20, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Niebla" unique_id=528390164]
-position = Vector2(0, 580)
+position = Vector2(0, 530)
 texture = ExtResource("4_niebla")
 centered = false
