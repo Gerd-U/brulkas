@@ -52,12 +52,32 @@ func _actualizar() -> void:
 
 # El jugador mueve la caja horizontalmente
 func mover(dx: float) -> void:
-	is_grabbed = true
-
 	if Engine.is_editor_hint():
 		return
 
+	# Si el jugador está parado encima, no se puede empujar desde arriba
+	if _jugador_encima():
+		is_grabbed = false
+		return
+
+	is_grabbed = true
 	move_and_collide(Vector2(dx, 0.0))
+
+
+# true si el jugador está apoyado sobre la parte de arriba de esta caja
+func _jugador_encima() -> bool:
+	var jugador := get_tree().get_first_node_in_group("jugador") as CharacterBody2D
+
+	if jugador == null:
+		return false
+
+	for i in jugador.get_slide_collision_count():
+		var choque := jugador.get_slide_collision(i)
+		# La normal apunta hacia arriba cuando el jugador pisa la caja
+		if choque.get_collider() == self and choque.get_normal().y < -0.5:
+			return true
+
+	return false
 
 
 # El jugador suelta la caja

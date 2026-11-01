@@ -7,6 +7,7 @@ size = Vector2(200, 40)
 
 [node name="PlataformaAparecer" type="StaticBody2D" unique_id=1070361003]
 script = ExtResource("1_kohkl")
+grosor_textura = 0.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877891665]
 shape = SubResource("RectangleShape2D_kohkl")
