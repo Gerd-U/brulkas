@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dwxhd4hqhulb6" path="res://ui/pausa.gd" id="1_82k1r"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbixf"]
+bg_color = Color(0.1882353, 0.17254902, 0.21176471, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fabxv"]
 bg_color = Color(0.14117648, 0.12941177, 0.16470589, 1)
 border_width_left = 4
@@ -34,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.6509804)
 
 [node name="Panel" type="Panel" parent="." unique_id=1369826605]
@@ -49,6 +53,7 @@ offset_right = 250.0
 offset_bottom = 174.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gbixf")
 
 [node name="Label" type="Label" parent="Panel" unique_id=62341273]
 layout_mode = 1
