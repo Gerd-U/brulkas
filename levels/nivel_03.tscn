@@ -18,14 +18,13 @@
 
 [node name="Nivel03" type="Node2D" unique_id=729105509]
 script = ExtResource("20_nivel")
-limite_izquierdo = 0
 limite_derecho = 10000
 limite_arriba = -320
 limite_abajo = 720
 
 [node name="FondoBosque" parent="." unique_id=1720394851 instance=ExtResource("22_fondo")]
 
-[node name="ArbolesTraseros" parent="FondoBosque" index="1"]
+[node name="ArbolesTraseros" parent="FondoBosque" index="1" unique_id=1283645790]
 scroll_offset = Vector2(798, 0)
 
 [node name="Centro_Suelo" parent="." unique_id=1774911687 instance=ExtResource("1_gbk21")]
@@ -76,29 +75,21 @@ position = Vector2(5050, -112)
 
 [node name="Der_PlataformaVertical1" parent="." unique_id=150593287 instance=ExtResource("7_wnnru")]
 position = Vector2(5820, 615)
-tamano = Vector2(160, 30)
 recorrido = Vector2(0, -440)
-empieza_activa = true
 
 [node name="Centro_EscaleraIzq1" parent="." unique_id=1070361003 instance=ExtResource("8_gbk21")]
 position = Vector2(3820, 600)
-tamano = Vector2(200, 40)
-retraso = 0.0
 
 [node name="Centro_EscaleraIzq2" parent="." unique_id=1407624310 instance=ExtResource("8_gbk21")]
 position = Vector2(4180, 540)
-tamano = Vector2(200, 40)
 retraso = 0.3
 
 [node name="Centro_EscaleraIzq3" parent="." unique_id=1198365373 instance=ExtResource("8_gbk21")]
 position = Vector2(4540, 480)
-tamano = Vector2(200, 40)
 retraso = 0.6
 
 [node name="Centro_EscaleraDer1" parent="." unique_id=457214431 instance=ExtResource("8_gbk21")]
 position = Vector2(5460, 312)
-tamano = Vector2(200, 40)
-retraso = 0.0
 
 [node name="Centro_PlataformaAlma" parent="." unique_id=1962650523 instance=ExtResource("8_gbk21")]
 position = Vector2(5050, -12)
@@ -129,12 +120,10 @@ tamano = Vector2(400, 120)
 
 [node name="Centro_EscaleraDer2" parent="." unique_id=873519046 instance=ExtResource("8_gbk21")]
 position = Vector2(5100, 204)
-tamano = Vector2(200, 40)
 retraso = 0.9
 
 [node name="Centro_EscaleraDer3" parent="." unique_id=1609482375 instance=ExtResource("8_gbk21")]
 position = Vector2(5460, 96)
-tamano = Vector2(200, 40)
 retraso = 0.3
 
 [node name="Izq_CP2" parent="." unique_id=1257390418 instance=ExtResource("4_5ktbu")]
@@ -184,49 +173,36 @@ tamano = Vector2(200, 480)
 
 [node name="Der_PlataformaLado" parent="." unique_id=962738145 instance=ExtResource("7_wnnru")]
 position = Vector2(6180, 175)
-tamano = Vector2(160, 30)
 recorrido = Vector2(440, 0)
-empieza_activa = true
 
 [node name="Der_PlataformaVertical2" parent="." unique_id=1317095482 instance=ExtResource("7_wnnru")]
 position = Vector2(7380, 175)
-tamano = Vector2(160, 30)
 recorrido = Vector2(0, 440)
-empieza_activa = true
 
 [node name="Izq_Aplastador1" parent="." unique_id=1468203517 instance=ExtResource("11_aplst")]
 position = Vector2(1150, 640)
-caida = 300.0
-desfase = 0.0
 
 [node name="Izq_Aplastador2" parent="." unique_id=527814936 instance=ExtResource("11_aplst")]
 position = Vector2(900, 640)
-caida = 300.0
 desfase = 0.4
 
 [node name="Izq_Aplastador3" parent="." unique_id=1936520748 instance=ExtResource("11_aplst")]
 position = Vector2(650, 640)
-caida = 300.0
 desfase = 0.8
 
 [node name="Der_AplastadorAlto" parent="." unique_id=704391265 instance=ExtResource("11_aplst")]
 position = Vector2(6400, 160)
 caida = 250.0
-desfase = 0.0
 
 [node name="Der_Aplastador1" parent="." unique_id=1185730429 instance=ExtResource("11_aplst")]
 position = Vector2(8200, 640)
-caida = 300.0
-desfase = 0.0
 
 [node name="Der_Aplastador2" parent="." unique_id=2063918574 instance=ExtResource("11_aplst")]
 position = Vector2(8500, 640)
-caida = 300.0
 desfase = 0.4
 
 [node name="Der_Aplastador3" parent="." unique_id=391657082 instance=ExtResource("11_aplst")]
 position = Vector2(8800, 640)
-caida = 300.0
 desfase = 0.8
 
 [node name="Player" parent="." unique_id=1569023874 instance=ExtResource("21_player")]
