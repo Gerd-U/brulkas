@@ -20,7 +20,6 @@
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
 script = ExtResource("20_nivel")
-limite_izquierdo = 0
 limite_derecho = 3600
 limite_arriba = -358
 limite_abajo = 720
