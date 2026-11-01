@@ -54,6 +54,7 @@ tamano = Vector2(400, 30)
 textura = ExtResource("tex_pendiente")
 ignorar_rotacion = true
 colision_por_forma = true
+forma_lisa = true
 
 [node name="Arbol" parent="." unique_id=1455520727 instance=ExtResource("1_4a5e8")]
 position = Vector2(3488, 250)

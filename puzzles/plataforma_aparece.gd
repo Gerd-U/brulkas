@@ -71,6 +71,14 @@ extends StaticBody2D
 		if is_inside_tree():
 			_crear_colision_por_forma()
 
+## Forma lisa: une las puntas del dibujo con líneas rectas, sin entradas
+## ni picos, para que el jugador no se trabe en los bordes
+@export var forma_lisa: bool = false:
+	set(valor):
+		forma_lisa = valor
+		if is_inside_tree():
+			_crear_colision_por_forma()
+
 var _activa := false
 var _poligonos: Array[CollisionPolygon2D] = []  # colisión con la forma del dibujo
 
@@ -142,8 +150,16 @@ func _crear_colision_por_forma() -> void:
 	if imagen.is_compressed():
 		imagen.decompress()
 
-	# Contorno de la parte visible de la imagen (lo que no es transparente)
 	var parte := _parte_visible()
+	if forma_lisa:
+		# Una sola forma sólida que envuelve el dibujo, sin segmentos sueltos
+		var envolvente := CollisionPolygon2D.new()
+		envolvente.polygon = TexturaUtil.envolvente(textura, _rect_dibujo(parte), detalle_forma)
+		add_child(envolvente)
+		_poligonos.append(envolvente)
+		return
+
+	# Contorno de la parte visible de la imagen (lo que no es transparente)
 	var recorte := imagen.get_region(Rect2i(parte))
 	var mapa := BitMap.new()
 	mapa.create_from_image_alpha(recorte, 0.5)

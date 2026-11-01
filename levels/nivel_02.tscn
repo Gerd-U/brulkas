@@ -127,6 +127,7 @@ position = Vector2(8310, 340)
 tamano = Vector2(200, 600)
 textura = ExtResource("tex_torre_palanca")
 colision_por_forma = true
+forma_lisa = true
 
 [node name="Final_Elevador" parent="." unique_id=709500784 instance=ExtResource("6_lu5bq")]
 position = Vector2(8130, 640)
