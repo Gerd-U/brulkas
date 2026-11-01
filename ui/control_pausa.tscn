@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bxungcvddk2x5"]
+
+[ext_resource type="Script" uid="uid://b4gs4cji3025s" path="res://ui/control_pausa.gd" id="1_k1wtn"]
+
+[node name="Node" type="Node" unique_id=851561098]
+script = ExtResource("1_k1wtn")
