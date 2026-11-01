@@ -16,14 +16,49 @@ extends Area2D
 ## Segundos que tarda en volver a abrirse después de atrapar al jugador
 @export var tiempo_reabrir: float = 1.5
 
-## Color del metal
+## Color del metal (si no tiene imagen)
 @export var color: Color = Color(0.55, 0.55, 0.6):
 	set(valor):
 		color = valor
 		queue_redraw()
 
+@export_group("Imagen")
+## Las imágenes vienen del AnimatedSprite2D hijo: el cuadro 0 es el cepo abierto
+## y el 1 el cerrado. El abierto se ajusta al ancho y alto de la trampa.
+## Mueve el dibujo (en píxeles) por si queda corrido
+@export var ajuste_textura: Vector2 = Vector2.ZERO:
+	set(valor):
+		ajuste_textura = valor
+		_actualizar()
+
+## Agranda o achica el dibujo desde la base (1 = tamaño normal)
+@export var escala_textura: float = 1.0:
+	set(valor):
+		escala_textura = valor
+		_actualizar()
+
+@export_group("Colisión")
+## Baja el borde de arriba de la zona que atrapa (en píxeles)
+@export var recorte_arriba: float = 0.0:
+	set(valor):
+		recorte_arriba = valor
+		_actualizar()
+
+## Achica la zona que atrapa de cada costado (en píxeles)
+@export var recorte_lados: float = 0.0:
+	set(valor):
+		recorte_lados = valor
+		_actualizar()
+
+## La zona que atrapa toma la forma del cepo abierto dibujado
+@export var colision_por_forma: bool = false:
+	set(valor):
+		colision_por_forma = valor
+		_actualizar()
+
 var _cerrado := false      # está cerrada ahora mismo
 var _desarmado := false    # una caja la cerró: ya no hace daño nunca más
+var _forma_dibujo: CollisionPolygon2D  # zona con la forma del dibujo, si se usa
 
 
 func _ready() -> void:
@@ -38,10 +73,68 @@ func _actualizar() -> void:
 	if forma == null:
 		return
 	var rect := RectangleShape2D.new()
-	rect.size = Vector2(ancho, alto)
+	rect.size = Vector2(ancho - recorte_lados * 2, alto - recorte_arriba)
 	forma.shape = rect
 	# Base en y = 0, igual que los pinchos
-	forma.position = Vector2(0, -alto / 2)
+	forma.position = Vector2(0, -rect.size.y / 2)
+
+	_acomodar_dibujo()
+
+	# Zona con la forma del cepo abierto (en vez del rectángulo)
+	if _forma_dibujo:
+		_forma_dibujo.queue_free()
+		_forma_dibujo = null
+	var abierto := _textura_abierto()
+	var usar_forma := colision_por_forma and abierto != null and is_inside_tree()
+	forma.disabled = usar_forma
+	if usar_forma:
+		_forma_dibujo = CollisionPolygon2D.new()
+		_forma_dibujo.polygon = TexturaUtil.envolvente(abierto, _rect_dibujo())
+		add_child(_forma_dibujo)
+	_mostrar_estado()
+
+
+# El AnimatedSprite2D hijo (si tiene cuadros)
+func _sprite() -> AnimatedSprite2D:
+	var sprite := get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
+	if sprite and sprite.sprite_frames and sprite.sprite_frames.get_frame_count(sprite.animation) > 0:
+		return sprite
+	return null
+
+
+func _textura_abierto() -> Texture2D:
+	var sprite := _sprite()
+	if sprite == null:
+		return null
+	return sprite.sprite_frames.get_frame_texture(sprite.animation, 0)
+
+
+# Dónde queda la parte visible del cepo abierto
+func _rect_dibujo() -> Rect2:
+	var tam := Vector2(ancho, alto) * escala_textura
+	return Rect2(Vector2(-tam.x / 2, -tam.y) + ajuste_textura, tam)
+
+
+# Escala y ubica el sprite para que el cepo abierto ocupe ancho x alto.
+# El cerrado usa el mismo lienzo, así que queda alineado solo.
+func _acomodar_dibujo() -> void:
+	var abierto := _textura_abierto()
+	if abierto == null:
+		return
+	var sprite := _sprite()
+	var parte := TexturaUtil.parte_visible(abierto)
+	var destino := _rect_dibujo()
+	sprite.centered = false
+	sprite.scale = destino.size / parte.size
+	sprite.position = destino.position - parte.position * sprite.scale
+
+
+# Muestra el cuadro que corresponde: abierto o cerrado
+func _mostrar_estado() -> void:
+	var sprite := _sprite()
+	if sprite:
+		sprite.stop()
+		sprite.frame = 1 if _cerrado else 0
 	queue_redraw()
 
 
@@ -53,22 +146,26 @@ func _al_pisar(cuerpo: Node2D) -> void:
 	if cuerpo.is_in_group("cajas"):
 		_cerrado = true
 		_desarmado = true
-		queue_redraw()
+		_mostrar_estado()
 		return
 
 	# ¿Es el jugador? → se cierra y lo mata
 	if cuerpo.has_method("morir"):
 		_cerrado = true
-		queue_redraw()
+		_mostrar_estado()
 		cuerpo.morir()
 		# Esperamos un rato y la volvemos a abrir
 		await get_tree().create_timer(tiempo_reabrir).timeout
 		if not _desarmado:
 			_cerrado = false
-			queue_redraw()
+			_mostrar_estado()
 
 
 func _draw() -> void:
+	# Con imágenes dibuja el AnimatedSprite2D
+	if _sprite():
+		return
+
 	var w := ancho
 	var oscuro := color.darkened(0.4)
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b17rg7sjytjfw"]
 
 [ext_resource type="Script" uid="uid://b287g08b6qrwe" path="res://hazards/aplastador.gd" id="1_1jbje"]
+[ext_resource type="Texture2D" uid="uid://pbpsikbwixx5" path="res://assets/componentes/aplastador.png" id="2_img"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1xdp"]
 
@@ -9,6 +10,7 @@
 [node name="Aplastador" type="AnimatableBody2D" unique_id=645051977]
 collision_mask = 0
 script = ExtResource("1_1jbje")
+textura = ExtResource("2_img")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1689955806]
 shape = SubResource("RectangleShape2D_j1xdp")

@@ -15,6 +15,12 @@
 [ext_resource type="Script" uid="uid://dq7nv3kw5lbx2" path="res://levels/nivel.gd" id="20_nivel"]
 [ext_resource type="PackedScene" uid="uid://c0dp6gsndcwfe" path="res://player/player.tscn" id="21_player"]
 [ext_resource type="PackedScene" uid="uid://ccddhrwxlchu5" path="res://levels/fondo_bosque.tscn" id="22_fondo"]
+[ext_resource type="Texture2D" uid="uid://ehwjjpw482h3" path="res://assets/ambiente/rama_gruesa.png" id="tex_rama_gruesa"]
+[ext_resource type="Texture2D" uid="uid://b8c1agfd2ora2" path="res://assets/ambiente/techo_bajo.png" id="tex_techo_bajo"]
+[ext_resource type="Texture2D" uid="uid://bn4api2ljhlvv" path="res://assets/ambiente/torre_palanca.png" id="tex_torre_palanca"]
+[ext_resource type="Texture2D" uid="uid://dpyvjaslxkcmy" path="res://assets/ambiente/suelo.png" id="tex_suelo"]
+[ext_resource type="Texture2D" uid="uid://3haywerhag7x" path="res://assets/ambiente/grada.png" id="tex_grada"]
+[ext_resource type="Texture2D" uid="uid://dgva6uu23b11u" path="res://assets/ambiente/tronco.png" id="tex_tronco"]
 
 [node name="Nivel03" type="Node2D" unique_id=729105509]
 script = ExtResource("20_nivel")
@@ -31,6 +37,8 @@ scroll_offset = Vector2(798, 0)
 [node name="Centro_Suelo" parent="." unique_id=1774911687 instance=ExtResource("1_gbk21")]
 position = Vector2(5000, 680)
 tamano = Vector2(10000, 80)
+textura = ExtResource("tex_suelo")
+modo_textura = 2
 
 [node name="Izq_Pared" parent="." unique_id=1416041308 instance=ExtResource("1_gbk21")]
 position = Vector2(-20, 220)
@@ -50,6 +58,9 @@ ancho = 5.0
 [node name="Der_CaminoAlto" parent="." unique_id=10964885 instance=ExtResource("1_gbk21")]
 position = Vector2(7000, 180)
 tamano = Vector2(600, 40)
+textura = ExtResource("tex_grada")
+modo_textura = 2
+solape_copias = 0.1
 
 [node name="Izq_Pinchos" parent="." unique_id=39430143 instance=ExtResource("2_85kh4")]
 position = Vector2(3200, 640)
@@ -65,6 +76,8 @@ color = Color(0.14901961, 0.14901961, 0.16862746, 0)
 [node name="Izq_Torre" parent="." unique_id=1045927792 instance=ExtResource("1_gbk21")]
 position = Vector2(200, 490)
 tamano = Vector2(200, 300)
+textura = ExtResource("tex_torre_palanca")
+colision_por_forma = true
 
 [node name="Izq_Elevador" parent="." unique_id=709500784 instance=ExtResource("6_lu5bq")]
 position = Vector2(380, 640)
@@ -84,29 +97,40 @@ empieza_activa = true
 position = Vector2(3820, 600)
 tamano = Vector2(200, 40)
 retraso = 0.0
+textura = ExtResource("tex_rama_gruesa")
+modo_textura = 1
 
 [node name="Centro_EscaleraIzq2" parent="." unique_id=1407624310 instance=ExtResource("8_gbk21")]
 position = Vector2(4180, 540)
 tamano = Vector2(200, 40)
 retraso = 0.3
+textura = ExtResource("tex_rama_gruesa")
+modo_textura = 1
 
 [node name="Centro_EscaleraIzq3" parent="." unique_id=1198365373 instance=ExtResource("8_gbk21")]
 position = Vector2(4540, 480)
 tamano = Vector2(200, 40)
 retraso = 0.6
+textura = ExtResource("tex_rama_gruesa")
+modo_textura = 1
 
 [node name="Centro_EscaleraDer1" parent="." unique_id=457214431 instance=ExtResource("8_gbk21")]
 position = Vector2(5460, 312)
 tamano = Vector2(200, 40)
 retraso = 0.0
+textura = ExtResource("tex_rama_gruesa")
+modo_textura = 1
 
 [node name="Centro_PlataformaAlma" parent="." unique_id=1962650523 instance=ExtResource("8_gbk21")]
 position = Vector2(5050, -12)
 tamano = Vector2(300, 40)
 retraso = 1.2
+textura = ExtResource("tex_rama_gruesa")
+modo_textura = 1
 
 [node name="Izq_Palanca" parent="." unique_id=912527605 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
 position = Vector2(200, 340)
+ajuste_textura = Vector2(0, 1.5)
 objetivos = [NodePath("../Centro_EscaleraIzq1"), NodePath("../Centro_EscaleraIzq2"), NodePath("../Centro_EscaleraIzq3"), NodePath("../Centro_EscaleraDer2"), NodePath("../Centro_PlataformaAlma")]
 
 [node name="Izq_Cepo3" parent="." unique_id=1575129816 instance=ExtResource("10_ldt66")]
@@ -126,16 +150,24 @@ position = Vector2(3500, 640)
 [node name="Centro_Copa" parent="." unique_id=1386204917 instance=ExtResource("1_gbk21")]
 position = Vector2(5000, 460)
 tamano = Vector2(400, 120)
+textura = ExtResource("tex_techo_bajo")
+colision_por_forma = true
+detalle_forma = 12.0
+forma_lisa = true
 
 [node name="Centro_EscaleraDer2" parent="." unique_id=873519046 instance=ExtResource("8_gbk21")]
 position = Vector2(5100, 204)
 tamano = Vector2(200, 40)
 retraso = 0.9
+textura = ExtResource("tex_rama_gruesa")
+modo_textura = 1
 
 [node name="Centro_EscaleraDer3" parent="." unique_id=1609482375 instance=ExtResource("8_gbk21")]
 position = Vector2(5460, 96)
 tamano = Vector2(200, 40)
 retraso = 0.3
+textura = ExtResource("tex_rama_gruesa")
+modo_textura = 1
 
 [node name="Izq_CP2" parent="." unique_id=1257390418 instance=ExtResource("4_5ktbu")]
 position = Vector2(1350, 640)
@@ -151,9 +183,12 @@ altura = 280.0
 [node name="Der_Torre" parent="." unique_id=1493067821 instance=ExtResource("1_gbk21")]
 position = Vector2(9800, 490)
 tamano = Vector2(200, 300)
+textura = ExtResource("tex_torre_palanca")
+colision_por_forma = true
 
 [node name="Der_Palanca" parent="." unique_id=780245163 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
 position = Vector2(9800, 340)
+ajuste_textura = Vector2(0, 1.5)
 objetivos = [NodePath("../Centro_EscaleraDer1"), NodePath("../Centro_EscaleraDer3")]
 
 [node name="Izq_Caja" parent="." unique_id=554329231 instance=ExtResource("3_ldt66")]
@@ -164,6 +199,12 @@ tamano = Vector2(90, 90)
 position = Vector2(1750, 510)
 tamano = Vector2(500, 60)
 se_puede_pisar = false
+textura = ExtResource("tex_techo_bajo")
+recorte_arriba = 7.0
+recorte_lados = 50.0
+colision_por_forma = true
+detalle_forma = 12.0
+forma_lisa = true
 
 [node name="Izq_Cepo1" parent="." unique_id=1093748562 instance=ExtResource("10_ldt66")]
 position = Vector2(2980, 640)
@@ -181,6 +222,7 @@ ancho = 100.0
 [node name="Der_Muro" parent="." unique_id=1851402637 instance=ExtResource("1_gbk21")]
 position = Vector2(6000, 400)
 tamano = Vector2(200, 480)
+textura = ExtResource("tex_tronco")
 
 [node name="Der_PlataformaLado" parent="." unique_id=962738145 instance=ExtResource("7_wnnru")]
 position = Vector2(6180, 175)

@@ -3,12 +3,19 @@
 [ext_resource type="Script" uid="uid://e81bd1a6qjsi" path="res://player/player.gd" id="1_606se"]
 [ext_resource type="Texture2D" uid="uid://dviwjxlrjuinb" path="res://player/Sprites/personaje/personaje_salto/personaje_salto_4.png" id="1_bwjto"]
 [ext_resource type="Texture2D" uid="uid://d0n07s5binlm8" path="res://player/Sprites/personaje/personaje_quieto/personaje_quieto.png" id="2_606se"]
+[ext_resource type="Texture2D" uid="uid://3a0ny41esxja" path="res://player/Sprites/personaje/personaje_muerte/personaje_muerte.png" id="2_bjvpn"]
+[ext_resource type="Texture2D" uid="uid://ddy64ghkl1h4v" path="res://player/Sprites/personaje/personaje_muerte/personaje_muerte_2.png" id="3_s7qer"]
 [ext_resource type="Texture2D" uid="uid://bc88gl82ekrk8" path="res://player/Sprites/personaje/personaje_quieto/personaje_quieto_izquierda.png" id="3_u1c27"]
+[ext_resource type="Texture2D" uid="uid://dmkvsulf2ulkv" path="res://player/Sprites/personaje/personaje_muerte/personaje_muerte_3.png" id="4_g4c7l"]
 [ext_resource type="Texture2D" uid="uid://dof5invlgpk3y" path="res://player/Sprites/personaje/personaje_salto/personaje_salto_1.png" id="4_op7ga"]
+[ext_resource type="Texture2D" uid="uid://bhpul4caqwd86" path="res://player/Sprites/personaje/personaje_muerte/personaje_muerte_4.png" id="5_knn7v"]
 [ext_resource type="Texture2D" uid="uid://1qo4lpsxybrx" path="res://player/Sprites/personaje/personaje_salto/personaje_salto_2.png" id="5_q13i1"]
+[ext_resource type="Texture2D" uid="uid://dfm4fc82gw4y3" path="res://player/Sprites/personaje/personaje_muerte/personaje_muerte_5.png" id="6_7pqkx"]
 [ext_resource type="Texture2D" uid="uid://cn4jew8vjvwni" path="res://player/Sprites/personaje/personaje_salto/personaje_salto_3.png" id="6_pylmc"]
 [ext_resource type="Texture2D" uid="uid://rnrkxv07tt41" path="res://player/Sprites/personaje/personaje_empuja/personaje_empuja.png" id="7_pbfsw"]
+[ext_resource type="Texture2D" uid="uid://0pkupl1e6kvr" path="res://player/Sprites/personaje/personaje_muerte/personaje_muerte_6.png" id="7_uw77l"]
 [ext_resource type="Texture2D" uid="uid://ttj24aw8xivb" path="res://player/Sprites/personaje/personaje_desliz/personaje_desliz.png" id="8_5tmop"]
+[ext_resource type="Texture2D" uid="uid://b3s7ryr4so6of" path="res://player/Sprites/personaje/personaje_muerte/personaje_muerte_7.png" id="8_rptt4"]
 [ext_resource type="Texture2D" uid="uid://cjnew153n8q6n" path="res://player/Sprites/personaje/personaje_caminar/personaje_caminar_0.png" id="9_7ahtn"]
 [ext_resource type="Texture2D" uid="uid://dr8bs1wq558i7" path="res://player/Sprites/personaje/personaje_caminar/personaje_caminar_1.png" id="10_7lmhl"]
 [ext_resource type="Texture2D" uid="uid://d4m68itvpnv3v" path="res://player/Sprites/personaje/personaje_caminar/personaje_caminar_2.png" id="11_dx0e4"]
@@ -21,6 +28,32 @@ size = Vector2(18.0513, 55)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sh265"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bjvpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s7qer")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g4c7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_knn7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7pqkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uw77l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rptt4")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_bwjto")
@@ -127,7 +160,7 @@ shape = SubResource("RectangleShape2D_i3pqv")
 position = Vector2(-1, -1)
 scale = Vector2(0.2256, 0.223)
 sprite_frames = SubResource("SpriteFrames_sh265")
-animation = &"slide"
+animation = &"death"
 
 [node name="BoxDetector" type="RayCast2D" parent="." unique_id=2074462366]
 collision_mask = 4

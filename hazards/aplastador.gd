@@ -30,7 +30,47 @@ extends AnimatableBody2D
 		color = valor
 		queue_redraw()
 
-const PICOS := 16.0  # alto de los pinchos de abajo
+@export_group("Imagen")
+## Imagen del aplastador (ya trae el tronco y los pinchos de abajo):
+## se estira para cubrir el bloque completo. Si está vacía se dibuja de color.
+@export var textura: Texture2D:
+	set(valor):
+		textura = valor
+		_actualizar()
+
+## Mueve la imagen (en píxeles) por si queda corrida
+@export var ajuste_textura: Vector2 = Vector2.ZERO:
+	set(valor):
+		ajuste_textura = valor
+		queue_redraw()
+
+## Agranda o achica la imagen desde la base (1 = tamaño normal)
+@export var escala_textura: float = 1.0:
+	set(valor):
+		escala_textura = valor
+		queue_redraw()
+
+@export_group("Colisión")
+## Baja el borde de arriba de la parte sólida (en píxeles). El dibujo no cambia.
+@export var recorte_arriba: float = 0.0:
+	set(valor):
+		recorte_arriba = valor
+		_actualizar()
+
+## Achica la parte sólida y la zona que mata de cada costado (en píxeles)
+@export var recorte_lados: float = 0.0:
+	set(valor):
+		recorte_lados = valor
+		_actualizar()
+
+## Con imagen: qué parte del alto son los pinchos del dibujo (0.5 = la mitad
+## de abajo). Esa parte es la que mata; lo de arriba es el tronco sólido.
+@export_range(0.05, 0.95) var proporcion_pinchos: float = 0.5:
+	set(valor):
+		proporcion_pinchos = valor
+		_actualizar()
+
+const PICOS := 16.0  # alto de los pinchos de abajo (dibujo sin imagen)
 const EMPUJE := 320.0  # velocidad con que tira al jugador si se sube encima
 
 var _abajo: Vector2
@@ -59,10 +99,10 @@ func _crear_techo() -> void:
 	_techo.collision_mask = 2  # capa del jugador
 	var forma := CollisionShape2D.new()
 	var rect := RectangleShape2D.new()
-	rect.size = Vector2(tamano.x, 10)
+	rect.size = Vector2(tamano.x - recorte_lados * 2, 10)
 	forma.shape = rect
 	# Se mete 2 px dentro del bloque para detectar bien los pies del jugador
-	forma.position = Vector2(0, -tamano.y - 3)
+	forma.position = Vector2(0, -tamano.y + recorte_arriba - 3)
 	_techo.add_child(forma)
 	add_child(_techo)
 
@@ -79,22 +119,30 @@ func _physics_process(delta: float) -> void:
 			cuerpo.global_position.x += lado * EMPUJE * delta
 
 
+# Alto de la franja de pinchos (con imagen, la que trae el dibujo)
+func _alto_pinchos() -> float:
+	if textura:
+		return tamano.y * proporcion_pinchos
+	return PICOS
+
+
 func _actualizar() -> void:
+	var picos := _alto_pinchos()
 	# Bloque sólido (sin contar los pinchos)
 	var forma := get_node_or_null("CollisionShape2D") as CollisionShape2D
 	if forma:
 		var rect := RectangleShape2D.new()
-		rect.size = Vector2(tamano.x, tamano.y - PICOS)
+		rect.size = Vector2(tamano.x - recorte_lados * 2, tamano.y - picos - recorte_arriba)
 		forma.shape = rect
-		forma.position = Vector2(0, -PICOS - (tamano.y - PICOS) / 2)
+		forma.position = Vector2(0, -picos - rect.size.y / 2)
 
 	# Zona que mata: la franja de los pinchos
 	var zona := get_node_or_null("ZonaPinchos/CollisionShape2D") as CollisionShape2D
 	if zona:
 		var rect2 := RectangleShape2D.new()
-		rect2.size = Vector2(tamano.x - 8, PICOS + 6)
+		rect2.size = Vector2(tamano.x - 8 - recorte_lados * 2, picos + 6)
 		zona.shape = rect2
-		zona.position = Vector2(0, -PICOS / 2)
+		zona.position = Vector2(0, -picos / 2)
 
 	queue_redraw()
 
@@ -130,6 +178,22 @@ func _draw() -> void:
 
 	var w := tamano.x
 	var h := tamano.y
+	if textura:
+		# La imagen cubre el bloque entero (tronco y pinchos); escala desde la base
+		var tam := tamano * escala_textura
+		var destino := Rect2(Vector2(-tam.x / 2, -tam.y) + desplazamiento + ajuste_textura, tam)
+		draw_texture_rect_region(textura, destino, TexturaUtil.parte_visible(textura))
+	else:
+		_dibujar_sin_imagen(w, h, desplazamiento)
+
+	# Solo en el editor: dónde queda cuando cae
+	if Engine.is_editor_hint():
+		var amarillo := Color(1, 1, 0.3, 0.8)
+		draw_dashed_line(Vector2(0, -caida), Vector2(0, -h), amarillo, 2.0, 10.0)
+		draw_rect(Rect2(-w / 2, -h, w, h), amarillo, false, 2.0)
+
+
+func _dibujar_sin_imagen(w: float, h: float, desplazamiento: Vector2) -> void:
 	# Bloque
 	var bloque := Rect2(Vector2(-w / 2, -h) + desplazamiento, Vector2(w, h - PICOS))
 	draw_rect(bloque, color)
@@ -144,9 +208,3 @@ func _draw() -> void:
 			Vector2(x + paso / 2, 0) + desplazamiento,
 			Vector2(x + paso, -PICOS) + desplazamiento,
 		]), Color(0.75, 0.75, 0.8))
-
-	# Solo en el editor: dónde queda cuando cae
-	if Engine.is_editor_hint():
-		var amarillo := Color(1, 1, 0.3, 0.8)
-		draw_dashed_line(Vector2(0, -caida), Vector2(0, -h), amarillo, 2.0, 10.0)
-		draw_rect(Rect2(-w / 2, -h, w, h), amarillo, false, 2.0)

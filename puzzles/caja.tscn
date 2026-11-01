@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ct0niiuipgp38"]
 
 [ext_resource type="Script" uid="uid://boa6aeeqcje3w" path="res://puzzles/caja.gd" id="1_t3i4k"]
+[ext_resource type="Texture2D" uid="uid://bxuydandcscy1" path="res://assets/componentes/caja.png" id="2_img"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1xdp"]
 
@@ -8,6 +9,7 @@
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_t3i4k")
+textura = ExtResource("2_img")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1342717493]
 shape = SubResource("RectangleShape2D_j1xdp")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bo82ypjbq2v7c"]
 
 [ext_resource type="Script" uid="uid://bnn4x1bu5m0jj" path="res://hazards/pinchos.gd" id="1_5w4hr"]
+[ext_resource type="Texture2D" uid="uid://dse3i5n4j2wrr" path="res://assets/componentes/pincho.png" id="2_img"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5w4hr"]
 size = Vector2(64, 20)
@@ -10,6 +11,8 @@ collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_5w4hr")
 color = Color(1, 0.6517009, 0.5690745, 1)
+textura = ExtResource("2_img")
+colision_por_forma = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=191639711]
 shape = SubResource("RectangleShape2D_5w4hr")
