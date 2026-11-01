@@ -94,6 +94,9 @@ func interact(_jugador: Node) -> void:
 	if _activada:
 		return
 	_activada = true
+	var audio := get_node_or_null("/root/Audio")
+	if audio:
+		audio.reproducir_palanca()
 	var sprite := _sprite()
 	if sprite:
 		# Se reproduce una vez y queda en el último cuadro

@@ -9,6 +9,7 @@ extends Node
 const MUSICA := "res://audio/bgm/Brulkas 003.mp3"
 const SONIDO_MUERTE := "res://audio/sfx/Brulkas 004 - Death.mp3"
 const SONIDO_ALMA := "res://audio/sfx/Brulkas 004 - Soul Pick.mp3"
+const SONIDO_BOTON := "res://audio/sfx/Brulkas 005 - Boton.mp3"
 
 @export_group("Buses")
 ## Volumen general de todo el juego
@@ -27,10 +28,21 @@ const SONIDO_ALMA := "res://audio/sfx/Brulkas 004 - Soul Pick.mp3"
 @export_group("Muerte")
 ## Volumen del sonido de muerte (Death)
 @export var volumen_muerte: float = -8.0
+## Cuando muere en un cepo: segundos que espera la muerte para sonar después
+## del golpe de la trampa, así se escuchan los dos sin encimarse
+@export var retraso_muerte_en_trampa: float = 0.55
+## Cuando muere en un cepo: cuántos dB más baja suena la muerte
+@export var muerte_en_trampa_mas_baja: float = 4.0
+
+@export_group("Botones")
+## Volumen del sonido de los botones del menú, la pausa y los créditos (Boton)
+@export var volumen_boton: float = -6.0
+## Volumen del mismo sonido cuando se usa una palanca
+@export var volumen_palanca: float = -11.0
 
 @export_group("Alma")
 ## Volumen del sonido al recoger el alma (Soul Pick)
-@export var volumen_alma: float = -1.0
+@export var volumen_alma: float = -5.0
 ## Segundos que suena el alma antes de empezar a desvanecerse
 @export var alma_antes_del_fade: float = 4.0
 ## Segundos que tarda el alma en desvanecerse
@@ -47,7 +59,8 @@ var _muerte: AudioStreamPlayer
 var _alma: AudioStreamPlayer
 var _tween_musica: Tween
 var _tween_alma: Tween
-var _sin_muerte_hasta := 0  # ms: hasta cuándo no suena la muerte (la tapa otro sonido)
+var _boton: AudioStreamPlayer
+var _muerte_en_trampa_hasta := 0  # ms: si muere antes de esto, fue en un cepo
 
 
 func _ready() -> void:
@@ -71,20 +84,38 @@ func _ready() -> void:
 	_muerte.process_mode = Node.PROCESS_MODE_PAUSABLE
 	_alma = _crear_reproductor(load(SONIDO_ALMA), "Efectos", volumen_alma)
 	_alma.process_mode = Node.PROCESS_MODE_PAUSABLE
+	# El botón suena también en el menú de pausa
+	_boton = _crear_reproductor(load(SONIDO_BOTON), "Efectos", volumen_boton)
 
 
 # Suena una vez cada vez que el jugador muere (lo llama player.gd)
 func reproducir_muerte() -> void:
-	if Time.get_ticks_msec() < _sin_muerte_hasta:
-		return
-	_muerte.volume_db = volumen_muerte
+	if Time.get_ticks_msec() < _muerte_en_trampa_hasta:
+		# Murió en un cepo: la muerte entra después del golpe de la trampa y más suave
+		_muerte_en_trampa_hasta = 0
+		await get_tree().create_timer(retraso_muerte_en_trampa, false).timeout
+		_muerte.volume_db = volumen_muerte - muerte_en_trampa_mas_baja
+	else:
+		_muerte.volume_db = volumen_muerte
 	_muerte.play()
 
 
-# La trampa llama a esto antes de matar al jugador: su propio sonido ya es
-# la muerte, así no se escuchan los dos encimados
-func callar_muerte(segundos: float = 0.5) -> void:
-	_sin_muerte_hasta = Time.get_ticks_msec() + int(segundos * 1000.0)
+# Botones del menú, de la pausa y de los créditos
+func reproducir_boton() -> void:
+	_boton.volume_db = volumen_boton
+	_boton.play()
+
+
+# Palancas (mismo sonido, más suave)
+func reproducir_palanca() -> void:
+	_boton.volume_db = volumen_palanca
+	_boton.play()
+
+
+# El cepo llama a esto justo antes de matar al jugador, para que la muerte
+# suene acomodada con la trampa en vez de encimada
+func muerte_en_trampa() -> void:
+	_muerte_en_trampa_hasta = Time.get_ticks_msec() + 500
 
 
 # Suena al recoger el alma. Suena desde acá para no cortarse al cambiar de escena.

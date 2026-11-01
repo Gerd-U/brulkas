@@ -7,6 +7,13 @@ extends Area2D
 		radio = max(4.0, valor)
 		_actualizar()
 
+## Radio de la zona que la recoge (0 = igual que el radio). Del tamaño del
+## dibujo, así se recoge apenas el jugador la toca y el sonido no se siente tarde
+@export var radio_recoger: float = 36.0:
+	set(valor):
+		radio_recoger = max(0.0, valor)
+		_actualizar()
+
 ## Color de la luz
 @export var color: Color = Color(0.85, 0.95, 1.0):
 	set(valor):
@@ -59,7 +66,7 @@ func _actualizar() -> void:
 	if forma == null:
 		return
 	var circulo := CircleShape2D.new()
-	circulo.radius = radio
+	circulo.radius = radio_recoger if radio_recoger > 0.0 else radio
 	forma.shape = circulo
 	queue_redraw()
 

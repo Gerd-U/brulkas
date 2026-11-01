@@ -22,6 +22,7 @@ func _ready() -> void:
 			boton.mouse_exited.connect(_al_salir.bind(boton))
 			boton.button_down.connect(_al_apretar.bind(boton))
 			boton.button_up.connect(_al_soltar.bind(boton))
+			boton.button_down.connect(Audio.reproducir_boton)  # al apretar, no al soltar
 
 	# El botón Continuar arranca con el foco, para poder usar el teclado.
 	$Control/Panel/Button.grab_focus.call_deferred()

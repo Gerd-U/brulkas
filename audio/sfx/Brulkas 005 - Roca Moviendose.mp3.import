@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgppjogm02sbj"
+path="res://.godot/imported/Brulkas 005 - Roca Moviendose.mp3-1573238c7b44cde84d48b46192efc82e.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Brulkas 005 - Roca Moviendose.mp3"
+dest_files=["res://.godot/imported/Brulkas 005 - Roca Moviendose.mp3-1573238c7b44cde84d48b46192efc82e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

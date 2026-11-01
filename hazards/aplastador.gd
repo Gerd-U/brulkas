@@ -72,7 +72,7 @@ extends AnimatableBody2D
 
 @export_group("Sonido")
 ## Volumen del golpe al caer (Brulkas 004 - Aplastador)
-@export var volumen_golpe: float = 0.0
+@export var volumen_golpe: float = 4.0
 ## Distancia en píxeles a partir de la cual el golpe ya no se escucha
 @export var distancia_sonido: float = 800.0
 ## Qué tan rápido se apaga con la distancia (más bajo = se oye fuerte hasta más lejos)

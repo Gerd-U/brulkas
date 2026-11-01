@@ -17,6 +17,7 @@ func _ready() -> void:
 		boton.mouse_exited.connect(_al_salir.bind(boton))
 		boton.button_down.connect(_al_apretar.bind(boton))
 		boton.button_up.connect(_al_soltar.bind(boton))
+		boton.button_down.connect(Audio.reproducir_boton)  # al apretar, no al soltar
 
 
 # Aumenta el tamaño del botón y lo aclara un poco cuando el ratón pasa sobre él.

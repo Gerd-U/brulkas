@@ -52,7 +52,20 @@ extends CharacterBody2D
 		recorte_lados = valor
 		_actualizar()
 
+@export_group("Sonido")
+## Volumen de la roca al moverse (Brulkas 005 - Roca Moviendose)
+@export var volumen_roca: float = 8.0
+## Distancia en píxeles a partir de la cual ya no se escucha
+@export var distancia_sonido: float = 1000.0
+## Qué tan rápido se apaga con la distancia (más bajo = se oye fuerte hasta más lejos)
+@export var atenuacion_sonido: float = 0.4
+
+const SONIDO_ROCA := "res://audio/sfx/Brulkas 005 - Roca Moviendose.mp3"
+const SonidoContinuo := preload("res://audio/sonido_continuo.gd")
+
 var is_grabbed: bool = false
+var _sonido: SonidoContinuo
+var _arrastre := 0.0  # segundos que sigue sonando desde el último empujón
 
 
 func _ready() -> void:
@@ -61,6 +74,14 @@ func _ready() -> void:
 	# Todas las cajas se agregan automáticamente al grupo
 	if not Engine.is_editor_hint():
 		add_to_group("cajas")
+		_crear_sonido()
+
+
+# Sonido posicional que dura todo el movimiento
+func _crear_sonido() -> void:
+	_sonido = SonidoContinuo.new()
+	add_child(_sonido)
+	_sonido.configurar(load(SONIDO_ROCA), &"Efectos", volumen_roca, distancia_sonido, atenuacion_sonido)
 
 
 # ---------- Actualizar tamaño y colisión ----------
@@ -94,7 +115,11 @@ func mover(dx: float) -> void:
 		return
 
 	is_grabbed = true
+	var antes := position.x
 	move_and_collide(Vector2(dx, 0.0))
+	# Solo suena si de verdad se movió (no si está trabada contra una pared)
+	if absf(position.x - antes) > 0.1:
+		_arrastre = 0.15
 
 
 # true si el jugador está apoyado sobre la parte de arriba de esta caja
@@ -133,6 +158,18 @@ func _physics_process(delta: float) -> void:
 	velocity.y = min(velocity.y + gravedad * delta, max_caida)
 
 	move_and_slide()
+	_actualizar_sonido(delta)
+
+
+# Suena mientras la empujan y se apaga suave cuando deja de moverse
+func _actualizar_sonido(delta: float) -> void:
+	if _sonido == null:
+		return
+	if _arrastre > 0.0:
+		_arrastre -= delta
+		_sonido.empezar()
+	else:
+		_sonido.parar()
 
 
 # ---------- Dibujo de la caja ----------

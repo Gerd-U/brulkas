@@ -173,10 +173,10 @@ func _al_pisar(cuerpo: Node2D) -> void:
 		_cerrado = true
 		_mostrar_estado()
 		_sonido.play(inicio_sonido)
-		# El sonido de la trampa reemplaza al de muerte, para que no se encimen
+		# La muerte suena acomodada después del golpe de la trampa
 		var audio := get_node_or_null("/root/Audio")
 		if audio:
-			audio.callar_muerte()
+			audio.muerte_en_trampa()
 		cuerpo.morir()
 		# Esperamos un rato y la volvemos a abrir
 		await get_tree().create_timer(tiempo_reabrir).timeout
