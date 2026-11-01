@@ -5,22 +5,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbixf"]
 bg_color = Color(0.1882353, 0.17254902, 0.21176471, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fabxv"]
-bg_color = Color(0.14117648, 0.12941177, 0.16470589, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ooo5k"]
-bg_color = Color(0.20392157, 0.1882353, 0.22745098, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
-
 [node name="Pausa" type="CanvasLayer" unique_id=1938402716]
 process_mode = 3
 layer = 20
@@ -69,7 +53,7 @@ offset_top = 35.0
 offset_right = 123.0
 offset_bottom = 77.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
+theme_override_colors/font_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
 theme_override_font_sizes/font_size = 30
 text = "JUEGO EN PAUSA"
 
@@ -80,10 +64,7 @@ offset_left = 140.0
 offset_top = 135.0
 offset_right = 360.0
 offset_bottom = 200.0
-theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_fabxv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ooo5k")
 text = "Continuar"
 
 [node name="Button2" type="Button" parent="Control/Panel" unique_id=799582791]
@@ -93,10 +74,7 @@ offset_left = 140.0
 offset_top = 224.0
 offset_right = 360.0
 offset_bottom = 289.0
-theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_fabxv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ooo5k")
 text = "Salir al menú"
 
 [connection signal="pressed" from="Control/Panel/Button" to="." method="_on_button_pressed"]

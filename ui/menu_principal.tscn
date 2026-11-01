@@ -3,54 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://d0xp63k2ohsr8" path="res://ui/fondo_menu.jpg.jpg" id="1_33dn8"]
 [ext_resource type="Script" uid="uid://vlmtxixi1mno" path="res://ui/menu_principal.gd" id="1_iesyk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1txnj"]
-bg_color = Color(0.14117648, 0.12941177, 0.16470589, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iesyk"]
-bg_color = Color(0.20392157, 0.1882353, 0.22745098, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fw5kl"]
-bg_color = Color(0.14117648, 0.12941177, 0.16470589, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f2nw"]
-bg_color = Color(0.20392157, 0.1882353, 0.22745098, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhvkh"]
-bg_color = Color(0.14117648, 0.12941177, 0.16470589, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4ikh"]
-bg_color = Color(0.20392157, 0.1882353, 0.22745098, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
-
 [node name="Control" type="Control" unique_id=510097047]
 layout_mode = 3
 anchors_preset = 15
@@ -89,28 +41,19 @@ theme_override_constants/separation = 20
 [node name="Button" type="Button" parent="HBoxContainer" unique_id=992132508]
 custom_minimum_size = Vector2(220, 65)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_1txnj")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iesyk")
 text = "Jugar"
 
 [node name="Button2" type="Button" parent="HBoxContainer" unique_id=2133770326]
 custom_minimum_size = Vector2(220, 65)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_fw5kl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0f2nw")
 text = "Créditos"
 
 [node name="Button3" type="Button" parent="HBoxContainer" unique_id=670184216]
 custom_minimum_size = Vector2(220, 65)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_dhvkh")
-theme_override_styles/hover = SubResource("StyleBoxFlat_m4ikh")
 text = "Salir"
 
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

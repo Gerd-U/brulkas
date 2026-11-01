@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cq4ctrl7cartl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cartel"]
+content_margin_left = 32.0
+content_margin_top = 20.0
+content_margin_right = 32.0
+content_margin_bottom = 24.0
+bg_color = Color(0.14509805, 0.0627451, 0.3019608, 0.92)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.47843137, 0.09411765, 0.26666668, 1)
+
+[node name="CartelControles" type="Node2D" unique_id=1873402219]
+z_index = 5
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=642118930]
+offset_right = 500.0
+offset_bottom = 280.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cartel")
+
+[node name="Lineas" type="VBoxContainer" parent="Panel" unique_id=1209384771]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Titulo" type="Label" parent="Panel/Lineas" unique_id=388210457]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
+theme_override_font_sizes/font_size = 44
+text = "CONTROLES"
+horizontal_alignment = 1
+
+[node name="Texto" type="Label" parent="Panel/Lineas" unique_id=1530927746]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
+theme_override_font_sizes/font_size = 30
+text = "Moverse: A / D o flechas
+Saltar: W, flecha arriba o Espacio
+Agarrar caja: mantener Shift
+Usar palanca: E
+Pausa: Esc"

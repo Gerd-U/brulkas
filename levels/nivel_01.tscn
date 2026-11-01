@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dq7nv3kw5lbx2" path="res://levels/nivel.gd" id="20_nivel"]
 [ext_resource type="PackedScene" uid="uid://c0dp6gsndcwfe" path="res://player/player.tscn" id="21_player"]
 [ext_resource type="PackedScene" uid="uid://ccddhrwxlchu5" path="res://levels/fondo_bosque.tscn" id="22_fondo"]
+[ext_resource type="PackedScene" uid="uid://cq4ctrl7cartl" path="res://ui/cartel_controles.tscn" id="23_cartel"]
 [ext_resource type="Texture2D" uid="uid://8a0eg2mlfyii" path="res://assets/ambiente/arbol_grande.png" id="tex_arbol_grande"]
 [ext_resource type="Texture2D" uid="uid://bebroh4b4ei5r" path="res://assets/ambiente/pendiente.png" id="tex_pendiente"]
 [ext_resource type="Texture2D" uid="uid://cfb3g5p21bdvl" path="res://assets/ambiente/plataforma_flotante.png" id="tex_plataforma_flotante"]
@@ -118,6 +119,9 @@ ancho = 6000.0
 position = Vector2(2050, 565)
 rotation = 0.4712389
 largo = 450.0
+
+[node name="CartelControles" parent="." unique_id=1745093318 instance=ExtResource("23_cartel")]
+position = Vector2(40, 290)
 
 [node name="Player" parent="." unique_id=1302847561 instance=ExtResource("21_player")]
 position = Vector2(150, 613.77)
