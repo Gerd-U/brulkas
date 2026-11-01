@@ -10,13 +10,13 @@ var escenas := [
 		"imagenes": ["res://assets/cinematicas/escena_1.png"],
 		"partes": [
 			"En las profundidades del bosque Maleddries habitan criaturas de más de cuatro metros, con garras que te partirían en dos y dientes que romperían tus huesos.",
-			"Nadie del pueblo que colinda entra y conserva la vida; quien cruza la barrera de raíces nunca regresa.",
+			"Nadie del pueblo que colinda con el bosque entra y conserva la vida; quien cruza la barrera de raíces nunca regresa.",
 		],
 	},
 	{
 		"imagenes": ["res://assets/cinematicas/escena_2.png", "res://assets/cinematicas/escena_2.1.png"],
 		"partes": [
-			"No es ritual ni tradición. Hay padres que no desearon serlo y dejaron a sus hijos morir en el bosque.",
+			"Algunos padres no desearon serlo, y dejaron a sus hijos morir en el bosque.",
 			"Maleddries tomó a cada bebé que dejaron en sus faldas, lo cuidó y le enseñó a sobrevivir.",
 			"Pero no todos sobreviven. Los Viveriuz buscan las almas puras, no por hambre sino por poder: las capturan para abrigarse en la oscuridad.",
 			"Y cuando un alma es robada, es nuestra obligación devolverla al lugar al que pertenece.",

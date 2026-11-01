@@ -7,7 +7,9 @@ func _init() -> void:
 		{
 			"imagenes": ["res://assets/cinematicas/escena_7.png"],
 			"partes": [
-				"Pero al final, siempre regresamos solos.",
+				"Volvimos con el alma que nos arrebataron.",
+				"Maleddries nos recibe entre sus raíces, como una madre que temió no vernos regresar.",
+				"Hoy, los salvados fueron más que los perdidos.",
 			],
 		},
 	]
