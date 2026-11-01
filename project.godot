@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Brulkas"
-run/main_scene="uid://b2h4b3vy2hppw"
+run/main_scene="res://ui/intro.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://b2k1kanfokjic"
 ControlPausa="*uid://bxungcvddk2x5"
+Transicion="*res://ui/transicion.gd"
+Audio="*res://audio/gestor_audio.gd"
 
 [display]
 

@@ -67,6 +67,16 @@ position = Vector2(3200, 640)
 cantidad = 28
 ancho = 5.0
 
+[node name="Izq_PinchosHueco" parent="." unique_id=884301277 instance=ExtResource("2_85kh4")]
+position = Vector2(50, 640)
+cantidad = 18
+ancho = 5.0
+
+[node name="Der_PinchosHueco" parent="." unique_id=1209957330 instance=ExtResource("2_85kh4")]
+position = Vector2(9950, 640)
+cantidad = 18
+ancho = 5.0
+
 [node name="Der_Pared" parent="." unique_id=1933717972 instance=ExtResource("1_gbk21")]
 position = Vector2(10020, 220)
 rotation = 1.5707964

@@ -2,39 +2,25 @@
 
 [ext_resource type="FontFile" path="res://assets/fuentes/MysteryQuest-Regular.ttf" id="1_fuente"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
-bg_color = Color(0.14509805, 0.0627451, 0.3019608, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.47843137, 0.09411765, 0.26666668, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boton"]
+bg_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
-bg_color = Color(0.22745098, 0.10980392, 0.43137255, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.47843137, 0.09411765, 0.26666668, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
-bg_color = Color(0.101960786, 0.039215688, 0.21960784, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.47843137, 0.09411765, 0.26666668, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_foco"]
 
 [resource]
 default_font = ExtResource("1_fuente")
-Button/colors/font_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
-Button/colors/font_focus_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
-Button/colors/font_hover_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
-Button/colors/font_hover_pressed_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
-Button/colors/font_pressed_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
-Button/styles/hover = SubResource("StyleBoxFlat_hover")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_pressed")
-Button/styles/normal = SubResource("StyleBoxFlat_normal")
-Button/styles/pressed = SubResource("StyleBoxFlat_pressed")
+Button/colors/font_color = Color(1, 0.6, 0.63529414, 1)
+Button/colors/font_focus_color = Color(1, 0.6, 0.63529414, 1)
+Button/colors/font_hover_color = Color(1, 0.6, 0.63529414, 1)
+Button/colors/font_hover_pressed_color = Color(1, 0.6, 0.63529414, 1)
+Button/colors/font_pressed_color = Color(1, 0.6, 0.63529414, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_foco")
+Button/styles/hover = SubResource("StyleBoxFlat_boton")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_boton")
+Button/styles/normal = SubResource("StyleBoxFlat_boton")
+Button/styles/pressed = SubResource("StyleBoxFlat_boton")
 Label/colors/font_color = Color(0.14509805, 0.0627451, 0.3019608, 1)
