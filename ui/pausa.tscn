@@ -21,16 +21,20 @@ border_width_right = 6
 border_width_bottom = 6
 border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
 
-[node name="Control" type="Control" unique_id=523795948]
+[node name="Pausa" type="CanvasLayer" unique_id=1938402716]
+process_mode = 3
+layer = 20
+script = ExtResource("1_82k1r")
+
+[node name="Control" type="Control" parent="." unique_id=523795948]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_82k1r")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=800637645]
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=800637645]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +44,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.6509804)
 
-[node name="Panel" type="Panel" parent="." unique_id=1369826605]
+[node name="Panel" type="Panel" parent="Control" unique_id=1369826605]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,7 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gbixf")
 
-[node name="Label" type="Label" parent="Panel" unique_id=62341273]
+[node name="Label" type="Label" parent="Control/Panel" unique_id=62341273]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -69,7 +73,7 @@ theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
 theme_override_font_sizes/font_size = 30
 text = "JUEGO EN PAUSA"
 
-[node name="Button" type="Button" parent="Panel" unique_id=317240949]
+[node name="Button" type="Button" parent="Control/Panel" unique_id=317240949]
 custom_minimum_size = Vector2(220, 65)
 layout_mode = 0
 offset_left = 140.0
@@ -82,7 +86,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fabxv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ooo5k")
 text = "Continuar"
 
-[node name="Button2" type="Button" parent="Panel" unique_id=799582791]
+[node name="Button2" type="Button" parent="Control/Panel" unique_id=799582791]
 custom_minimum_size = Vector2(220, 65)
 layout_mode = 0
 offset_left = 140.0
@@ -95,5 +99,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fabxv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ooo5k")
 text = "Salir al menú"
 
-[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Panel/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Panel/Button2" to="." method="_on_button_2_pressed"]
