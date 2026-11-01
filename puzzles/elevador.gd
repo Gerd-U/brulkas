@@ -73,8 +73,20 @@ extends AnimatableBody2D
 		recorte_lados = valor
 		_actualizar()
 
+@export_group("Sonido")
+## Volumen de la roca mientras el ascensor se mueve (Brulkas 005 - Roca Moviendose)
+@export var volumen_roca: float = 8.0
+## Distancia en píxeles a partir de la cual ya no se escucha
+@export var distancia_sonido: float = 1200.0
+## Qué tan rápido se apaga con la distancia (más bajo = se oye fuerte hasta más lejos)
+@export var atenuacion_sonido: float = 0.4
+
+const SONIDO_ROCA := "res://audio/sfx/Brulkas 005 - Roca Moviendose.mp3"
+const SonidoContinuo := preload("res://audio/sonido_continuo.gd")
+
 var _arriba := false    # true cuando está en la parte de arriba
 var _moviendo := false  # para no empezar otro viaje a la mitad
+var _sonido: SonidoContinuo
 
 
 func _ready() -> void:
@@ -82,6 +94,7 @@ func _ready() -> void:
 	# Solo en el juego escuchamos cuando alguien se sube
 	if not Engine.is_editor_hint():
 		$Sensor.body_entered.connect(_al_subir)
+		_crear_sonido()
 
 
 func _actualizar() -> void:
@@ -117,11 +130,30 @@ func _al_subir(cuerpo: Node2D) -> void:
 	var tween := create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_interval(espera)
+	tween.tween_callback(_empezar_sonido)
 	tween.tween_property(self, "position:y", destino, duracion) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
+	_parar_sonido()
 	_arriba = not _arriba
 	_moviendo = false
+
+
+# Sonido posicional que dura todo el movimiento
+func _crear_sonido() -> void:
+	_sonido = SonidoContinuo.new()
+	add_child(_sonido)
+	_sonido.configurar(load(SONIDO_ROCA), &"Efectos", volumen_roca, distancia_sonido, atenuacion_sonido)
+
+
+# Suena la roca mientras viaja
+func _empezar_sonido() -> void:
+	_sonido.empezar()
+
+
+# Al llegar se apaga suave en vez de cortarse
+func _parar_sonido() -> void:
+	_sonido.parar(0.4)
 
 
 # Dónde se dibuja la imagen

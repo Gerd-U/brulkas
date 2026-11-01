@@ -15,13 +15,13 @@ func _init() -> void:
 		{
 			"imagenes": ["res://assets/cinematicas/escena_5.png"],
 			"partes": [
-				"Escribe aquí el texto que aparecerá con la escena 5...",
+				"Las pequeñas victorias no siempre duran, mucho menos teniendo a las criaturas en tu contra. Salvar un alma no te excede de que se lleven otra.",
 			],
 		},
 		{
 			"imagenes": ["res://assets/cinematicas/escena_6.png"],
 			"partes": [
-				"Escribe aquí el texto que aparecerá con la escena 6...",
+				"Y regresar a las profundidades del bosque es nuestro único camino. Esperando que al regreso sean más los salvados que los perdidos.",
 			],
 		},
 	]

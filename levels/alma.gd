@@ -7,6 +7,13 @@ extends Area2D
 		radio = max(4.0, valor)
 		_actualizar()
 
+## Radio de la zona que la recoge (0 = igual que el radio). Del tamaño del
+## dibujo, así se recoge apenas el jugador la toca y el sonido no se siente tarde
+@export var radio_recoger: float = 36.0:
+	set(valor):
+		radio_recoger = max(0.0, valor)
+		_actualizar()
+
 ## Color de la luz
 @export var color: Color = Color(0.85, 0.95, 1.0):
 	set(valor):
@@ -59,7 +66,7 @@ func _actualizar() -> void:
 	if forma == null:
 		return
 	var circulo := CircleShape2D.new()
-	circulo.radius = radio
+	circulo.radius = radio_recoger if radio_recoger > 0.0 else radio
 	forma.shape = circulo
 	queue_redraw()
 
@@ -95,11 +102,21 @@ func _al_tocar(cuerpo: Node2D) -> void:
 	_recogida = true
 	hide()  # el alma desaparece
 
+	# El sonido sale del gestor de audio para que no se corte al cambiar de escena
+	var audio := get_node_or_null("/root/Audio")
+	if audio:
+		audio.reproducir_alma()
+
 	# Le avisamos al GameManager de Key que el nivel terminó
 	var gm := get_node_or_null("/root/GameManager")
 	if gm:
-		# Diferido: no se puede cambiar de escena dentro de una señal de física
-		gm.call_deferred("nivel_completado")
+		# Primero se oscurece la pantalla y recién ahí se cambia de nivel
+		var transicion := get_node_or_null("/root/Transicion")
+		if transicion:
+			transicion.fundir_y(gm.nivel_completado)
+		else:
+			# Diferido: no se puede cambiar de escena dentro de una señal de física
+			gm.call_deferred("nivel_completado")
 
 
 func _draw() -> void:

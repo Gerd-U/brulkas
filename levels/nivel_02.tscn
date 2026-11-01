@@ -97,6 +97,11 @@ position = Vector2(4620, 388)
 cantidad = 16
 ancho = 5.0
 
+[node name="Foso_Pinchos2" parent="." unique_id=1730582214 instance=ExtResource("2_85kh4")]
+position = Vector2(4870, 388)
+cantidad = 16
+ancho = 5.0
+
 [node name="Foso_Caja" parent="." unique_id=1955560842 instance=ExtResource("3_ldt66")]
 position = Vector2(5600, 320)
 tamano = Vector2(90, 90)

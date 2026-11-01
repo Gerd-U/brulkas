@@ -56,9 +56,21 @@ extends Area2D
 		colision_por_forma = valor
 		_actualizar()
 
+@export_group("Sonido")
+## Volumen al cerrarse (Brulkas 004 - Trampa)
+@export var volumen_trampa: float = -1.5
+## Distancia en píxeles a partir de la cual ya no se escucha
+@export var distancia_sonido: float = 1200.0
+## Segundo del archivo desde donde empieza a sonar (0 = desde el principio).
+## El golpe fuerte del archivo está cerca de los 0.5 s.
+@export var inicio_sonido: float = 0.0
+
+const SONIDO_TRAMPA := "res://audio/sfx/Brulkas 004 - Trampa.mp3"
+
 var _cerrado := false      # está cerrada ahora mismo
 var _desarmado := false    # una caja la cerró: ya no hace daño nunca más
 var _forma_dibujo: CollisionPolygon2D  # zona con la forma del dibujo, si se usa
+var _sonido: AudioStreamPlayer2D  # suena al cerrarse
 
 
 func _ready() -> void:
@@ -66,6 +78,12 @@ func _ready() -> void:
 	# Solo en el juego escuchamos cuando algo la pisa
 	if not Engine.is_editor_hint():
 		body_entered.connect(_al_pisar)
+		_sonido = AudioStreamPlayer2D.new()
+		_sonido.stream = load(SONIDO_TRAMPA)
+		_sonido.bus = &"Efectos"
+		_sonido.volume_db = volumen_trampa
+		_sonido.max_distance = distancia_sonido
+		add_child(_sonido)
 
 
 func _actualizar() -> void:
@@ -147,12 +165,18 @@ func _al_pisar(cuerpo: Node2D) -> void:
 		_cerrado = true
 		_desarmado = true
 		_mostrar_estado()
+		_sonido.play(inicio_sonido)
 		return
 
 	# ¿Es el jugador? → se cierra y lo mata
 	if cuerpo.has_method("morir"):
 		_cerrado = true
 		_mostrar_estado()
+		_sonido.play(inicio_sonido)
+		# La muerte suena acomodada después del golpe de la trampa
+		var audio := get_node_or_null("/root/Audio")
+		if audio:
+			audio.muerte_en_trampa()
 		cuerpo.morir()
 		# Esperamos un rato y la volvemos a abrir
 		await get_tree().create_timer(tiempo_reabrir).timeout

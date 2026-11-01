@@ -149,4 +149,4 @@ func _ir_al_nivel() -> void:
 		return
 	terminando = true
 	GameManager.nivel_actual = nivel_destino
-	get_tree().change_scene_to_file(escena_destino)
+	Transicion.cambiar_escena(escena_destino)
