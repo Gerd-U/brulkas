@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpaum5px1ggg4"]
 
 [ext_resource type="Script" uid="uid://bcj5tt5ir0kbr" path="res://puzzles/elevador.gd" id="1_awdi0"]
+[ext_resource type="Texture2D" uid="uid://b0n4ti5fp2eom" path="res://assets/componentes/roca_elevador.png" id="2_img"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_awdi0"]
 size = Vector2(160, 50)
@@ -12,6 +13,9 @@ size = Vector2(150, 16)
 collision_mask = 0
 script = ExtResource("1_awdi0")
 color = Color(0.34901962, 0.33333334, 0.38039216, 1)
+textura = ExtResource("2_img")
+modo_textura = 1
+grosor_textura = 0.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=776077867]
 position = Vector2(0, -25)

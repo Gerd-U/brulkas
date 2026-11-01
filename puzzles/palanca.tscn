@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d1edqr6v6nsub"]
 
 [ext_resource type="Script" uid="uid://c42uehhu8bwlr" path="res://puzzles/palanca.gd" id="1_bpgq3"]
+[ext_resource type="SpriteFrames" path="res://puzzles/palanca_animacion.tres" id="9_anim"]
 
 [node name="Palanca" type="Area2D" unique_id=912527605]
 collision_layer = 16
@@ -8,3 +9,7 @@ collision_mask = 0
 script = ExtResource("1_bpgq3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1899415337]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=619563751]
+sprite_frames = ExtResource("9_anim")
+centered = false

@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://djex6s3mbik7o"]
 
 [ext_resource type="Script" uid="uid://dcmd1cou1rekk" path="res://puzzles/plataforma_movil.gd" id="1_rth2r"]
+[ext_resource type="Texture2D" uid="uid://dnnbnuy6rx1e7" path="res://assets/componentes/plataforma_movil.png" id="2_img"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1xdp"]
 
 [node name="PlataformaMovil" type="AnimatableBody2D" unique_id=150593287]
 collision_mask = 0
 script = ExtResource("1_rth2r")
+textura = ExtResource("2_img")
+modo_textura = 1
+grosor_textura = 0.5
+colision_por_forma = true
+forma_lisa = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1780267656]
 shape = SubResource("RectangleShape2D_j1xdp")
