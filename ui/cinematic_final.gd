@@ -7,10 +7,10 @@ func _init() -> void:
 		{
 			"imagenes": ["res://assets/cinematicas/escena_7.png"],
 			"partes": [
-				"Escribe aquí el texto final que acompañará a la escena 7...",
+				"Pero al final, siempre regresamos solos.",
 			],
 		},
 	]
 	
 	# Al terminar toda la secuencia, salta a la pantalla de créditos
-	escena_destino = "res://ui/creditos.tscn"
+	escena_destino = "res://ui/titulo_final.tscn"

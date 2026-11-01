@@ -2,18 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brkxdqai5hkd1" path="res://ui/cinematic_level_1.gd" id="1_653ob"]
 [ext_resource type="Texture2D" uid="uid://ba6luj548hei7" path="res://assets/cinematicas/escena_4.png" id="2_f4h38"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuadro"]
-bg_color = Color(0.14509805, 0.0627451, 0.3019608, 0.92)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.47843137, 0.09411765, 0.26666668, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[ext_resource type="StyleBox" path="res://ui/cuadro_texto_estilo.tres" id="9_estilo_cuadro"]
 
 [node name="Cinematic_level1" type="Control" unique_id=1908786082]
 layout_mode = 3
@@ -59,7 +48,7 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_cuadro")
+theme_override_styles/panel = ExtResource("9_estilo_cuadro")
 
 [node name="Texto" type="Label" parent="Narracion/Pantalla/Cuadro" unique_id=477310963]
 layout_mode = 1
@@ -73,7 +62,7 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 26
 autowrap_mode = 3
 visible_characters = 0
 visible_characters_behavior = 1
