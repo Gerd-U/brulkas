@@ -249,20 +249,33 @@ func morir() -> void:
 	dejar_resbalar()
 	velocity = Vector2.ZERO
 
+	# Resetear la inclinación del sprite por si muere resbalando en una rampa
+	visuals.rotation = 0.0
+	visuals.position = Vector2.ZERO
+
+	# Reproducir animación de muerte y esperar a que termine
+	if sprite.sprite_frames.has_animation("death"):
+		sprite.play("death")
+		await sprite.animation_finished
+	else:
+		await get_tree().create_timer(0.4).timeout
+
+	# Desvanecerse
 	var tween := create_tween()
 	tween.tween_property(visuals, "modulate:a", 0.0, 0.4)
 	await tween.finished
 
+	# Reaparecer en el checkpoint
 	var posicion_reaparicion = GameManager.obtener_checkpoint()
 	if posicion_reaparicion == Vector2.ZERO:
-		posicion_reaparicion = global_position 
+		posicion_reaparicion = global_position
 
 	global_position = posicion_reaparicion
 	velocity = Vector2.ZERO
 	dejar_resbalar()
-	
+
 	var tween_aparecer := create_tween()
 	tween_aparecer.tween_property(visuals, "modulate:a", 1.0, 0.3)
 	await tween_aparecer.finished
-	
+
 	is_dead = false
