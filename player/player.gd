@@ -241,7 +241,6 @@ func _update_animation() -> void:
 	visuals.position = visuals.position.lerp(posicion_objetivo, 0.25)
 
 # ---------------- Morir y reaparecer ----------------
-# ---------------- Morir y reaparecer ----------------
 func morir() -> void:
 	if is_dead:
 		return
@@ -250,25 +249,10 @@ func morir() -> void:
 	dejar_resbalar()
 	velocity = Vector2.ZERO
 
-	# Desactivar colisiones físicas
-	col_stand.set_deferred("disabled", true)
-	col_slide.set_deferred("disabled", true)
-
-	# 1. Reproducir la animación de muerte completa
-	if sprite.sprite_frames.has_animation("death"):
-		sprite.play("death")
-		await sprite.animation_finished
-
-	# 2. Desvanecer los visuals (pantalla invisible)
 	var tween := create_tween()
-	tween.tween_property(visuals, "modulate:a", 0.0, 0.3)
+	tween.tween_property(visuals, "modulate:a", 0.0, 0.4)
 	await tween.finished
 
-	# 3. CAMBIAR A ANIMACIÓN DE PIE AQUÍ (mientras está invisible)
-	if sprite.sprite_frames.has_animation("idle"):
-		sprite.play("idle")
-
-	# 4. Obtener posición del checkpoint y reubicar al jugador
 	var posicion_reaparicion = GameManager.obtener_checkpoint()
 	if posicion_reaparicion == Vector2.ZERO:
 		posicion_reaparicion = global_position 
@@ -277,11 +261,6 @@ func morir() -> void:
 	velocity = Vector2.ZERO
 	dejar_resbalar()
 	
-	# Reactivar colisiones
-	col_stand.set_deferred("disabled", false)
-	col_slide.set_deferred("disabled", true)
-
-	# 5. Volver a mostrar al personaje con un fundido suave
 	var tween_aparecer := create_tween()
 	tween_aparecer.tween_property(visuals, "modulate:a", 1.0, 0.3)
 	await tween_aparecer.finished
