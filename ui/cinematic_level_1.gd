@@ -4,7 +4,7 @@ extends "res://ui/cinematic.gd"
 
 
 func _init() -> void:
-	# Imágenes de esta cinemática y sus partes de texto
+	# Secuencia completa de imágenes y textos para esta transición
 	escenas = [
 		{
 			"imagenes": ["res://assets/cinematicas/escena_4.png"],
@@ -12,7 +12,20 @@ func _init() -> void:
 				"Y no importa qué tan oscuro se ponga el bosque: los vamos a traer de vuelta.",
 			],
 		},
+		{
+			"imagenes": ["res://assets/cinematicas/escena_5.png"],
+			"partes": [
+				"Escribe aquí el texto que aparecerá con la escena 5...",
+			],
+		},
+		{
+			"imagenes": ["res://assets/cinematicas/escena_6.png"],
+			"partes": [
+				"Escribe aquí el texto que aparecerá con la escena 6...",
+			],
+		},
 	]
-	# Cuando termina, pasamos al Nivel 2
+	
+	# Cuando termina toda la secuencia, pasamos al Nivel 2
 	escena_destino = "res://levels/nivel_02.tscn"
 	nivel_destino = 1
