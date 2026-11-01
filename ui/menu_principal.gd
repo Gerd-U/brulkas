@@ -1,5 +1,7 @@
+# Extiende de Control (mantén lo que ya tengas arriba)
 extends Control
 
+@onready var visuals: Node2D = get_node_or_null("Visuals") # O los nodos que tengas
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -23,10 +25,10 @@ func _al_salir(boton: Control) -> void:
 	tween.tween_property(boton, "scale", Vector2(1.0, 1.0), 0.15)
 
 
-# Abre el nivel 1 cuando se presiona JUGAR.
+# MODIFICADO: Ahora abre la cinemática en lugar de ir directo al nivel 1.
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://levels/nivel_01.tscn")
-
+	get_tree().change_scene_to_file("res://ui/cinematic.tscn")
+	
 
 # Cierra el juego cuando se presiona SALIR.
 func _on_button_3_pressed() -> void:
