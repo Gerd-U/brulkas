@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bcb64x8qx86ti"]
+
+[ext_resource type="Script" uid="uid://b05b6kebta4ap" path="res://ui/cinematic_final.gd" id="1_mjf2o"]
+[ext_resource type="Texture2D" uid="uid://2lj4ai45h4au" path="res://assets/cinematicas/escena_7.png" id="2_f032b"]
+
+[node name="Cinematic_final" type="Control" unique_id=752467092]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mjf2o")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1917302159]
+layout_mode = 0
+offset_right = 1277.0
+offset_bottom = 720.0
+texture = ExtResource("2_f032b")
+expand_mode = 3
+
+[node name="Timer" type="Timer" parent="." unique_id=1963247947]
+wait_time = 4.0
+autostart = true

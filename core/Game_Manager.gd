@@ -23,7 +23,7 @@ func obtener_checkpoint() -> Vector2:
 func nivel_completado() -> void:
 	nivel_actual += 1
 	
-	# Interceptamos cuando se termina el Nivel 1 para mostrar la cinemática
+	# Interceptamos cuando se termina el Nivel 1 para mostrar su cinemática (Escenas 4, 5 y 6)
 	if nivel_actual == 1:
 		get_tree().change_scene_to_file("res://ui/cinematic_level_1.tscn")
 		return
@@ -34,10 +34,10 @@ func nivel_completado() -> void:
 		else:
 			push_warning("El nivel no existe: " + niveles[nivel_actual])
 	else:
-		# Al terminar el último nivel (Nivel 3), mandamos al jugador a los créditos
-		get_tree().change_scene_to_file("res://ui/creditos.tscn")
+		# Al terminar el Nivel 3, cargamos la cinemática final (Escena 7) antes de los créditos
+		get_tree().change_scene_to_file("res://ui/cinematic_final.tscn")
 
 
 func finalizar_cinematica() -> void:
-	# Carga automáticamente el nivel correspondiente (en este caso el Nivel 2)
+	# Carga automáticamente el nivel correspondiente (para la transición del Nivel 1 al 2)
 	get_tree().change_scene_to_file(GameManager.niveles[GameManager.nivel_actual])

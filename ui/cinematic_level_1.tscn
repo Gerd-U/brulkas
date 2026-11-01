@@ -96,3 +96,15 @@ theme_override_colors/font_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
 theme_override_font_sizes/font_size = 18
 text = "Espacio o clic  ▼"
 horizontal_alignment = 2
+
+[node name="Play" type="Button" parent="." unique_id=1625185869]
+layout_mode = 0
+theme_override_font_sizes/font_size = 118
+text = "Jugar
+"
+
+[node name="Play" type="Button" parent="Play" unique_id=341937537]
+layout_mode = 0
+theme_override_font_sizes/font_size = 118
+text = "Jugar
+"
