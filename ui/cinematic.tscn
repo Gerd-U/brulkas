@@ -3,22 +3,96 @@
 [ext_resource type="Script" uid="uid://cwies8wc0qrtt" path="res://ui/cinematic.gd" id="1_ds7na"]
 [ext_resource type="Texture2D" uid="uid://cf614pypwym5n" path="res://assets/cinematicas/escena_1.png" id="2_32w21"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuadro"]
+bg_color = Color(0.14509805, 0.0627451, 0.3019608, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.47843137, 0.09411765, 0.26666668, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Cinematic" type="Control" unique_id=1265564981]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ds7na")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1071707797]
-layout_mode = 0
-offset_right = 2574.0
-offset_bottom = 1388.0
-scale = Vector2(0.5, 0.5)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_32w21")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Timer" type="Timer" parent="." unique_id=256195968]
-wait_time = 4.0
-autostart = true
+[node name="Narracion" type="CanvasLayer" parent="." unique_id=1580244913]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Pantalla" type="Control" parent="Narracion" unique_id=902716458]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Cuadro" type="Panel" parent="Narracion/Pantalla" unique_id=1349920671]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 1.0
+anchor_right = 0.9
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cuadro")
+
+[node name="Texto" type="Label" parent="Narracion/Pantalla/Cuadro" unique_id=477310962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 16.0
+offset_right = -26.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+visible_characters = 0
+visible_characters_behavior = 1
+
+[node name="Indicador" type="Label" parent="Narracion/Pantalla/Cuadro" unique_id=1765025830]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -34.0
+offset_right = -14.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.7607843, 0.15686275, 0.41960785, 1)
+theme_override_font_sizes/font_size = 18
+text = "Espacio o clic  ▼"
+horizontal_alignment = 2
