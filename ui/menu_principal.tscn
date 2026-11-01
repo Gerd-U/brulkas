@@ -13,10 +13,10 @@ border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iesyk"]
 bg_color = Color(0.20392157, 0.1882353, 0.22745098, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fw5kl"]
@@ -29,10 +29,10 @@ border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f2nw"]
 bg_color = Color(0.20392157, 0.1882353, 0.22745098, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhvkh"]
@@ -45,10 +45,10 @@ border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4ikh"]
 bg_color = Color(0.20392157, 0.1882353, 0.22745098, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
 
 [node name="Control" type="Control" unique_id=510097047]
@@ -102,7 +102,7 @@ theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_fw5kl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0f2nw")
-text = "Opciones"
+text = "Créditos"
 
 [node name="Button3" type="Button" parent="HBoxContainer" unique_id=670184216]
 custom_minimum_size = Vector2(220, 65)
@@ -112,3 +112,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_dhvkh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m4ikh")
 text = "Salir"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button3" to="." method="_on_button_3_pressed"]

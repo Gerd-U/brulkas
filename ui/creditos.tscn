@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://c331b4tuns4wv"]
+
+[ext_resource type="Script" uid="uid://dwr0nb6sinidi" path="res://ui/creditos.gd" id="1_fr3nv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fabxv"]
+bg_color = Color(0.14117648, 0.12941177, 0.16470589, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nppkp"]
+bg_color = Color(0.20392157, 0.1882353, 0.22745098, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.38431373, 0.35686275, 0.40784314, 1)
+
+[node name="Control" type="Control" unique_id=1608541309]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fr3nv")
+
+[node name="Label" type="Label" parent="." unique_id=793345009]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = 70.0
+offset_right = 79.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
+theme_override_font_sizes/font_size = 36
+text = "CRÉDITOS"
+
+[node name="Label2" type="Label" parent="." unique_id=653922561]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -203.0
+offset_right = 103.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
+theme_override_font_sizes/font_size = 22
+text = "PROGRAMACIÓN
+Nombre 1
+Nombre 2
+Nombre 3
+
+ARTE Y DISEÑO
+Nombre 4
+
+MÚSICA Y SONIDO
+Nombre 5"
+
+[node name="Button" type="Button" parent="." unique_id=2036414415]
+custom_minimum_size = Vector2(220, 65)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -191.0
+offset_right = 115.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.90588236, 0.8862745, 0.9098039, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_fabxv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nppkp")
+text = "Volver al menú"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
