@@ -245,6 +245,7 @@ func morir() -> void:
 	if is_dead:
 		return
 	is_dead = true
+	Audio.reproducir_muerte()
 	_soltar_caja()
 	dejar_resbalar()
 	velocity = Vector2.ZERO

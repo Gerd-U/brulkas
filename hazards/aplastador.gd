@@ -70,12 +70,22 @@ extends AnimatableBody2D
 		proporcion_pinchos = valor
 		_actualizar()
 
+@export_group("Sonido")
+## Volumen del golpe al caer (Brulkas 004 - Aplastador)
+@export var volumen_golpe: float = 0.0
+## Distancia en píxeles a partir de la cual el golpe ya no se escucha
+@export var distancia_sonido: float = 800.0
+## Qué tan rápido se apaga con la distancia (más bajo = se oye fuerte hasta más lejos)
+@export var atenuacion_sonido: float = 0.4
+
+const SONIDO_GOLPE := "res://audio/sfx/Brulkas 004 - Aplastador.mp3"
 const PICOS := 16.0  # alto de los pinchos de abajo (dibujo sin imagen)
 const EMPUJE := 320.0  # velocidad con que tira al jugador si se sube encima
 
 var _abajo: Vector2
 var _arriba: Vector2
 var _techo: Area2D  # franja encima del bloque para que nadie se pare arriba
+var _sonido: AudioStreamPlayer2D  # golpe al caer, solo se oye de cerca
 
 
 func _ready() -> void:
@@ -89,7 +99,20 @@ func _ready() -> void:
 	position = _arriba
 	$ZonaPinchos.body_entered.connect(_al_tocar)
 	_crear_techo()
+	_crear_sonido()
 	_empezar()
+
+
+# Sonido posicional: fuerte cerca, se apaga con la distancia
+func _crear_sonido() -> void:
+	_sonido = AudioStreamPlayer2D.new()
+	_sonido.stream = load(SONIDO_GOLPE)
+	_sonido.bus = &"Efectos"
+	_sonido.volume_db = volumen_golpe
+	_sonido.max_distance = distancia_sonido
+	_sonido.attenuation = atenuacion_sonido
+	_sonido.max_polyphony = 1  # varios en fila no se amontonan
+	add_child(_sonido)
 
 
 func _crear_techo() -> void:
@@ -158,6 +181,7 @@ func _empezar() -> void:
 	# Cae rápido (acelerando, como si pesara)
 	tween.tween_property(self, "position", _abajo, tiempo_caida) \
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.tween_callback(_sonido.play)  # golpe justo al tocar abajo
 	tween.tween_interval(tiempo_abajo)
 	# Sube despacio
 	tween.tween_property(self, "position", _arriba, tiempo_subida) \

@@ -95,6 +95,11 @@ func _al_tocar(cuerpo: Node2D) -> void:
 	_recogida = true
 	hide()  # el alma desaparece
 
+	# El sonido sale del gestor de audio para que no se corte al cambiar de escena
+	var audio := get_node_or_null("/root/Audio")
+	if audio:
+		audio.reproducir_alma()
+
 	# Le avisamos al GameManager de Key que el nivel terminó
 	var gm := get_node_or_null("/root/GameManager")
 	if gm:

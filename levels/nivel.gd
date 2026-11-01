@@ -33,6 +33,13 @@ func _ready() -> void:
 	if gm:
 		gm.guardar_checkpoint(jugador.global_position)
 
+	# Los sonidos posicionales (aplastador, cepo) se oyen desde el jugador,
+	# no desde el centro de la cámara, que con el zoom puede quedar lejos de él
+	var oido := AudioListener2D.new()
+	oido.name = "Oido"
+	jugador.add_child(oido)
+	oido.make_current()
+
 	# La cámara es hija del jugador
 	var camara := jugador.get_node_or_null("Camera2D") as Camera2D
 	if camara == null:
