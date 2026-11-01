@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ccddhrwxlchu5" path="res://levels/fondo_bosque.tscn" id="22_fondo"]
 [ext_resource type="Texture2D" uid="uid://8a0eg2mlfyii" path="res://assets/ambiente/arbol_grande.png" id="tex_arbol_grande"]
 [ext_resource type="Texture2D" uid="uid://bebroh4b4ei5r" path="res://assets/ambiente/pendiente.png" id="tex_pendiente"]
-[ext_resource type="Texture2D" uid="uid://dgva6uu23b11u" path="res://assets/ambiente/tronco.png" id="tex_tronco"]
+[ext_resource type="Texture2D" uid="uid://cfb3g5p21bdvl" path="res://assets/ambiente/plataforma_flotante.png" id="tex_plataforma_flotante"]
 [ext_resource type="Texture2D" uid="uid://dpyvjaslxkcmy" path="res://assets/ambiente/suelo.png" id="tex_suelo"]
 
 [node name="Nivel01" type="Node2D" unique_id=729105509]
@@ -38,12 +38,12 @@ tamano = Vector2(150, 90)
 [node name="TroncoIzc" parent="." unique_id=536108121 instance=ExtResource("1_4a5e8")]
 position = Vector2(1512, 550)
 tamano = Vector2(150, 180)
-textura = ExtResource("tex_tronco")
+textura = ExtResource("tex_plataforma_flotante")
 
 [node name="TroncoDer" parent="." unique_id=2031943483 instance=ExtResource("1_4a5e8")]
 position = Vector2(1801, 550)
 tamano = Vector2(150, 180)
-textura = ExtResource("tex_tronco")
+textura = ExtResource("tex_plataforma_flotante")
 
 [node name="Pendiente" parent="." unique_id=1647294288 instance=ExtResource("1_4a5e8")]
 position = Vector2(2048, 565)
@@ -51,7 +51,7 @@ rotation = 0.4712389
 tamano = Vector2(400, 30)
 textura = ExtResource("tex_pendiente")
 ignorar_rotacion = true
-recorte_arriba = 3.0
+colision_por_forma = true
 
 [node name="Arbol" parent="." unique_id=1455520727 instance=ExtResource("1_4a5e8")]
 position = Vector2(3488, 250)

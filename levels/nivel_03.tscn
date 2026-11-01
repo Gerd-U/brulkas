@@ -72,6 +72,7 @@ color = Color(0.14901961, 0.14901961, 0.16862746, 0)
 position = Vector2(200, 490)
 tamano = Vector2(200, 300)
 textura = ExtResource("tex_torre_palanca")
+colision_por_forma = true
 
 [node name="Izq_Elevador" parent="." unique_id=709500784 instance=ExtResource("6_lu5bq")]
 position = Vector2(380, 640)
@@ -144,8 +145,9 @@ position = Vector2(3500, 640)
 position = Vector2(5000, 460)
 tamano = Vector2(400, 120)
 textura = ExtResource("tex_techo_bajo")
-recorte_arriba = 14.0
-recorte_lados = 40.0
+colision_por_forma = true
+detalle_forma = 12.0
+forma_lisa = true
 
 [node name="Centro_EscaleraDer2" parent="." unique_id=873519046 instance=ExtResource("8_gbk21")]
 position = Vector2(5100, 204)
@@ -176,6 +178,7 @@ altura = 280.0
 position = Vector2(9800, 490)
 tamano = Vector2(200, 300)
 textura = ExtResource("tex_torre_palanca")
+colision_por_forma = true
 
 [node name="Der_Palanca" parent="." unique_id=780245163 node_paths=PackedStringArray("objetivos") instance=ExtResource("9_85kh4")]
 position = Vector2(9800, 340)
@@ -192,6 +195,9 @@ se_puede_pisar = false
 textura = ExtResource("tex_techo_bajo")
 recorte_arriba = 7.0
 recorte_lados = 50.0
+colision_por_forma = true
+detalle_forma = 12.0
+forma_lisa = true
 
 [node name="Izq_Cepo1" parent="." unique_id=1093748562 instance=ExtResource("10_ldt66")]
 position = Vector2(2980, 640)

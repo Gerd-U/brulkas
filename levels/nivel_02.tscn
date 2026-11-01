@@ -14,12 +14,11 @@
 [ext_resource type="Script" uid="uid://dq7nv3kw5lbx2" path="res://levels/nivel.gd" id="20_nivel"]
 [ext_resource type="PackedScene" uid="uid://c0dp6gsndcwfe" path="res://player/player.tscn" id="21_player"]
 [ext_resource type="PackedScene" uid="uid://ccddhrwxlchu5" path="res://levels/fondo_bosque.tscn" id="22_fondo"]
-[ext_resource type="Texture2D" uid="uid://3haywerhag7x" path="res://assets/ambiente/grada.png" id="tex_grada"]
 [ext_resource type="Texture2D" uid="uid://cfb3g5p21bdvl" path="res://assets/ambiente/plataforma_flotante.png" id="tex_plataforma_flotante"]
 [ext_resource type="Texture2D" uid="uid://ehwjjpw482h3" path="res://assets/ambiente/rama_gruesa.png" id="tex_rama_gruesa"]
 [ext_resource type="Texture2D" uid="uid://bn4api2ljhlvv" path="res://assets/ambiente/torre_palanca.png" id="tex_torre_palanca"]
-[ext_resource type="Texture2D" uid="uid://dgva6uu23b11u" path="res://assets/ambiente/tronco.png" id="tex_tronco"]
 [ext_resource type="Texture2D" uid="uid://dpyvjaslxkcmy" path="res://assets/ambiente/suelo.png" id="tex_suelo"]
+[ext_resource type="Texture2D" uid="uid://b8c1agfd2ora2" path="res://assets/ambiente/techo_bajo.png" id="tex_techo_bajo"]
 
 [node name="Nivel02" type="Node2D" unique_id=729105509]
 script = ExtResource("20_nivel")
@@ -54,35 +53,44 @@ modo_textura = 2
 
 [node name="Foso_PisoFlotanteA" parent="." unique_id=451312194 instance=ExtResource("1_gbk21")]
 position = Vector2(3840, 440)
-textura = ExtResource("tex_plataforma_flotante")
+textura = ExtResource("tex_techo_bajo")
 modo_textura = 1
+grosor_textura = 0.65
+colision_por_forma = true
+forma_lisa = true
 
 [node name="Foso_PisoFlotanteB" parent="." unique_id=827848294 instance=ExtResource("1_gbk21")]
 position = Vector2(4180, 410)
-textura = ExtResource("tex_plataforma_flotante")
+textura = ExtResource("tex_techo_bajo")
 modo_textura = 1
+grosor_textura = 0.65
+colision_por_forma = true
+forma_lisa = true
 
 [node name="Foso_PisoFlotanteC" parent="." unique_id=1125135226 instance=ExtResource("1_gbk21")]
 position = Vector2(4770, 400)
 tamano = Vector2(700, 40)
-textura = ExtResource("tex_plataforma_flotante")
-modo_textura = 1
-
-[node name="Foso_Grada" parent="." unique_id=1805968503 instance=ExtResource("1_gbk21")]
-position = Vector2(5020, 360)
-textura = ExtResource("tex_grada")
-modo_textura = 1
+textura = ExtResource("tex_techo_bajo")
+modo_textura = 2
+escala_textura = 1.5
+solape_copias = 0.35
+colision_por_forma = true
+forma_lisa = true
 
 [node name="Foso_PisoFlotanteD" parent="." unique_id=564141184 instance=ExtResource("1_gbk21")]
 position = Vector2(5460, 340)
 tamano = Vector2(400, 40)
-textura = ExtResource("tex_plataforma_flotante")
-modo_textura = 1
+textura = ExtResource("tex_techo_bajo")
+modo_textura = 2
+escala_textura = 1.5
+solape_copias = 0.35
+colision_por_forma = true
+forma_lisa = true
 
 [node name="Inicio_BloqueSubir" parent="." unique_id=441500738 instance=ExtResource("1_gbk21")]
 position = Vector2(3500, 550)
 tamano = Vector2(200, 180)
-textura = ExtResource("tex_tronco")
+textura = ExtResource("tex_plataforma_flotante")
 
 [node name="Foso_Pinchos" parent="." unique_id=928934747 instance=ExtResource("2_85kh4")]
 position = Vector2(4620, 380)
@@ -96,7 +104,7 @@ tamano = Vector2(90, 90)
 [node name="Campo_BloqueSubir" parent="." unique_id=10964885 instance=ExtResource("1_gbk21")]
 position = Vector2(6456, 550)
 tamano = Vector2(200, 180)
-textura = ExtResource("tex_tronco")
+textura = ExtResource("tex_plataforma_flotante")
 
 [node name="Campo_Pinchos" parent="." unique_id=39430143 instance=ExtResource("2_85kh4")]
 position = Vector2(6856, 640)
@@ -106,7 +114,7 @@ ancho = 5.0
 [node name="Campo_BloqueSubir2" parent="." unique_id=1134702781 instance=ExtResource("1_gbk21")]
 position = Vector2(7256, 550)
 tamano = Vector2(200, 180)
-textura = ExtResource("tex_tronco")
+textura = ExtResource("tex_plataforma_flotante")
 
 [node name="Final_Pared" parent="." unique_id=1933717972 instance=ExtResource("1_gbk21")]
 position = Vector2(8430, 220)
@@ -118,6 +126,7 @@ color = Color(0.14901961, 0.14901961, 0.16862746, 0)
 position = Vector2(8310, 340)
 tamano = Vector2(200, 600)
 textura = ExtResource("tex_torre_palanca")
+colision_por_forma = true
 
 [node name="Final_Elevador" parent="." unique_id=709500784 instance=ExtResource("6_lu5bq")]
 position = Vector2(8130, 640)
