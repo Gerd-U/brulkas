@@ -22,10 +22,22 @@ func obtener_checkpoint() -> Vector2:
 
 func nivel_completado() -> void:
 	nivel_actual += 1
+	
+	# Interceptamos cuando se termina el Nivel 1 para mostrar la cinemática
+	if nivel_actual == 1:
+		get_tree().change_scene_to_file("res://ui/cinematic_level_1.tscn")
+		return
+
 	if nivel_actual < niveles.size():
 		if ResourceLoader.exists(niveles[nivel_actual]):
 			get_tree().change_scene_to_file(niveles[nivel_actual])
 		else:
 			push_warning("El nivel no existe: " + niveles[nivel_actual])
 	else:
-		pass  # ir a la pantalla final de Nazareth
+		# Al terminar el último nivel (Nivel 3), mandamos al jugador a los créditos
+		get_tree().change_scene_to_file("res://ui/creditos.tscn")
+
+
+func finalizar_cinematica() -> void:
+	# Carga automáticamente el nivel correspondiente (en este caso el Nivel 2)
+	get_tree().change_scene_to_file(GameManager.niveles[GameManager.nivel_actual])
