@@ -32,7 +32,7 @@ limite_abajo = 720
 [node name="FondoBosque" parent="." unique_id=1720394851 instance=ExtResource("22_fondo")]
 
 [node name="ArbolesTraseros" parent="FondoBosque" index="1"]
-scroll_offset = Vector2(798, 0)
+scroll_offset = Vector2(861, 0)
 
 [node name="Centro_Suelo" parent="." unique_id=1774911687 instance=ExtResource("1_gbk21")]
 position = Vector2(5000, 680)

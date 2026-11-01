@@ -6,6 +6,20 @@ extends Node2D
 @export var limite_arriba: int = 0
 @export var limite_abajo: int = 0
 
+@export_group("Zoom de la cámara")
+## Zoom mientras se juega (más alto = más cerca)
+@export var zoom_cerca: float = 1.5
+## Zoom cuando el jugador se queda quieto
+@export var zoom_lejos: float = 1.0
+## Segundos quieto antes de que la cámara se aleje
+@export var tiempo_quieto: float = 2.5
+## Segundos que tarda en alejarse
+@export var duracion_alejar: float = 1.5
+## Segundos que tarda en volver a acercarse
+@export var duracion_acercar: float = 0.5
+
+const CamaraZoom := preload("res://levels/camara_zoom.gd")
+
 
 func _ready() -> void:
 	# Buscamos al jugador por su grupo
@@ -28,3 +42,14 @@ func _ready() -> void:
 	camara.limit_right = limite_derecho
 	camara.limit_top = limite_arriba
 	camara.limit_bottom = limite_abajo
+
+	# El zoom (cerca al jugar, lejos al quedarse quieto) lo maneja otro nodo
+	var zoom := CamaraZoom.new()
+	zoom.name = "CamaraZoom"
+	zoom.zoom_cerca = zoom_cerca
+	zoom.zoom_lejos = zoom_lejos
+	zoom.tiempo_quieto = tiempo_quieto
+	zoom.duracion_alejar = duracion_alejar
+	zoom.duracion_acercar = duracion_acercar
+	add_child(zoom)
+	zoom.configurar(camara, jugador)
